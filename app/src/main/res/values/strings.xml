@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LearnMe</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id neque lorem. Praesent luctus eros ac fermentum hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ac lacus porttitor, tincidunt metus euismod, euismod massa. Vestibulum luctus ex nisl, eu porttitor mauris consectetur vel. Vivamus sit amet sem aliquet, fermentum quam eget, vulputate odio. Quisque nec porttitor magna.</string>
+
 </resources>
