@@ -6,15 +6,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-
-import com.example.learnme.controller.IntroViewPagerAdapter;
-import com.example.learnme.model.ScreenItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +40,11 @@ public class OnBoardingScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // check previous state
-        if(restorePrefData()){
-            Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class);
+       /* if(restorePrefData()){
+            Intent mainActivity = new Intent(getApplicationContext(),Login.class);
             startActivity(mainActivity);
             finish();
-        }
+        }*/
 
         // set content layout
         setContentView(R.layout.activity_on_boarding_screen);
@@ -119,7 +117,7 @@ public class OnBoardingScreen extends AppCompatActivity {
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(),Login.class);
                 startActivity(mainActivity);
 
                 //save state

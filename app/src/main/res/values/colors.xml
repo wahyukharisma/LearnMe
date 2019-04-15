@@ -12,4 +12,13 @@
     <color name="tab_indicator_gray">#c0c0c0</color>
     <color name="intro_title_color">#000000</color>
     <color name="intro_description_color">#656565</color>
+
+    <!-- Color for background sign up and login -->
+    <color name="background_color">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="new_account_color">#000000</color>
+    <color name="text_color_hint">#2E2E2E</color>
+    <color name="text_color_hint_light">#2B2B2B</color>
+    <color name="text_color_warning">#FF0000</color>
+
 </resources>

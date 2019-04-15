@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp"
+    android:background="@color/background_color">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_sign_up"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="100dp"
+        android:layout_marginTop="20dp" >
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/layout_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_sign_up">
+
+        <TextView
+            android:id="@+id/txt_new_account"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_account"
+            android:textSize="35sp"
+            android:textColor="@color/new_account_color"
+            android:fontFamily="@font/proxima_nova"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_index_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="40dp"
+            android:layout_alignParentEnd="true"
+            android:textSize="18sp"
+            android:fontFamily="@font/proxima_nova"
+            android:text="@string/index_page_2"
+            android:textColor="@color/new_account_color"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_two"
+        android:layout_below="@id/layout_one">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:background="@drawable/ic_radio_button_unchecked_black_24dp"
+            android:src="@drawable/ic_attach_file_black_24dp"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/app_name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/new_account_color"
+            android:layout_toEndOf="@id/profile_image"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginStart="10dp"
+            android:text="@string/upload_profile"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_three"
+        android:layout_below="@id/layout_two">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_input_one"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp">
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:hint="@string/input_username"
+                android:textColor="@color/new_account_color"
+                android:textColorHint="@color/text_color_hint"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:padding="15dp"
+                android:fontFamily="@font/proxima_nova"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_input_two"
+            android:layout_below="@id/txt_input_one"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp">
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:hint="@string/input_password"
+                android:textColor="@color/new_account_color"
+                android:textColorHint="@color/text_color_hint"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:padding="15dp"
+                android:fontFamily="@font/proxima_nova"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_input_three"
+            android:layout_below="@id/txt_input_two"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp">
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:hint="@string/input_email"
+                android:textColor="@color/new_account_color"
+                android:textColorHint="@color/text_color_hint"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:padding="15dp"
+                android:fontFamily="@font/proxima_nova"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_input_three"
+            android:text="Username already in use"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/text_color_warning"
+            android:fontFamily="@font/proxima_nova"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_warning"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/sign_up"
+            android:background="@drawable/btn_gradient_style"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_sign_in"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/btn_sign_up"
+            android:layout_centerHorizontal="true"
+            android:text="Not the first time here? Sign In"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/new_account_color" />
+    </RelativeLayout>
+
+</RelativeLayout>
