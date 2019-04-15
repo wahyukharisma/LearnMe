@@ -12,7 +12,9 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.TextView;
+
+import com.example.learnme.controller.IntroViewPagerAdapter;
+import com.example.learnme.model.ScreenItem;
 
 import java.util.ArrayList;
 import java.util.List;
