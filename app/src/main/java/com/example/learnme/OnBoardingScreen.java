@@ -61,11 +61,9 @@ public class OnBoardingScreen extends AppCompatActivity {
         // fill list screen
         String temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id neque lorem. Praesent luctus eros ac fermentum hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ac lacus porttitor, tincidunt metus euismod, euismod massa.";
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Screen 1",temp,R.drawable.base));
-        mList.add(new ScreenItem("Screen 2",temp,R.drawable.base));
-        mList.add(new ScreenItem("Screen 3",temp,R.drawable.base));
-        mList.add(new ScreenItem("Screen 4",temp,R.drawable.base));
-        mList.add(new ScreenItem("Screen 5",temp,R.drawable.base));
+        mList.add(new ScreenItem("Screen 1",temp,R.drawable.intro_1));
+        mList.add(new ScreenItem("Screen 2",temp,R.drawable.intro_3));
+        mList.add(new ScreenItem("Screen 3",temp,R.drawable.intro_2));
 
         // setup viewpager
         screenPager           = findViewById(R.id.viewPager);
