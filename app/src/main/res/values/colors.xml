@@ -33,4 +33,7 @@
     <!-- Toolbar homepage -->
     <color name="background_home_tollbar">#00C0FA</color>
 
+    <!-- Reward -->
+    <color name="background_search_reward">#B3E4E9</color>
+
 </resources>

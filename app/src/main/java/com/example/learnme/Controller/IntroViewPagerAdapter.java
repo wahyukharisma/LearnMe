@@ -1,4 +1,4 @@
-package com.example.learnme;
+package com.example.learnme.Controller;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.learnme.Model.ScreenItem;
+import com.example.learnme.R;
 
 import java.util.List;
 

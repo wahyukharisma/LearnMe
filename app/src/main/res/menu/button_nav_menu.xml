@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_profile"
+        android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/action_profile"
+        android:icon="@drawable/house"
+        android:title="@string/action_home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_add"
+        android:id="@+id/action_reward"
         android:enabled="true"
-        android:icon="@drawable/ic_add_circle_black_24dp"
-        android:title="@string/action_add"
+        android:icon="@drawable/podium"
+        android:title="@string/action_reward"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_shop"
         android:enabled="true"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:icon="@drawable/shopping_basket"
         android:title="@string/action_shop"
         app:showAsAction="ifRoom"/>
 </menu>

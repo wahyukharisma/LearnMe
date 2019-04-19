@@ -7,16 +7,22 @@
     tools:context=".HomePage">
     
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_navigation_color">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_icon"/>
-
     </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/fragment_place_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_title"
+        android:layout_above="@id/bottomNav"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNav"

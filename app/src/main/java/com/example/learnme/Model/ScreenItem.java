@@ -1,4 +1,4 @@
-package com.example.learnme;
+package com.example.learnme.Model;
 
 public class ScreenItem {
 

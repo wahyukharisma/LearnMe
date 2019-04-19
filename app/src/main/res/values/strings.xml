@@ -16,7 +16,7 @@
     <string name="forgot_password">Forgot Password ?</string>
 
     <!-- For Navigation Bottom -->
-    <string name="action_profile">Profile</string>
-    <string name="action_add">Question</string>
+    <string name="action_home">Home</string>
+    <string name="action_reward">Reward</string>
     <string name="action_shop">Shop</string>
 </resources>
