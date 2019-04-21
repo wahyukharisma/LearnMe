@@ -2,11 +2,11 @@ package com.example.learnme;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.learnme.Fragment.FragmentHome;
 import com.example.learnme.Fragment.FragmentReward;
@@ -14,7 +14,7 @@ import com.example.learnme.Fragment.FragmentShop;
 
 public class HomePage extends AppCompatActivity {
 
-
+    Fragment myFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,8 @@ public class HomePage extends AppCompatActivity {
 
         // homepage ini
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
-        FragmentTransaction(1);
+        myFragment = new FragmentHome();
+        FragmentTransaction(myFragment);
 
         //Listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,13 +31,16 @@ public class HomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.action_home:
-                        FragmentTransaction(1);
+                        myFragment = new FragmentHome();
+                        FragmentTransaction(myFragment);
                         break;
                     case R.id.action_reward:
-                        FragmentTransaction(2);
+                        myFragment = new FragmentReward();
+                        FragmentTransaction(myFragment);
                         break;
                     case R.id.action_shop:
-                        FragmentTransaction(3);
+                        myFragment = new FragmentShop();
+                        FragmentTransaction(myFragment);
                         break;
                 }
                 return true;
@@ -44,13 +48,9 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
-    private void FragmentTransaction(int id){
+    private void FragmentTransaction(Fragment myFragment){
         FragmentTransaction fragmentTransaction   = getSupportFragmentManager().beginTransaction();
-
-        if(id==1){fragmentTransaction.replace(R.id.fragment_place_holder,new FragmentHome());}
-        else if(id==2){fragmentTransaction.replace(R.id.fragment_place_holder,new FragmentReward());}
-        else{fragmentTransaction.replace(R.id.fragment_place_holder,new FragmentShop());};
-
+        fragmentTransaction.replace(R.id.fragment_place_holder,myFragment);
         fragmentTransaction.commit();
     }
 }

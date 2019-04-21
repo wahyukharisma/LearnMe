@@ -36,4 +36,7 @@
     <!-- Reward -->
     <color name="background_search_reward">#B3E4E9</color>
 
+    <!-- Shop -->
+    <color name="background_info_reward">#DFF6F8</color>
+
 </resources>

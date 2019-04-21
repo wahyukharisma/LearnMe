@@ -19,4 +19,9 @@
     <string name="action_home">Home</string>
     <string name="action_reward">Reward</string>
     <string name="action_shop">Shop</string>
+
+    <!-- For fragment_shop -->
+    <string name="fs_poin">Point</string>
+    <string name="fs_hot_item">Popular Item</string>
+    <string name="fs_swipe_more">Swipe for see more item</string>
 </resources>

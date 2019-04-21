@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePage">
-    
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_navigation_color">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_icon"/>
-    </android.support.v7.widget.Toolbar>
+
 
     <FrameLayout
         android:id="@+id/fragment_place_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_title"
         android:layout_above="@id/bottomNav"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
@@ -33,6 +22,6 @@
         app:itemIconTint="@color/buttom_nav_selector"
         app:itemTextColor="@color/buttom_nav_selector"
         app:menu="@menu/button_nav_menu"
-        android:theme="@style/Widget.ButtomNavigationView"/>
+        android:theme="@style/Widget.ButtomNavigationView" />
 
 </RelativeLayout>
