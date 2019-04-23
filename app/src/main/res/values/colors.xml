@@ -38,5 +38,6 @@
 
     <!-- Shop -->
     <color name="background_info_reward">#DFF6F8</color>
+    <color name="price_shop">#FF5900</color>
 
 </resources>

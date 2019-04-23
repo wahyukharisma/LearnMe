@@ -78,11 +78,19 @@
         android:layout_gravity="bottom"
         android:layout_below="@id/ll_user_info"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view_line">
+
+    </ScrollView>
+
     <RelativeLayout
         android:id="@+id/rl_popular_item"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/view_line">
+        android:layout_below="@id/view_line"
+        android:layout_marginTop="5dp">
         <TextView
             android:id="@+id/info_pupular"
             android:layout_marginStart="10dp"
@@ -93,7 +101,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/proxima_nova"/>
         <ImageView
-            android:id="@+id/img_more"
+            android:id="@+id/img_more_popular"
             android:layout_width="15dp"
             android:layout_height="20dp"
             android:src="@drawable/right_arrow_green"
@@ -119,11 +127,93 @@
             android:layout_height="match_parent">
         </android.support.v4.view.ViewPager>
     </RelativeLayout>
+
     <RelativeLayout
-        android:id="@+id/rl_shop_item"
+        android:id="@+id/rl_avatar_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/rl_popular_item">
+        android:layout_height="200dp"
+        android:layout_below="@id/rl_popular_item"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/info_avatar"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fs_avatar"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/proxima_nova"/>
+        <ImageView
+            android:id="@+id/img_more_avatar"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:src="@drawable/right_arrow_green"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"/>
+        <TextView
+            android:id="@+id/txt_desc_avatar"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fs_avatar_more"
+            android:textSize="15sp"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_below="@id/info_avatar"/>
+
+        <ImageView
+            android:id="@+id/img_banner_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_avatar"
+            android:src="@drawable/avatar_banner"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_quiz_item"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/rl_avatar_item"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/info_quiz"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fs_quiz"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/proxima_nova"/>
+        <ImageView
+            android:id="@+id/img_more_quiz"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:src="@drawable/right_arrow_green"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"/>
+        <TextView
+            android:id="@+id/txt_desc_quiz"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fs_quiz_more"
+            android:textSize="15sp"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_below="@id/info_quiz"/>
+
+        <ImageView
+            android:id="@+id/img_banner_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_desc_quiz"
+            android:src="@drawable/quiz_banner"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
     </RelativeLayout>
 
 </RelativeLayout>
