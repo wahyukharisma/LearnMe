@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/background_navigation_color">
         <ImageView
+            android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
@@ -22,7 +23,8 @@
             android:text="Avatar"
             android:textStyle="bold"
             android:textSize="25sp"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView

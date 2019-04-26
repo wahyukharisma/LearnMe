@@ -39,5 +39,10 @@
     <!-- Shop -->
     <color name="background_info_reward">#DFF6F8</color>
     <color name="price_shop">#FF5900</color>
+    <color name="sale_item_background">#46D1D1D1</color>
+    <color name="category">#00B609</color>
+
+    <!-- View -->
+    <color name="View">#34000000</color>
 
 </resources>

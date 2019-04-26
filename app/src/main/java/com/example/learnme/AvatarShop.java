@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.learnme.Controller.AvatarAdapter;
@@ -19,6 +22,7 @@ import java.util.List;
 public class AvatarShop extends AppCompatActivity {
 
     List<Item> listItem;
+    ImageView btn_close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,7 @@ public class AvatarShop extends AppCompatActivity {
 
         // avatar shop ini
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavShop);
+        btn_close = (ImageView) findViewById(R.id.btn_close);
 
         // initialize recycle view item
         listItem = new ArrayList<>();
@@ -56,11 +61,18 @@ public class AvatarShop extends AppCompatActivity {
             }
         });
 
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void addItem(List<Item> listItem){
         for(int i=0;i<20;i++){
-            listItem.add(new Item(R.drawable.avatar_banner,200,"Name","Description"));
+            listItem.add(new Item(R.drawable.avatar_banner,200+i,"Name","Lorem Ipsum dolor sit amet"));
         }
 
     }

@@ -1,6 +1,7 @@
 package com.example.learnme.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.learnme.ItemExpand;
 import com.example.learnme.Model.Item;
 import com.example.learnme.R;
 
@@ -37,7 +39,7 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AvatarViewHolder avatarViewHolder, int i) {
+    public void onBindViewHolder(@NonNull AvatarViewHolder avatarViewHolder, final int i) {
         avatarViewHolder.txt_name.setText(dataList.get(i).getName());
         avatarViewHolder.txt_price.setText(Integer.toString(dataList.get(i).getPrice()));
         avatarViewHolder.img_item.setImageResource(dataList.get(i).getId());
@@ -46,7 +48,13 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarView
         avatarViewHolder.avatar_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(mContext, ItemExpand.class);
+                intent.putExtra("Name",dataList.get(i).getName());
+                intent.putExtra("Price",dataList.get(i).getPrice());
+                intent.putExtra("Id",dataList.get(i).getId());
+                intent.putExtra("Description",dataList.get(i).getDescription());
+                mContext.startActivity(intent);
+
             }
         });
     }

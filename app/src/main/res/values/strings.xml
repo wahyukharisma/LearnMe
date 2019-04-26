@@ -31,4 +31,10 @@
     <string name="fs_avatar_more">Get your favorite avatar</string>
     <string name="fs_quiz">Quiz</string>
     <string name="fs_quiz_more">Get your quiz, challenge your knowledge</string>
+    <string name="fs_buy">Buy</string>
+
+    <!-- Homepage -->
+    <string name="hp_trending">Trendings</string>
+    <string name="hp_category">Category</string>
+    <string name="search">Search</string>
 </resources>

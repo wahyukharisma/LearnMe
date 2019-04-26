@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemExpand">
+
+    <ImageView
+        android:id="@+id/img_item"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:background="@color/price_shop"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/header_buy_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/close_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_white_24dp"
+            android:layout_margin="15dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/short_desc"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:layout_below="@id/img_item"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:id="@+id/txt_title_item"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Avatar Pikachu"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/proxima_nova"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Rp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/price_shop"
+                android:fontFamily="@font/proxima_nova"/>
+            <TextView
+                android:id="@+id/txt_price_item"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="1000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/price_shop"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/proxima_nova"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_below="@id/short_desc"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/View"/>
+
+    <LinearLayout
+        android:id="@+id/ll_valid_date"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/view_1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valid until"
+            android:fontFamily="@font/proxima_nova"
+            android:textColor="@color/colorPrimaryDark"/>
+        <TextView
+            android:id="@+id/txt_valid_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12 January 2019"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_item_sale"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:layout_below="@id/ll_valid_date"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/sale_item_background"
+        android:elevation="3dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Total Sold"
+            android:gravity="center"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/total_sold"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="20"
+            android:gravity="center"
+            android:fontFamily="@font/proxima_nova"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_below="@id/ll_item_sale"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/View"/>
+
+    <LinearLayout
+        android:id="@+id/ll_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/view_2"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Category"
+            android:textSize="17sp"
+            android:fontFamily="@font/proxima_nova"/>
+        <TextView
+            android:id="@+id/txt_item_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Picture/Avatar Profile"
+            android:textSize="17sp"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/category"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_below="@id/ll_description"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/View"/>
+
+    <ScrollView
+        android:id="@+id/sv_description"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/view_3"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@color/intro_description_color"
+                android:textSize="17sp"
+                android:fontFamily="@font/proxima_nova"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txt_desc_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/intro_description_color"
+                android:textSize="14sp"
+                android:fontFamily="@font/proxima_nova" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer_buy_item"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/sv_description"
+        android:layout_marginTop="15dp">
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_gradient_style"
+            android:text="@string/fs_buy"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+    </RelativeLayout>
+</RelativeLayout>
