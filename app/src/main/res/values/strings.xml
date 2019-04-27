@@ -36,6 +36,7 @@
     <!-- Homepage -->
     <string name="hp_trending">Trendings</string>
     <string name="hp_category">Category</string>
+    <string name="hp_promotion">Promotions</string>
     <string name="search">Search</string>
     <string name="add_question">Ask Question</string>
     <string name="add_quiz">Take Quiz</string>
