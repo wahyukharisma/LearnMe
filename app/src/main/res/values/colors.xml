@@ -45,4 +45,7 @@
     <!-- View -->
     <color name="View">#34000000</color>
 
+    <!-- Homepage -->
+    <color name="Semi_Transparent">#63000000</color>
+
 </resources>
