@@ -48,4 +48,8 @@
     <!-- Homepage -->
     <color name="Semi_Transparent">#63000000</color>
 
+    <!-- QuestionActivity -->
+    <color name="Title_Question">#0055FF</color>
+    <color name="Background_List_Question">#0C1D1D1D</color>
+
 </resources>

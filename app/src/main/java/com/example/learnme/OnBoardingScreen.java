@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
-import com.example.learnme.Controller.IntroViewPagerAdapter;
+import com.example.learnme.Adapter.IntroViewPagerAdapter;
 import com.example.learnme.Model.ScreenItem;
 
 import java.util.ArrayList;

@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ItemExpand"/>
+        <activity android:name=".QuestionExpand"></activity>
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".ItemExpand" />
         <activity android:name=".AvatarShop" />
         <activity android:name=".HomePage" />
         <activity android:name=".Login" />

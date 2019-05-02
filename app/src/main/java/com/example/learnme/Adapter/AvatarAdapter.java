@@ -1,4 +1,4 @@
-package com.example.learnme.Controller;
+package com.example.learnme.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,6 @@ import com.example.learnme.ItemExpand;
 import com.example.learnme.Model.Item;
 import com.example.learnme.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarViewHolder> {
@@ -53,6 +52,7 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarView
                 intent.putExtra("Price",dataList.get(i).getPrice());
                 intent.putExtra("Id",dataList.get(i).getId());
                 intent.putExtra("Description",dataList.get(i).getDescription());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
 
             }

@@ -1,5 +1,6 @@
 package com.example.learnme.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,16 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.learnme.Controller.TrendingQuestionAdapter;
+import com.example.learnme.Adapter.TrendingQuestionAdapter;
 import com.example.learnme.Model.Trending;
+import com.example.learnme.QuestionActivity;
 import com.example.learnme.R;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
-import com.github.ybq.android.spinkit.style.Wave;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +36,7 @@ public class FragmentHome extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view= inflater.inflate(R.layout.fragment_home,container,false);
 
         // View ini
@@ -67,35 +65,45 @@ public class FragmentHome extends Fragment {
         cd_es.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Card view ES clicked !!!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), QuestionActivity.class);
+                intent.putExtra("Value",1);
+                startActivity(intent);
             }
         });
 
         cd_jhs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Card view JHS clicked !!!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), QuestionActivity.class);
+                intent.putExtra("Value",1);
+                startActivity(intent);
             }
         });
 
         cd_shs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Card view SHS clicked !!!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), QuestionActivity.class);
+                intent.putExtra("Value",2);
+                startActivity(intent);
             }
         });
 
         cd_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Card view G clicked !!!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), QuestionActivity.class);
+                intent.putExtra("Value",3);
+                startActivity(intent);
             }
         });
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Button Search clicked !!!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), QuestionActivity.class);
+                intent.putExtra("Value",4);
+                startActivity(intent);
             }
         });
 
@@ -113,7 +121,7 @@ public class FragmentHome extends Fragment {
                         Toast.makeText(getContext(),"Quiz clicked !!!",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.question:
-                        Toast.makeText(getContext(),"Question clicked !!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"QuestionActivity clicked !!!",Toast.LENGTH_SHORT).show();
                         break;
                 }
                 semi_transparent.setVisibility(View.GONE);

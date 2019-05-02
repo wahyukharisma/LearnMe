@@ -1,4 +1,4 @@
-package com.example.learnme.Controller;
+package com.example.learnme.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.example.learnme.Model.User;
 import com.example.learnme.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

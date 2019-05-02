@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionExpand">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_question_expand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_navigation_color">
+        <ImageView
+            android:id="@+id/btn_close_question"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Question"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_question_expand">
+
+        <LinearLayout
+            android:id="@+id/ll_content_question"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/txt_title_question_expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[Title] What the meaning of Ovovivivar"
+                android:textSize="20sp"
+                android:textColor="@color/Title_Question"
+                android:fontFamily="@font/proxima_nova"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Tag : "
+                    android:fontFamily="@font/proxima_nova"/>
+                <TextView
+                    android:id="@+id/txt_tag_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Senior High School"
+                    android:fontFamily="@font/proxima_nova"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/txt_desc_question_expand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/lorem_ipsum"
+                android:fontFamily="@font/proxima_nova"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_thumb_up_blue_24dp"
+                    android:layout_marginStart="5dp"/>
+                <TextView
+                    android:id="@+id/txt_like_trend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:layout_marginStart="5dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_thumb_down_red_24dp"
+                    android:layout_marginStart="15dp"/>
+                <TextView
+                    android:id="@+id/txt_dislike_trend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:layout_marginStart="5dp"/>
+
+                <TextView
+                    android:id="@+id/txt_date_question_expand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 May 2019"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:layout_marginStart="5dp"
+                    android:textAlignment="textEnd"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccent"/>
+
+            <LinearLayout
+                android:id="@+id/ll_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar_title">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/man_icon_1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="left|center">
+                    <TextView
+                        android:id="@+id/txt_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Made Wahyu Kharisma Candra Kirana"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/proxima_nova"
+                        android:textColor="@color/Title_Question"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/txt_total_answear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/proxima_nova"/>
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Answear"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/proxima_nova"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/item_navigation_color"
+                android:layout_marginTop="5dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_view_answear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:hint="@string/type_answear"
+                android:textSize="15sp"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:background="@drawable/shape_edit_text"
+                android:paddingStart="10dp"/>
+            <Button
+                android:id="@+id/btn_search_hp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btn_gradient_style"
+                android:text="@string/answear"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

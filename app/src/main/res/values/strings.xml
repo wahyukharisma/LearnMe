@@ -22,6 +22,7 @@
     <string name="action_quiz">Quiz</string>
     <string name="action_filter">Filter</string>
     <string name="action_sort">Sort</string>
+    <string name="action_comment">Write Comment</string>
 
     <!-- For fragment_shop -->
     <string name="fs_poin">Point</string>
@@ -40,4 +41,10 @@
     <string name="search">Search</string>
     <string name="add_question">Ask Question</string>
     <string name="add_quiz">Take Quiz</string>
+    <string name="search_keyword">Search Question By Keyword</string>
+    <string name="title_activity_question_expand">QuestionExpand</string>
+
+    <!-- Question -->
+    <string name="type_answear">Type an answear</string>
+    <string name="answear">Answear</string>
 </resources>

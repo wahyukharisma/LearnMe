@@ -1,4 +1,4 @@
-package com.example.learnme.Controller;
+package com.example.learnme.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

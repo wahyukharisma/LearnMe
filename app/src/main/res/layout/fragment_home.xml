@@ -25,7 +25,6 @@
         android:layout_marginEnd = "15dp"
         android:layout_marginTop = "15dp"
         android:layout_marginBottom ="10dp"
-        android:textStyle="bold"
         android:textSize="20sp"
         android:fontFamily="@font/proxima_nova"
         android:textColor="@color/colorPrimaryDark"/>
@@ -66,7 +65,7 @@
         <EditText
             android:layout_width="270dp"
             android:layout_height="match_parent"
-            android:hint="Search By Keywoard"
+            android:hint="@string/search_keyword"
             android:textSize="15sp"
             android:fontFamily="@font/proxima_nova"
             android:maxLines="1"
@@ -114,7 +113,6 @@
                 android:layout_marginEnd = "15dp"
                 android:layout_marginTop = "15dp"
                 android:layout_marginBottom ="10dp"
-                android:textStyle="bold"
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
                 android:textColor="@color/colorPrimaryDark"/>
@@ -209,7 +207,6 @@
                 android:layout_marginEnd = "15dp"
                 android:layout_marginTop = "15dp"
                 android:layout_marginBottom ="10dp"
-                android:textStyle="bold"
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
                 android:textColor="@color/colorPrimaryDark"/>

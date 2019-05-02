@@ -10,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.learnme.AvatarShop;
-import com.example.learnme.Controller.HotItemAdapter;
+import com.example.learnme.Adapter.HotItemAdapter;
 import com.example.learnme.R;
 
 public class FragmentShop extends Fragment {

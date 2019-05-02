@@ -8,12 +8,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.learnme.Controller.AvatarAdapter;
-import com.example.learnme.Fragment.FragmentHome;
+import com.example.learnme.Adapter.AvatarAdapter;
 import com.example.learnme.Model.Item;
 
 import java.util.ArrayList;

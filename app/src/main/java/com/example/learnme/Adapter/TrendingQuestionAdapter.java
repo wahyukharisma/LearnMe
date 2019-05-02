@@ -1,4 +1,4 @@
-package com.example.learnme.Controller;
+package com.example.learnme.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.learnme.Model.Trending;
 import com.example.learnme.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuestionAdapter.TrendingQuestionViewHolder> {
