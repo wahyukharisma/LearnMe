@@ -21,50 +21,60 @@
             android:layout_marginBottom="5dp">
 
             <LinearLayout
-                android:layout_width="65dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/Background_List_Question"
                 android:layout_marginEnd="5dp">
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/drawable_left_question">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="5dp">
-                    <TextView
-                        android:id="@+id/txt_like"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="200"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:fontFamily="@font/proxima_nova"/>
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_thumb_up_blue_24dp"/>
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_like"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/txt_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="200"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:textColor="@color/colorPrimaryDark"/>
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_thumb_up_dark_blue_24dp"/>
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="5dp">
-                    <TextView
-                        android:id="@+id/txt_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="200"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:fontFamily="@font/proxima_nova"/>
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/chat_green" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_below="@id/ll_like"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="5dp">
+                        <TextView
+                            android:id="@+id/txt_comment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="200"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:textColor="@color/colorPrimaryDark"/>
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_comment_black_24dp" />
+                    </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 

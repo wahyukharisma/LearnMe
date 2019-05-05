@@ -45,6 +45,6 @@
     <string name="title_activity_question_expand">QuestionExpand</string>
 
     <!-- Question -->
-    <string name="type_answear">Type an answear</string>
-    <string name="answear">Answear</string>
+    <string name="type_answear">Type an answer</string>
+    <string name="answear">Answer</string>
 </resources>

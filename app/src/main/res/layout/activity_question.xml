@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".QuestionActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
+        android:src="@drawable/header_layout"
+        android:layout_alignParentTop="true"/>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_question"
         android:layout_width="match_parent"

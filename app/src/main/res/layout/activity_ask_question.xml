@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AskQuestion">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_ask_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_navigation_color">
+        <ImageView
+            android:id="@+id/btn_close_ask_question"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Ask Question"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_ask_question">
+
+        <ImageView
+            android:id="@+id/img_people_ask"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/comment_people"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@id/img_people_ask"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Title"
+                android:textSize="15sp"
+                android:fontFamily="@font/proxima_nova"
+                android:background="@drawable/shape_edit_text"
+                android:paddingStart="10dp"/>
+            <EditText
+                android:id="@+id/et_desc"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:hint="Description"
+                android:textSize="15sp"
+                android:fontFamily="@font/proxima_nova"
+                android:background="@drawable/shape_edit_text"
+                android:paddingStart="10dp"
+                android:layout_below="@id/et_title"
+                android:layout_marginTop="15dp"/>
+            <Spinner
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_desc"
+                android:layout_marginTop="15dp"></Spinner>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_search_hp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_gradient_style"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="5dp"
+            android:layout_below="@id/rl_content" />
+    </RelativeLayout>
+
+</RelativeLayout>

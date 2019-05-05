@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.learnme.Adapter.TrendingQuestionAdapter;
+import com.example.learnme.AskQuestion;
 import com.example.learnme.Model.Trending;
 import com.example.learnme.QuestionActivity;
 import com.example.learnme.R;
@@ -121,7 +122,8 @@ public class FragmentHome extends Fragment {
                         Toast.makeText(getContext(),"Quiz clicked !!!",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.question:
-                        Toast.makeText(getContext(),"QuestionActivity clicked !!!",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), AskQuestion.class);
+                        startActivity(intent);
                         break;
                 }
                 semi_transparent.setVisibility(View.GONE);

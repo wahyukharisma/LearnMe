@@ -1,6 +1,7 @@
 package com.example.learnme;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.design.internal.NavigationMenu;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,7 +62,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()){
                     case R.id.question:
-                        Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), AskQuestion.class);
+                        startActivity(intent);
                 }
                 semi_transparent.setVisibility(View.GONE);
                 return false;
