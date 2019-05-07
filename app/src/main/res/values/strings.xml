@@ -43,6 +43,11 @@
     <string name="add_quiz">Take Quiz</string>
     <string name="search_keyword">Search Question By Keyword</string>
     <string name="title_activity_question_expand">QuestionExpand</string>
+    <string name="profile_menu">Profile</string>
+    <string name="about_menu">About</string>
+    <string name="version_menu">V1.0</string>
+    <string name="logout_menu">Log Out</string>
+    <string name="close_menu">Close</string>
 
     <!-- Question -->
     <string name="type_answear">Type an answer</string>

@@ -9,12 +9,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.Adapter.TrendingQuestionAdapter;
@@ -22,6 +25,8 @@ import com.example.learnme.AskQuestion;
 import com.example.learnme.Model.Trending;
 import com.example.learnme.QuestionActivity;
 import com.example.learnme.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +38,9 @@ public class FragmentHome extends Fragment {
     List<Trending> listTrending;
     CardView cd_es,cd_jhs,cd_shs,cd_g;
     Button btn_search;
-    RelativeLayout semi_transparent;
+    RelativeLayout semi_transparent,item_menu;
+    ImageView img_menu;
+    TextView txt_menu_close;
 
     @Nullable
     @Override
@@ -41,9 +48,13 @@ public class FragmentHome extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_home,container,false);
 
         // View ini
-        btn_search = (Button) view.findViewById(R.id.btn_search_hp);
+        btn_search       = (Button) view.findViewById(R.id.btn_search_hp);
         final FabSpeedDial floating_menu = (FabSpeedDial) view.findViewById(R.id.floating_menu);
         semi_transparent = (RelativeLayout) view.findViewById(R.id.semi_white_bg);
+        item_menu        = (RelativeLayout) view.findViewById(R.id.item_menu);
+        img_menu         = (ImageView) view.findViewById(R.id.btn_menu_homepage);
+        txt_menu_close   = (TextView) view.findViewById(R.id.txt_menu_close);
+
 
         // initialize recycle view item trending
         listTrending = new ArrayList<>();
@@ -63,6 +74,22 @@ public class FragmentHome extends Fragment {
         recyclerView.setAdapter(myAdapter);
 
         // listener
+        img_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item_menu.setVisibility(View.VISIBLE);
+            }
+        });
+
+        txt_menu_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item_menu.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
+        // card
         cd_es.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

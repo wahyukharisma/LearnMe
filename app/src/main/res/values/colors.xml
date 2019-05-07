@@ -49,6 +49,8 @@
     <color name="Semi_Transparent">#63000000</color>
     <color name="trending_end">#F5FFFFFF</color>
     <color name="trending_start">#FFC800</color>
+    <color name="trending_background">#C9FFFFFF</color>
+    <color name="popuptext_menu">#FFFFFF</color>
 
     <!-- QuestionActivity -->
     <color name="Title_Question">#0055FF</color>

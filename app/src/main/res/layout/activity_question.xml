@@ -102,6 +102,7 @@
         app:fabMenu="@menu/floating_button_question_menu"
         app:miniFabBackgroundTint="@color/colorPrimary"
         app:fabDrawableTint="@color/colorPrimary"
-        app:miniFabTitleTextColor="@color/colorPrimaryDark" />
+        app:miniFabTitleTextColor="@color/colorPrimaryDark"
+        app:fabBackgroundTint="@color/gradient_end_color"/>
 
 </RelativeLayout>
