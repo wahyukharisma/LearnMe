@@ -20,9 +20,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnme.About;
 import com.example.learnme.Adapter.TrendingQuestionAdapter;
 import com.example.learnme.AskQuestion;
 import com.example.learnme.Model.Trending;
+import com.example.learnme.Profile;
 import com.example.learnme.QuestionActivity;
 import com.example.learnme.R;
 
@@ -40,7 +42,7 @@ public class FragmentHome extends Fragment {
     Button btn_search;
     RelativeLayout semi_transparent,item_menu;
     ImageView img_menu;
-    TextView txt_menu_close;
+    TextView txt_menu_close,txt_menu_profile,txt_menu_about,txt_menu_logout;
 
     @Nullable
     @Override
@@ -54,6 +56,9 @@ public class FragmentHome extends Fragment {
         item_menu        = (RelativeLayout) view.findViewById(R.id.item_menu);
         img_menu         = (ImageView) view.findViewById(R.id.btn_menu_homepage);
         txt_menu_close   = (TextView) view.findViewById(R.id.txt_menu_close);
+        txt_menu_profile = (TextView) view.findViewById(R.id.txt_menu_profile);
+        txt_menu_about   = (TextView) view.findViewById(R.id.txt_menu_about);
+        txt_menu_logout  = (TextView) view.findViewById(R.id.txt_menu_logout);
 
 
         // initialize recycle view item trending
@@ -74,6 +79,39 @@ public class FragmentHome extends Fragment {
         recyclerView.setAdapter(myAdapter);
 
         // listener
+        txt_menu_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), Profile.class);
+                startActivity(intent);
+                item_menu.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        txt_menu_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), About.class);
+                startActivity(intent);
+                item_menu.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        txt_menu_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(view.getContext(),"Log Out",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        item_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item_menu.setVisibility(View.INVISIBLE);
+            }
+        });
+
         img_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
