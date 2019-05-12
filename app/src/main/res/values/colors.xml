@@ -5,7 +5,7 @@
 
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#333333</color>
+    <color name="colorAccent">#918F8F</color>
 
     <!-- Color for button style -->
     <color name="gradient_start_color">#4c84ff</color>
@@ -55,6 +55,9 @@
     <!-- QuestionActivity -->
     <color name="Title_Question">#0055FF</color>
     <color name="Background_List_Question">#0C1D1D1D</color>
+
+    <!-- Edit Text -->
+    <color name="edit_text">#494949</color>
 
 
 </resources>

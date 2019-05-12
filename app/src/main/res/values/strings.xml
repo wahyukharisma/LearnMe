@@ -52,4 +52,13 @@
     <!-- Question -->
     <string name="type_answear">Type an answer</string>
     <string name="answear">Answer</string>
+
+    <!-- Edit Profile -->
+    <string name="btn_edit">Confirm</string>
+    <string name="et_username">Username</string>
+    <string name="et_firstname">First Name</string>
+    <string name="et_lastname">Last Name</string>
+    <string name="et_address">Address</string>
+    <string name="et_email">Email</string>
+    <string name="et_phone">Phone Number</string>
 </resources>
