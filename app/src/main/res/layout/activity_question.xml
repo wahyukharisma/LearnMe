@@ -29,7 +29,8 @@
             android:text="Question"
             android:textSize="22sp"
             android:textColor="@color/colorPrimary"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -64,7 +65,8 @@
                 android:background="@drawable/btn_gradient_style"
                 android:text="@string/search"
                 android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/proxima_nova"/>
         </LinearLayout>
 
         <LinearLayout

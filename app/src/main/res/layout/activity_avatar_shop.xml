@@ -29,7 +29,8 @@
             android:text="Avatar"
             android:textSize="22sp"
             android:textColor="@color/colorPrimary"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView

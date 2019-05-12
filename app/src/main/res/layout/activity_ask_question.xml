@@ -23,7 +23,8 @@
             android:text="Ask Question"
             android:textSize="22sp"
             android:textColor="@color/colorPrimary"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -87,7 +88,8 @@
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:layout_marginStart="5dp"
-            android:layout_below="@id/rl_content" />
+            android:layout_below="@id/rl_content"
+            android:fontFamily="@font/proxima_nova"/>
     </RelativeLayout>
 
 </RelativeLayout>

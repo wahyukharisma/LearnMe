@@ -61,4 +61,10 @@
     <string name="et_address">Address</string>
     <string name="et_email">Email</string>
     <string name="et_phone">Phone Number</string>
+
+    <!-- Change Password -->
+    <string name="btn_change">Change</string>
+    <string name="old_pass">Old Password</string>
+    <string name="new_pass">New Password</string>
+    <string name="confirm_pass">Confirm New Password</string>
 </resources>

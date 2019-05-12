@@ -167,7 +167,8 @@
             android:background="@drawable/btn_gradient_style"
             android:text="@string/sign_up"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/proxima_nova"/>
 
         <TextView
             android:id="@+id/txt_sign_in"

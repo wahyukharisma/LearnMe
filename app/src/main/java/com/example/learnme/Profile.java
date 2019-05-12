@@ -59,7 +59,8 @@ public class Profile extends AppCompatActivity {
         cd_cpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Change Password",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),ChangePassword.class);
+                startActivity(intent);
             }
         });
 

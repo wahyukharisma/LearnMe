@@ -23,7 +23,8 @@
             android:text="Question"
             android:textSize="22sp"
             android:textColor="@color/colorPrimary"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
@@ -255,7 +256,8 @@
                 android:text="@string/answear"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/proxima_nova"/>
         </LinearLayout>
     </RelativeLayout>
 

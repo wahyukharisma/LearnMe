@@ -173,7 +173,8 @@
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/btn_gradient_style_2"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/proxima_nova"/>
 
         </LinearLayout>
     </RelativeLayout>
