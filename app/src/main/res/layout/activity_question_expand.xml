@@ -237,6 +237,7 @@
             android:layout_marginEnd="15dp"
             android:orientation="horizontal">
             <EditText
+                android:id="@+id/et_answer"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:hint="@string/type_answear"
@@ -246,7 +247,7 @@
                 android:background="@drawable/shape_edit_text"
                 android:paddingStart="10dp" />
             <Button
-                android:id="@+id/btn_search_hp"
+                android:id="@+id/btn_answer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"

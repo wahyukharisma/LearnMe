@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.Model.Question;
+import com.example.learnme.Model.TrendingQuestion;
 import com.example.learnme.QuestionActivity;
 import com.example.learnme.QuestionExpand;
 import com.example.learnme.R;
@@ -20,12 +21,14 @@ import java.util.List;
 
 public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapter.QuestionViewHolder> {
 
-    private List<Question> mList;
+    private List<TrendingQuestion> mList;
     private Context mContext;
+    private String id;
 
-    public QuestionListAdapter(List<Question> mList, Context context) {
+    public QuestionListAdapter(List<TrendingQuestion> mList,String id, Context context) {
         this.mList = mList;
         this.mContext = context;
+        this.id = id;
     }
 
     @NonNull
@@ -43,15 +46,16 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         questionViewHolder.txt_title.setText(mList.get(i).getTitle());
         questionViewHolder.txt_description.setText(mList.get(i).getDescription());
         questionViewHolder.txt_date.setText(mList.get(i).getDate());
-        questionViewHolder.txt_like.setText(Integer.toString(mList.get(i).getLike()));
-        questionViewHolder.txt_comment.setText(Integer.toString(mList.get(i).getComment()));
+        questionViewHolder.txt_like.setText(mList.get(i).getLikes());
+        questionViewHolder.txt_comment.setText(mList.get(i).getComment());
 
         questionViewHolder.item_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, QuestionExpand.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("Title",mList.get(i).getTitle());
+                intent.putExtra("id",mList.get(i).getId());
+                intent.putExtra("id_user",id);
                 mContext.startActivity(intent);
             }
         });

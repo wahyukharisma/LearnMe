@@ -2,7 +2,9 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +24,8 @@ import com.example.learnme.Model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.Serializable;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -38,12 +42,17 @@ public class Login extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // check previous state
+        if(restorePrefData()){
+            Intent mainActivity = new Intent(getApplicationContext(),HomePage.class);
+            startActivity(mainActivity);
+            finish();
+        }
 
         //asset
         final Drawable et_drawable_right         = getApplicationContext().getResources().getDrawable(R.drawable.ic_error_red_24dp);
@@ -102,7 +111,8 @@ public class Login extends AppCompatActivity {
         txtForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent= new Intent(Login.this,ForgotPassword.class);
+                startActivity(intent);
             }
         });
     }
@@ -123,7 +133,6 @@ public class Login extends AppCompatActivity {
     }
 
     private void loginInterface(final String username, final String password) {
-        Log.d("value",username+" "+password);
         APIInterface mApiService = this.getInterfaceService();
         Call<Response> mService = mApiService.loginUser(username, password);
         mService.enqueue(new Callback<Response>() {
@@ -133,6 +142,8 @@ public class Login extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if(response.body().getValue() == 1){
                             Intent intent = new Intent(getApplicationContext(), HomePage.class);
+                            intent.putExtra("id",response.body().getData().get(0).getId());
+                            savePrefsData(response.body().getData().get(0).getId());
                             startActivity(intent);
                             finish();
                     }else{
@@ -147,9 +158,23 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDialog.dismiss();
-                Log.d("message",t.getMessage());
                 Toast.makeText(Login.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void savePrefsData(final String id){
+        SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isIntroOpen",true);
+        editor.putString("id",id);
+        editor.commit();
+    }
+
+    private boolean restorePrefData(){
+        SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
+        Boolean isIntroActiviyOpened = pref.getBoolean("isIntroOpen",false);
+        return isIntroActiviyOpened;
+    }
+
 }

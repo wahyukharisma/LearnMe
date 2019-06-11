@@ -1,20 +1,29 @@
 package com.example.learnme.Model;
 
 public class Trending {
+    Integer id;
     String Title;
     String Description;
     Integer Like;
     Integer Dislike;
     Integer Comment;
 
-    public Trending(String title, String description, Integer like, Integer dislike, Integer comment) {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Trending(Integer id, String title, String description, Integer like, Integer dislike, Integer comment) {
+        this.id = id;
         Title = title;
         Description = description;
         Like = like;
         Dislike = dislike;
         Comment = comment;
     }
-
 
     public String getTitle() {
         return Title;

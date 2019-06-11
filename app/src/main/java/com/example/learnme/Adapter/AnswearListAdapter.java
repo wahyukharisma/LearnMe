@@ -18,6 +18,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
     Context mContext;
     List<Answear> mData;
 
+
     public AnswearListAdapter(Context mContext, List<Answear> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -35,10 +36,10 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
     @Override
     public void onBindViewHolder(@NonNull AnswearListViewHolder answearListViewHolder, int i) {
 
-        answearListViewHolder.txt_desc.setText(mData.get(i).getAnswear());
-        answearListViewHolder.txt_name.setText(mData.get(i).getName());
-        answearListViewHolder.txt_dislike.setText(Integer.toString(mData.get(i).getDislike()));
-        answearListViewHolder.txt_like.setText(Integer.toString(mData.get(i).getLike()));
+        answearListViewHolder.txt_desc.setText(mData.get(i).getAnswer());
+        answearListViewHolder.txt_name.setText(mData.get(i).getIdUser());
+        answearListViewHolder.txt_dislike.setText(mData.get(i).getDislikes());
+        answearListViewHolder.txt_like.setText(mData.get(i).getLikes());
         answearListViewHolder.txt_date.setText(mData.get(i).getDate());
 
     }

@@ -61,11 +61,11 @@ public class OnBoardingScreen extends AppCompatActivity {
         btnAnim       = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
 
         // fill list screen
-        String temp1 = "I am an education mobile apps basically like forums,\n you can start a conversation by asking a question\n or give comment on an active question, simple like that?\n Yes, I am giving you a simple way of sharing and learning.\n" +
-                "\"But I want more than that\" of course,\n you can challenge yourself by taking a free or paid quiz,\n It will be so fun let's swipe right ->";
-        String temp2 = "You can learn everywhere and every time,\n \"I have a question about an animal, can I ask this in LearnMe?\" " +
-                "\nYes absolutely you can,\n In LearnMe the main topic allowed is about science,\n  I have something special to you,\n swipe right to see that ->";
-        String temp3 ="Yeah, congratulations you just got 100 points,\n this point used to buy something in the shop,\n earn more point by active in conversation and quiz,\n an see your rank in leaderboard\n are you ready for this? ";
+        String temp1 = "I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning." +
+                "\"But I want more than that\" of course, you can challenge yourself by taking a free or paid quiz, It will be so fun let's swipe right ->";
+        String temp2 = "You can learn everywhere and every time, \"I have a question about an animal, can I ask this in LearnMe?\" " +
+                "Yes absolutely you can, In LearnMe the main topic allowed is about science,  I have something special to you, swipe right to see that ->";
+        String temp3 ="Yeah, congratulations you just got 100 points, this point used to buy something in the shop, earn more point by active in conversation and quiz, an see your rank in leaderboard are you ready for this? ";
         final List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem("Hello !",temp1,R.drawable.intro_1));
         mList.add(new ScreenItem("Everywhere and Every time",temp2,R.drawable.intro_3));
@@ -145,12 +145,12 @@ public class OnBoardingScreen extends AppCompatActivity {
     private void savePrefsData(){
         SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpen",true);
+        editor.putBoolean("isLogin",true);
         editor.commit();
     }
 
     private boolean restorePrefData(){
-        SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+        SharedPreferences pref        = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         Boolean isIntroActiviyOpened = pref.getBoolean("isIntroOpen",false);
         return isIntroActiviyOpened;
     }

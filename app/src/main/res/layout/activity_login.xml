@@ -120,7 +120,7 @@
             android:layout_below="@id/txt_input_three"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/proxima_nova"
-            android:paddingEnd="120dp"
+            android:layout_marginEnd="50dp"
             android:text="@string/forgot_password"
             android:textColor="@color/new_account_color"
             android:clickable="true"/>

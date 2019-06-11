@@ -5,6 +5,7 @@ import com.example.learnme.Model.User;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -30,4 +31,27 @@ public interface APIInterface {
                                       @Field("last_name") String last_name,
                                       @Field("address") String address,
                                       @Field("phone") String phone);
+    // Forgot Password
+    @FormUrlEncoded
+    @POST("forgotPassword.php")
+    Call<Response> forgotPassword(@Field("username") String username,
+                             @Field("email") String email);
+
+    //Question
+    @GET("getTrendingsQuestion.php") Call<ResponseTrendsQuestion> getTendingQuestion();
+    @FormUrlEncoded
+    @POST("getQuestionTag.php") Call<ResponseTrendsQuestion> getQuestionTag(@Field("tag") String tag);
+    @FormUrlEncoded
+    @POST("getQuestionKeyword.php") Call<ResponseTrendsQuestion> getQuestionKeyword(@Field("keyword") String keyword);
+    @FormUrlEncoded
+    @POST("getQuestionById.php") Call<ResponseTrendsQuestion> getQuestionById(@Field("id") String id);
+
+
+    //Answer
+    @FormUrlEncoded
+    @POST("getAnswerById.php") Call<ResponseAnswer> getAnswerById(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("storeAnswer.php") Call<ResponseAnswer> storeAnswer(@Field("id_question") String id_question,
+                                                              @Field("id") String id,
+                                                              @Field("answer") String answer);
 }

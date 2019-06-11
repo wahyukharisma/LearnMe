@@ -1,20 +1,70 @@
 package com.example.learnme.Model;
 
-public class Question {
-    String title;
-    String description;
-    String date;
-    Integer like;
-    Integer dislike;
-    Integer comment;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public Question(String title, String description, String date, Integer like, Integer dislike, Integer comment) {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.like = like;
-        this.dislike = dislike;
-        this.comment = comment;
+public class Question {
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("id_user")
+    @Expose
+    private String idUser;
+    @SerializedName("id_tag")
+    @Expose
+    private String idTag;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("likes")
+    @Expose
+    private String likes;
+    @SerializedName("dislikes")
+    @Expose
+    private String dislikes;
+    @SerializedName("date")
+    @Expose
+    private String date;
+    @SerializedName("status")
+    @Expose
+    private String status;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getIdTag() {
+        return idTag;
+    }
+
+    public void setIdTag(String idTag) {
+        this.idTag = idTag;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTitle() {
@@ -33,6 +83,22 @@ public class Question {
         this.description = description;
     }
 
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
+    }
+
+    public String getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(String dislikes) {
+        this.dislikes = dislikes;
+    }
+
     public String getDate() {
         return date;
     }
@@ -41,27 +107,11 @@ public class Question {
         this.date = date;
     }
 
-    public Integer getLike() {
-        return like;
+    public String getStatus() {
+        return status;
     }
 
-    public void setLike(Integer like) {
-        this.like = like;
-    }
-
-    public Integer getDislike() {
-        return dislike;
-    }
-
-    public void setDislike(Integer dislike) {
-        this.dislike = dislike;
-    }
-
-    public Integer getComment() {
-        return comment;
-    }
-
-    public void setComment(Integer comment) {
-        this.comment = comment;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

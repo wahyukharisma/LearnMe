@@ -3,19 +3,25 @@ package com.example.learnme.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Answear {
+public class TrendingQuestion {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("id_question")
-    @Expose
-    private String idQuestion;
     @SerializedName("id_user")
     @Expose
     private String idUser;
-    @SerializedName("answer")
+    @SerializedName("id_tag")
     @Expose
-    private String answer;
+    private String idTag;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("description")
+    @Expose
+    private String description;
     @SerializedName("likes")
     @Expose
     private String likes;
@@ -28,6 +34,9 @@ public class Answear {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("comment")
+    @Expose
+    private String comment;
 
     public String getId() {
         return id;
@@ -35,14 +44,6 @@ public class Answear {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getIdQuestion() {
-        return idQuestion;
-    }
-
-    public void setIdQuestion(String idQuestion) {
-        this.idQuestion = idQuestion;
     }
 
     public String getIdUser() {
@@ -53,12 +54,36 @@ public class Answear {
         this.idUser = idUser;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getIdTag() {
+        return idTag;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setIdTag(String idTag) {
+        this.idTag = idTag;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getLikes() {
@@ -91,6 +116,14 @@ public class Answear {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
 }
