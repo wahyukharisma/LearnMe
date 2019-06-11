@@ -42,11 +42,11 @@ public class OnBoardingScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // check previous state
-       /* if(restorePrefData()){
+        if(restorePrefData()){
             Intent mainActivity = new Intent(getApplicationContext(),Login.class);
             startActivity(mainActivity);
             finish();
-        }*/
+        }
 
         // set content layout
         setContentView(R.layout.activity_on_boarding_screen);
@@ -61,11 +61,15 @@ public class OnBoardingScreen extends AppCompatActivity {
         btnAnim       = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
 
         // fill list screen
-        String temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id neque lorem. Praesent luctus eros ac fermentum hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ac lacus porttitor, tincidunt metus euismod, euismod massa.";
+        String temp1 = "I am an education mobile apps basically like forums,\n you can start a conversation by asking a question\n or give comment on an active question, simple like that?\n Yes, I am giving you a simple way of sharing and learning.\n" +
+                "\"But I want more than that\" of course,\n you can challenge yourself by taking a free or paid quiz,\n It will be so fun let's swipe right ->";
+        String temp2 = "You can learn everywhere and every time,\n \"I have a question about an animal, can I ask this in LearnMe?\" " +
+                "\nYes absolutely you can,\n In LearnMe the main topic allowed is about science,\n  I have something special to you,\n swipe right to see that ->";
+        String temp3 ="Yeah, congratulations you just got 100 points,\n this point used to buy something in the shop,\n earn more point by active in conversation and quiz,\n an see your rank in leaderboard\n are you ready for this? ";
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Screen 1",temp,R.drawable.intro_1));
-        mList.add(new ScreenItem("Screen 2",temp,R.drawable.intro_3));
-        mList.add(new ScreenItem("Screen 3",temp,R.drawable.intro_2));
+        mList.add(new ScreenItem("Hello !",temp1,R.drawable.intro_1));
+        mList.add(new ScreenItem("Everywhere and Every time",temp2,R.drawable.intro_3));
+        mList.add(new ScreenItem("Be The Winner",temp3,R.drawable.intro_2));
 
         // setup viewpager
         screenPager           = findViewById(R.id.viewPager);

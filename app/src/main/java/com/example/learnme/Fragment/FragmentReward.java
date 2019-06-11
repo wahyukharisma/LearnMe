@@ -65,7 +65,7 @@ public class FragmentReward extends Fragment {
         userArrayList = new ArrayList<>();
         // sample
         for(int i=0;i<20;i++){
-            userArrayList.add(new User("Wahyu Kharisma",(100+i),(i+1)));
+            userArrayList.add(new User("Wahyu Kharisma","100","100","10","10","10","10","test"));
         }
     }
 

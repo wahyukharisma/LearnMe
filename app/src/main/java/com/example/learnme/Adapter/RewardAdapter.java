@@ -1,5 +1,6 @@
 package com.example.learnme.Adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,9 +32,9 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.RewardView
 
     @Override
     public void onBindViewHolder(@NonNull RewardViewHolder rewardViewHolder, int i) {
-        rewardViewHolder.txtPoint.setText(Integer.toString(dataList.get(i).getPoint()));
-        rewardViewHolder.txtName.setText(dataList.get(i).getName());
-        rewardViewHolder.txtNumber.setText(Integer.toString(dataList.get(i).getId()));
+        rewardViewHolder.txtPoint.setText(dataList.get(i).getPoint());
+        rewardViewHolder.txtName.setText(dataList.get(i).getUsername());
+        rewardViewHolder.txtNumber.setText(dataList.get(i).getId());
     }
 
     @Override
