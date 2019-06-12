@@ -225,6 +225,7 @@ public class FragmentHome extends Fragment {
                         break;
                     case R.id.question:
                         Intent intent = new Intent(getContext(), AskQuestion.class);
+                        intent.putExtra("user",id_user);
                         startActivity(intent);
                         break;
                 }

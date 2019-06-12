@@ -54,6 +54,13 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("getQuestionByKeywordTag.php") Call<ResponseTrendsQuestion> getQuestionKeywordTag(@Field("tag") String tag,
                                                                                           @Field("keyword") String keyword);
+    @FormUrlEncoded
+    @POST("storeQuestion.php") Call<Response> storeQuestion(@Field("title") String title,
+                                                                          @Field("description") String description,
+                                                                          @Field("tag") String tag,
+                                                                          @Field("user") String user,
+                                                                          @Field("image") String image);
+
 
 
 

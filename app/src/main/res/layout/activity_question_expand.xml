@@ -197,7 +197,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Answear"
+                    android:text="Comment"
                     android:textSize="17sp"
                     android:fontFamily="@font/proxima_nova"/>
             </LinearLayout>
@@ -248,7 +248,8 @@
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
                 android:background="@drawable/shape_edit_text"
-                android:paddingStart="10dp" />
+                android:paddingStart="10dp"
+                android:maxLength="250"/>
             <Button
                 android:id="@+id/btn_answer"
                 android:layout_width="match_parent"

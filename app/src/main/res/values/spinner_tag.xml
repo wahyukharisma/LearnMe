@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tag_arrays">
+        <item>General</item>
+        <item>Elementary School</item>
+        <item>Junior High School</item>
+        <item>Senior High School</item>
+    </string-array>
+</resources>

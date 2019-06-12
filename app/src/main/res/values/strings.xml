@@ -75,6 +75,8 @@
     <string name="message_email_send_info">Please check your email, to complete the process</string>
     <string name="message_email_send_title">Email has been send !</string>
 
+    <string name="tag_prompt">Choose a tag</string>
+
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.
 "But I want more than that" of course, you can challenge yourself by taking a free or paid quiz. You can learn everywhere and every time, school is not the only  way if you want to know more, "I have a question about an animal, can I ask this in LearnMe?" Yes absolutely you can, In LearnMe the main topic allowed is about science.</string>

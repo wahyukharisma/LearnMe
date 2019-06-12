@@ -52,12 +52,13 @@
             <EditText
                 android:id="@+id/et_title"
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:hint="Title"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/proxima_nova"
                 android:background="@drawable/shape_edit_text"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp"
+                android:maxLength="100" />
             <EditText
                 android:id="@+id/et_desc"
                 android:layout_width="300dp"
@@ -68,16 +69,28 @@
                 android:background="@drawable/shape_edit_text"
                 android:paddingStart="10dp"
                 android:layout_below="@id/et_title"
-                android:layout_marginTop="15dp"/>
-            <Spinner
-                android:layout_width="300dp"
+                android:layout_marginTop="15dp"
+                android:maxLength="250" />
+
+            <TextView
+                android:id="@+id/txt_tag"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/et_desc"
-                android:layout_marginTop="15dp"></Spinner>
+                android:layout_marginTop="10dp"
+                android:text="Choose Tag"
+                android:layout_marginStart="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinner_tag"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_tag"
+                android:prompt="@string/tag_prompt"></Spinner>
         </RelativeLayout>
 
         <Button
-            android:id="@+id/btn_search_hp"
+            android:id="@+id/btn_submit_question"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
