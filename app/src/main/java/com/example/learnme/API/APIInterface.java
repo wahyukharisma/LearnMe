@@ -63,7 +63,6 @@ public interface APIInterface {
 
 
 
-
     //Answer
     @FormUrlEncoded
     @POST("getAnswerById.php") Call<ResponseAnswer> getAnswerById(@Field("id") String id);
@@ -77,4 +76,14 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("updateAnswerDislike.php") Call<ResponseAnswer> updateAnswerDislike(@Field("id") String id,
                                                                               @Field("keyword") String keyword);
+
+    // Ranking
+    @FormUrlEncoded
+    @POST("getRanking.php") Call<ResponseRanking> getRanking(@Field("month") String month,
+                                                            @Field("year") String year);
+    @FormUrlEncoded
+    @POST("getMyRanking.php") Call<ResponseMRanking> getMyRanking(@Field("month") String month,
+                                                                @Field("year") String year,
+                                                                 @Field("user") String user);
 }
+

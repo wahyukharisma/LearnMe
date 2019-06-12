@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.learnme.Model.Ranking;
 import com.example.learnme.Model.User;
 import com.example.learnme.R;
 
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 
 public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.RewardViewHolder> {
 
-    private ArrayList<User> dataList;
+    private ArrayList<Ranking> dataList;
 
-    public RewardAdapter(ArrayList<User> dataList) {
+    public RewardAdapter(ArrayList<Ranking> dataList) {
         this.dataList = dataList;
     }
 
@@ -34,7 +35,7 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.RewardView
     public void onBindViewHolder(@NonNull RewardViewHolder rewardViewHolder, int i) {
         rewardViewHolder.txtPoint.setText(dataList.get(i).getPoint());
         rewardViewHolder.txtName.setText(dataList.get(i).getUsername());
-        rewardViewHolder.txtNumber.setText(dataList.get(i).getId());
+        rewardViewHolder.txtNumber.setText(String.valueOf(dataList.get(i).getIndex()));
     }
 
     @Override

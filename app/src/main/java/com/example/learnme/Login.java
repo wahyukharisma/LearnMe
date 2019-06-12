@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -58,6 +59,8 @@ public class Login extends AppCompatActivity {
         final Drawable et_drawable_right         = getApplicationContext().getResources().getDrawable(R.drawable.ic_error_red_24dp);
         final Drawable et_drawable_left_username = getApplicationContext().getResources().getDrawable(R.drawable.ic_person_black_24dp);
         final Drawable et_drawable_left_password = getApplicationContext().getResources().getDrawable(R.drawable.ic_lock_black_24dp);
+        final Drawable toogle_show = getApplicationContext().getResources().getDrawable(R.drawable.ic_remove_red_eye_black_24dp);
+        final Drawable toogle_hide = getApplicationContext().getResources().getDrawable(R.drawable.ic_visibility_off_black_24dp);
         final Animation shake = AnimationUtils.loadAnimation(Login.this,R.anim.shake);
 
         progressDialog = new ProgressDialog(Login.this);

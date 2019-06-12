@@ -1,6 +1,7 @@
 package com.example.learnme.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.Model.Trending;
+import com.example.learnme.QuestionExpand;
 import com.example.learnme.R;
 
 import java.util.List;
@@ -19,11 +21,13 @@ import java.util.List;
 public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuestionAdapter.TrendingQuestionViewHolder> {
 
     private Context mContext;
+    private String id_user;
     private List<Trending> dataList;
 
-    public TrendingQuestionAdapter(Context mContext, List<Trending> dataList) {
+    public TrendingQuestionAdapter(Context mContext, List<Trending> dataList, String id_user) {
         this.mContext = mContext;
         this.dataList = dataList;
+        this.id_user = id_user;
     }
 
     @NonNull
@@ -36,7 +40,7 @@ public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuesti
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TrendingQuestionViewHolder trendingQuestionViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final TrendingQuestionViewHolder trendingQuestionViewHolder, final int i) {
         trendingQuestionViewHolder.txt_title.setText(dataList.get(i).getTitle());
         trendingQuestionViewHolder.txt_desc.setText(dataList.get(i).getDescription());
         trendingQuestionViewHolder.txt_comment.setText(Integer.toString(dataList.get(i).getComment()));
@@ -46,7 +50,10 @@ public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuesti
         trendingQuestionViewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("clicked",Integer.toString(dataList.get(i).getId()));
+                Intent intent = new Intent(mContext, QuestionExpand.class);
+                intent.putExtra("id",String.valueOf(dataList.get(i).getId()));
+                intent.putExtra("id_user",id_user);
+                mContext.startActivity(intent);
             }
         });
 

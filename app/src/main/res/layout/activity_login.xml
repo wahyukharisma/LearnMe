@@ -34,18 +34,6 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/text_index_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="40dp"
-            android:fontFamily="@font/proxima_nova"
-            android:text="@string/index_page_1"
-            android:textColor="@color/title_account_color"
-            android:textSize="18sp"
-            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -105,6 +93,7 @@
                 android:textColorHighlight="@color/text_color_hint_light"
                 android:textColorHint="@color/text_color_hint" />
         </android.support.design.widget.TextInputLayout>
+
     </RelativeLayout>
 
     <RelativeLayout

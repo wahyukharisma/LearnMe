@@ -57,11 +57,19 @@ public class HomePage extends AppCompatActivity {
                         FragmentTransaction(myFragment);
                         break;
                     case R.id.action_reward:
+                        Bundle bundleReward = new Bundle();
+                        bundleReward.putString("user",id_user);
+
                         myFragment = new FragmentReward();
+                        myFragment.setArguments(bundleReward);
                         FragmentTransaction(myFragment);
                         break;
                     case R.id.action_shop:
+                        Bundle bundleShop = new Bundle();
+                        bundleShop.putString("user",id_user);
+
                         myFragment = new FragmentShop();
+                        myFragment.setArguments(bundleShop);
                         FragmentTransaction(myFragment);
                         break;
                 }

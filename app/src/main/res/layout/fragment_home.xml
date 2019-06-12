@@ -277,7 +277,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="200dp"
             android:background="@color/background_navigation_color"/>
 
         <LinearLayout
@@ -328,27 +328,26 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_menu"
                 android:textColor="@color/popuptext_menu"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="17dp"/>
             <TextView
                 android:id="@+id/txt_menu_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about_menu"
                 android:textColor="@color/popuptext_menu"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="17dp"/>
             <TextView
                 android:id="@+id/txt_menu_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/logout_menu"
                 android:textColor="@color/popuptext_menu"
-                android:textSize="17sp"
-                android:fontFamily="@font/proxima_nova"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/proxima_nova" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

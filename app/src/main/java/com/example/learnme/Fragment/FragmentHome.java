@@ -1,6 +1,7 @@
 package com.example.learnme.Fragment;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -93,7 +94,7 @@ public class FragmentHome extends Fragment {
 
 
         // initialize recycle view item trending
-        trendingQuestion();
+        trendingQuestion(id_user);
 
         // cardview ini
         cd_es  = (CardView) view.findViewById(R.id.cd_es);
@@ -131,7 +132,11 @@ public class FragmentHome extends Fragment {
         txt_menu_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(view.getContext(),"Log Out",Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
+                sharedPreferences.edit().clear().commit();
+                Intent intent = new Intent(getContext(),Login.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -256,7 +261,7 @@ public class FragmentHome extends Fragment {
         return mInterfaceService;
     }
 
-    private void trendingQuestion(){
+    private void trendingQuestion(final String id_user){
         progressDialog.show();
         APIInterface mApiService = this.getInterfaceService();
         Call<ResponseTrendsQuestion> mService = mApiService.getTendingQuestion();
@@ -273,7 +278,7 @@ public class FragmentHome extends Fragment {
                     }
                     // recycle view trending listener
                     RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycle_view_trending_question);
-                    TrendingQuestionAdapter myAdapter   = new TrendingQuestionAdapter(getContext(),listTrending);
+                    TrendingQuestionAdapter myAdapter   = new TrendingQuestionAdapter(getContext(),listTrending,id_user);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setAdapter(myAdapter);

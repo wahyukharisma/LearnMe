@@ -166,6 +166,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"></Spinner>
             <Button
+                android:id="@+id/btn_search_rank"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:text="Search"
