@@ -2,6 +2,8 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,12 +45,16 @@ public class QuestionExpand extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private List<Answear> mData = new ArrayList<>();
-    private ImageView btn_close;
+    private ImageView btn_close,thumb_up,thumb_down;
 
     //Question component
     private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment;
     private Button btn_comment;
     private EditText et_answer;
+
+    private String status="";
+    private String id_user = "";
+    private String id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +65,54 @@ public class QuestionExpand extends AppCompatActivity {
         btn_close = (ImageView) findViewById(R.id.btn_close_question);
         et_answer = (EditText) findViewById(R.id.et_answer);
         btn_comment = (Button) findViewById(R.id.btn_answer);
+        thumb_up = (ImageView) findViewById(R.id.img_thumb_up);
+        thumb_down = (ImageView) findViewById(R.id.img_thumb_down);
 
         Intent intent = getIntent();
-        final String id = intent.getStringExtra("id");
-        final String id_user = intent.getStringExtra("id_user");
-
-
+        id = intent.getStringExtra("id");
+        id_user = intent.getStringExtra("id_user");
 
         //asset
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
         final Animation shake = AnimationUtils.loadAnimation(QuestionExpand.this,R.anim.shake);
+        final Drawable thumb_up_active = getApplicationContext().getResources().getDrawable(R.drawable.ic_thumb_up_dark_blue_24dp);
+        final Drawable thumb_down_active = getApplicationContext().getResources().getDrawable(R.drawable.ic_thumb_down_red_24dp);
+        final Drawable thumb_up_non_active = getApplicationContext().getResources().getDrawable(R.drawable.ic_thumb_up_not_active_24dp);
+        final Drawable thumb_down_non_active = getApplicationContext().getResources().getDrawable(R.drawable.ic_thumb_down_not_active_24dp);
+
+        thumb_down.setImageDrawable(thumb_down_non_active);
+        thumb_up.setImageDrawable(thumb_up_non_active);
+
+
+        if(restorePrefDataDislike()){
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionDislike",MODE_PRIVATE);
+            final String temp_user = pref.getString("id_user","");
+            final String temp_question = pref.getString("id_question","");
+
+            if(temp_user.equals(id_user) && temp_question.equals(id)){
+                Log.d("message","inPrefDislike");
+                thumb_down.setImageDrawable(thumb_down_active);
+                status = "dislike";
+                thumb_up.setEnabled(false);
+            }
+        }
+        if(restorePrefDataLike()){
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionLike",MODE_PRIVATE);
+            final String temp_user = pref.getString("id_user","");
+            final String temp_question = pref.getString("id_question","");
+
+
+            if(temp_user.equals(id_user) && temp_question.equals(id)){
+                Log.d("message","inPrefLike");
+                thumb_up.setImageDrawable(thumb_up_active);
+                status = "like";
+                thumb_down.setEnabled(false);
+            }
+        }
 
         //Initialize custom view
         getQuestion(id);
@@ -95,8 +136,40 @@ public class QuestionExpand extends AppCompatActivity {
             public void onClick(View v) {
                 if(et_answer.getText().toString().equals("")){
                     et_answer.setAnimation(shake);
+                    Toast.makeText(QuestionExpand.this,"Please write the comment first",Toast.LENGTH_SHORT).show();
                 }else{
                     addAnswer(et_answer.getText().toString(),id,id_user);
+                }
+            }
+        });
+
+        thumb_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(status.equals("like")){
+                    Log.d("message","inLike");
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionLike",MODE_PRIVATE);
+                    pref.edit().clear().commit();
+                    updateLike(id,"dislike",id_user);
+                    thumb_up.setImageDrawable(thumb_up_non_active);
+                }else{
+                    updateLike(id,"like",id_user);
+                    thumb_up.setImageDrawable(thumb_up_active);
+                }
+            }
+        });
+
+        thumb_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(status.equals("dislike")){
+                    Log.d("message","inDislike");
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionDislike",MODE_PRIVATE);
+                    pref.edit().clear().commit();
+                    updateDislike(id,"like",id_user);
+                }else{
+                    updateDislike(id,"dislike",id_user);
+                    thumb_down.setImageDrawable(thumb_down_active);
                 }
             }
         });
@@ -216,10 +289,7 @@ public class QuestionExpand extends AppCompatActivity {
                 if (response.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(QuestionExpand.this, "Answer has been send", Toast.LENGTH_SHORT).show();
-                    finish();
-                    overridePendingTransition( 0, 0);
-                    startActivity(getIntent());
-                    overridePendingTransition( 0, 0);
+                    refreshActivity();
                 }else{
                     progressDialog.dismiss();
                     Log.d("message",response.errorBody().toString());
@@ -233,5 +303,103 @@ public class QuestionExpand extends AppCompatActivity {
                 Toast.makeText(QuestionExpand.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void updateLike(final String id,final String request,final String id_user){
+        progressDialog.show();
+        APIInterface mApiService = this.getInterfaceService();
+        Call<ResponseTrendsQuestion> mService = mApiService.updateQuestionLike(id,request);
+        mService.enqueue(new Callback<ResponseTrendsQuestion>() {
+            @Override
+            public void onResponse(Call<ResponseTrendsQuestion> call, Response<ResponseTrendsQuestion> response) {
+                if(response.isSuccessful()){
+                    progressDialog.dismiss();
+                    if(request.equals("like")){
+                        savePrefsDataLike(id_user,id);
+                        Toast.makeText(QuestionExpand.this, "You'r like this question", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(QuestionExpand.this, "Undo like this question", Toast.LENGTH_SHORT).show();
+                    }
+                    refreshActivity();
+                }else{
+                    progressDialog.dismiss();
+                    Log.d("message",response.errorBody().toString());
+                    Toast.makeText(QuestionExpand.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseTrendsQuestion> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(QuestionExpand.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void updateDislike(final String id,final String request,final String id_user){
+        progressDialog.show();
+        APIInterface mApiService = this.getInterfaceService();
+        Call<ResponseTrendsQuestion> mService = mApiService.updateQuestionDislike(id,request);
+        mService.enqueue(new Callback<ResponseTrendsQuestion>() {
+            @Override
+            public void onResponse(Call<ResponseTrendsQuestion> call, Response<ResponseTrendsQuestion> response) {
+                if(response.isSuccessful()){
+                    progressDialog.dismiss();
+
+                    if(request.equals("dislike")){
+                        savePrefsDataDislike(id_user,id);
+                        Toast.makeText(QuestionExpand.this, "You'r dislike this question", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(QuestionExpand.this, "Undo dislike this question", Toast.LENGTH_SHORT).show();
+                    }
+                    refreshActivity();
+                }else {
+                    progressDialog.dismiss();
+                    Log.d("message",response.errorBody().toString());
+                    Toast.makeText(QuestionExpand.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseTrendsQuestion> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(QuestionExpand.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void savePrefsDataLike(final String id_user,final String id_question){
+        SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefsQuestionLike",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isLike",true);
+        editor.putString("id_user",id_user);
+        editor.putString("id_question",id_question);
+        editor.commit();
+    }
+
+    private boolean restorePrefDataLike(){
+        SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsQuestionLike",MODE_PRIVATE);
+        Boolean isIntroActiviyOpened = pref.getBoolean("isLike",false);
+        return isIntroActiviyOpened;
+    }
+
+    private void savePrefsDataDislike(final String id_user,final String id_question){
+        SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefsQuestionDislike",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isDislike",true);
+        editor.putString("id_user",id_user);
+        editor.putString("id_question",id_question);
+        editor.commit();
+    }
+
+    private boolean restorePrefDataDislike(){
+        SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsQuestionDislike",MODE_PRIVATE);
+        Boolean isIntroActiviyOpened = pref.getBoolean("isDislike",false);
+        return isIntroActiviyOpened;
+    }
+
+    private void refreshActivity(){
+        finish();
+        startActivity(getIntent());
     }
 }

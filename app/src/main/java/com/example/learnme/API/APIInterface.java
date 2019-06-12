@@ -45,6 +45,16 @@ public interface APIInterface {
     @POST("getQuestionKeyword.php") Call<ResponseTrendsQuestion> getQuestionKeyword(@Field("keyword") String keyword);
     @FormUrlEncoded
     @POST("getQuestionById.php") Call<ResponseTrendsQuestion> getQuestionById(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("updateQuestionLike.php") Call<ResponseTrendsQuestion> updateQuestionLike(@Field("id") String id,
+                                                                                    @Field("request") String request);
+    @FormUrlEncoded
+    @POST("updateQuestionDislike.php") Call<ResponseTrendsQuestion> updateQuestionDislike(@Field("id") String id,
+                                                                                    @Field("request") String request);
+    @FormUrlEncoded
+    @POST("getQuestionByKeywordTag.php") Call<ResponseTrendsQuestion> getQuestionKeywordTag(@Field("tag") String tag,
+                                                                                          @Field("keyword") String keyword);
+
 
 
     //Answer
@@ -54,4 +64,10 @@ public interface APIInterface {
     @POST("storeAnswer.php") Call<ResponseAnswer> storeAnswer(@Field("id_question") String id_question,
                                                               @Field("id") String id,
                                                               @Field("answer") String answer);
+    @FormUrlEncoded
+    @POST("updateAnswerLike.php") Call<ResponseAnswer> updateAnswerLike(@Field("id") String id,
+                                                                        @Field("request") String request);
+    @FormUrlEncoded
+    @POST("updateAnswerDislike.php") Call<ResponseAnswer> updateAnswerDislike(@Field("id") String id,
+                                                                              @Field("keyword") String keyword);
 }

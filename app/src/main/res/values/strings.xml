@@ -50,8 +50,8 @@
     <string name="close_menu">Close</string>
 
     <!-- Question -->
-    <string name="type_answear">Type an answer</string>
-    <string name="answear">Answer</string>
+    <string name="type_answear">Type an comment</string>
+    <string name="answear">Comment</string>
 
     <!-- Edit Profile -->
     <string name="btn_edit">Confirm</string>

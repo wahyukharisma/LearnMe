@@ -145,7 +145,7 @@ public class OnBoardingScreen extends AppCompatActivity {
     private void savePrefsData(){
         SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isLogin",true);
+        editor.putBoolean("isIntroOpen",true);
         editor.commit();
     }
 

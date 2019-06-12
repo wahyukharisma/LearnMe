@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -40,11 +41,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     private List<TrendingQuestion> listTrending = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private RelativeLayout rl_nodata;
 
-    ImageView btn_close;
-    RelativeLayout semi_transparent;
-    String value="";
-    String id="";
+    private ImageView btn_close;
+    private RelativeLayout semi_transparent;
+    private String value="";
+    private String id="";
+    private EditText et_search;
+    private Button btn_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +65,40 @@ public class QuestionActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+        //View ini
+        btn_close = (ImageView) findViewById(R.id.btn_close_question);
+        final FabSpeedDial floating_menu = (FabSpeedDial) findViewById(R.id.floating_menu_question);
+        semi_transparent = (RelativeLayout) findViewById(R.id.semi_white_bg_question);
+        et_search = (EditText) findViewById(R.id.et_search_hp);
+        btn_search = (Button) findViewById(R.id.btn_search_hp);
+        rl_nodata = (RelativeLayout) findViewById(R.id.rl_nodata);
+
         if(!value.equals("1") && !value.equals("2") && !value.equals("3") && !value.equals("4") ){
             showKeyword(value,id);
         }else{
             showTag(value,id);
         }
 
-        //View ini
-        btn_close = (ImageView) findViewById(R.id.btn_close_question);
-        final FabSpeedDial floating_menu = (FabSpeedDial) findViewById(R.id.floating_menu_question);
-        semi_transparent = (RelativeLayout) findViewById(R.id.semi_white_bg_question);
-
 
         // listener
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(et_search.getText().toString().equals("")){
+                    Toast.makeText(QuestionActivity.this,"Please input keyword first",Toast.LENGTH_SHORT).show();
+                }else{
+                    listTrending = new ArrayList<>();
+                    if(!value.equals("1") && !value.equals("2") && !value.equals("3") && !value.equals("4")){
+                        showKeyword(et_search.getText().toString(),id);
+                    }else{
+                        showKeywordTag(et_search.getText().toString(),value);
+                    }
+
+                }
+            }
+        });
+
         floating_menu.setMenuListener(new FabSpeedDial.MenuListener() {
             @Override
             public boolean onPrepareMenu(NavigationMenu navigationMenu) {
@@ -131,11 +156,16 @@ public class QuestionActivity extends AppCompatActivity {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         listTrending.add(response.body().getData().get(i));
                     }
-                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_question);
-                    QuestionListAdapter myAdapter = new QuestionListAdapter(listTrending,id,getApplicationContext());
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(myAdapter);
+                    if(listTrending.isEmpty()){
+                        rl_nodata.setVisibility(View.VISIBLE);
+                    }else{
+                        rl_nodata.setVisibility(View.INVISIBLE);
+                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_question);
+                        QuestionListAdapter myAdapter = new QuestionListAdapter(listTrending,id,getApplicationContext());
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(myAdapter);
+                    }
 
                     progressDialog.dismiss();
                 }else{
@@ -165,17 +195,23 @@ public class QuestionActivity extends AppCompatActivity {
                     for(int i=0;i<response.body().getData().size();i++){
                         listTrending.add(response.body().getData().get(i));
                     }
-                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_question);
-                    QuestionListAdapter myAdapter   = new QuestionListAdapter(listTrending,id,getApplicationContext());
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(myAdapter);
+                    et_search.setText("");
 
+                    if(listTrending.isEmpty()){
+                        rl_nodata.setVisibility(View.VISIBLE);
+                    }else {
+                        rl_nodata.setVisibility(View.INVISIBLE);
+                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_question);
+                        QuestionListAdapter myAdapter = new QuestionListAdapter(listTrending, id, getApplicationContext());
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(myAdapter);
+                    }
                     progressDialog.dismiss();
                 }else{
                     progressDialog.dismiss();
                     Log.d("message",response.errorBody().toString());
-                    Toast.makeText(QuestionActivity.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuestionActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -184,6 +220,45 @@ public class QuestionActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(QuestionActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+    }
+
+    public void showKeywordTag(final String keyword,final String tag){
+        progressDialog.show();
+        APIInterface mApiService = this.getInterfaceService();
+        Call<ResponseTrendsQuestion> mService = mApiService.getQuestionKeywordTag(tag,keyword);
+        mService.enqueue(new Callback<ResponseTrendsQuestion>() {
+            @Override
+            public void onResponse(Call<ResponseTrendsQuestion> call, Response<ResponseTrendsQuestion> response) {
+                if (response.isSuccessful()){
+                    for(int i=0;i<response.body().getData().size();i++){
+                        listTrending.add(response.body().getData().get(i));
+                    }
+                    et_search.setText("");
+
+                    if(listTrending.isEmpty()){
+                        rl_nodata.setVisibility(View.VISIBLE);
+                    }else {
+                        rl_nodata.setVisibility(View.INVISIBLE);
+                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view_question);
+                        QuestionListAdapter myAdapter = new QuestionListAdapter(listTrending, id, getApplicationContext());
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(myAdapter);
+                    }
+                    progressDialog.dismiss();
+                }else {
+                    progressDialog.dismiss();
+                    Log.d("message",response.errorBody().toString());
+                    Toast.makeText(QuestionActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseTrendsQuestion> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(QuestionActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

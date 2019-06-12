@@ -205,6 +205,7 @@ public class FragmentHome extends Fragment {
                 Intent intent = new Intent(view.getContext(), QuestionActivity.class);
                 intent.putExtra("Value",et_search.getText().toString());
                 intent.putExtra("id",id_user);
+                et_search.setText("");
                 startActivity(intent);
             }
         });

@@ -166,14 +166,14 @@ public class Login extends AppCompatActivity {
     private void savePrefsData(final String id){
         SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpen",true);
+        editor.putBoolean("isLogin",true);
         editor.putString("id",id);
         editor.commit();
     }
 
     private boolean restorePrefData(){
         SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
-        Boolean isIntroActiviyOpened = pref.getBoolean("isIntroOpen",false);
+        Boolean isIntroActiviyOpened = pref.getBoolean("isLogin",false);
         return isIntroActiviyOpened;
     }
 
