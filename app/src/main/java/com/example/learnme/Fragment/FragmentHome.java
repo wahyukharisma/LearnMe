@@ -115,6 +115,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), Profile.class);
+                intent.putExtra("id",id_user);
                 startActivity(intent);
                 item_menu.setVisibility(View.INVISIBLE);
             }
@@ -124,6 +125,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), About.class);
+                intent.putExtra("id",id_user);
                 startActivity(intent);
                 item_menu.setVisibility(View.INVISIBLE);
             }

@@ -1,25 +1,18 @@
 package com.example.learnme.Adapter;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseAnswer;
-import com.example.learnme.Model.Answear;
-import com.example.learnme.QuestionExpand;
+import com.example.learnme.Model.Answer;
 import com.example.learnme.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,10 +28,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.AnswearListViewHolder> {
 
     Context mContext;
-    List<Answear> mData;
+    List<Answer> mData;
 
 
-    public AnswearListAdapter(Context mContext, List<Answear> mData) {
+    public AnswearListAdapter(Context mContext, List<Answer> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

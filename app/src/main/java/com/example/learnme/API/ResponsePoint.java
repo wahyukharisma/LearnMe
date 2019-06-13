@@ -1,12 +1,12 @@
 package com.example.learnme.API;
 
-import com.example.learnme.Model.Answer;
+import com.example.learnme.Model.Point;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseAnswer {
+public class ResponsePoint {
     @SerializedName("value")
     @Expose
     private Integer value;
@@ -15,7 +15,7 @@ public class ResponseAnswer {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<Answer> data = null;
+    private List<Point> data = null;
 
     public Integer getValue() {
         return value;
@@ -33,11 +33,11 @@ public class ResponseAnswer {
         this.message = message;
     }
 
-    public List<Answer> getData() {
+    public List<Point> getData() {
         return data;
     }
 
-    public void setData(List<Answer> data) {
+    public void setData(List<Point> data) {
         this.data = data;
     }
 }

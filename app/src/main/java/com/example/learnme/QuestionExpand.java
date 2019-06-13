@@ -22,13 +22,10 @@ import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseAnswer;
 import com.example.learnme.API.ResponseTrendsQuestion;
 import com.example.learnme.Adapter.AnswearListAdapter;
-import com.example.learnme.Adapter.QuestionListAdapter;
-import com.example.learnme.Model.Answear;
+import com.example.learnme.Model.Answer;
 import com.example.learnme.Model.TrendingQuestion;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,7 @@ public class QuestionExpand extends AppCompatActivity {
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
     private ProgressDialog progressDialog;
 
-    private List<Answear> mData = new ArrayList<>();
+    private List<Answer> mData = new ArrayList<>();
     private ImageView btn_close,thumb_up,thumb_down;
 
     //Question component

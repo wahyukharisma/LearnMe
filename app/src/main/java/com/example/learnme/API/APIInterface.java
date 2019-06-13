@@ -22,6 +22,23 @@ public interface APIInterface {
     Call<Response> registerUser(@Field("username") String username,
                                     @Field("password") String password,
                                     @Field("email") String email);
+    @FormUrlEncoded
+    @POST("getPointHistoryUser.php")
+    Call<ResponsePoint> getPointHistoryUser(@Field("id") String id,
+                                @Field("month") String month,
+                                @Field("year") String year);
+
+    @FormUrlEncoded
+    @POST("updatePasswordBy.php")
+    Call<Response> updatePassword(@Field("id") String id,
+                                @Field("oldpassword") String oldpassword,
+                                @Field("newpassword") String newpassword);
+
+    @FormUrlEncoded
+    @POST("getUserBy.php")
+    Call<Response> getUserBy(@Field("id") String id);
+
+
 
     // Person API
     @FormUrlEncoded
@@ -31,6 +48,11 @@ public interface APIInterface {
                                       @Field("last_name") String last_name,
                                       @Field("address") String address,
                                       @Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("getPersonBy.php")
+    Call<ResponsePerson> getPersonBy(@Field("id") String id);
+
     // Forgot Password
     @FormUrlEncoded
     @POST("forgotPassword.php")
@@ -60,6 +82,14 @@ public interface APIInterface {
                                                                           @Field("tag") String tag,
                                                                           @Field("user") String user,
                                                                           @Field("image") String image);
+    @FormUrlEncoded
+    @POST("getUserQuestion.php")
+    Call<ResponseTrendsQuestion> getUserQuestion(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("getQuestionKeywordUser.php")
+    Call<ResponseTrendsQuestion> getQuestionKeywordUser(@Field("id") String id,
+                                                        @Field("keyword") String keyword);
 
 
 
@@ -76,6 +106,14 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("updateAnswerDislike.php") Call<ResponseAnswer> updateAnswerDislike(@Field("id") String id,
                                                                               @Field("keyword") String keyword);
+    @FormUrlEncoded
+    @POST("getAnswerKeywordUser.php") Call<ResponseAnswer> getAnswerKeywordUser(@Field("id") String id,
+                                                                              @Field("keyword") String keyword);
+
+    @FormUrlEncoded
+    @POST("getUserAnswer.php")
+    Call<ResponseAnswer> getUserAnswer(@Field("id") String id);
+
 
     // Ranking
     @FormUrlEncoded
@@ -85,5 +123,8 @@ public interface APIInterface {
     @POST("getMyRanking.php") Call<ResponseMRanking> getMyRanking(@Field("month") String month,
                                                                 @Field("year") String year,
                                                                  @Field("user") String user);
+
+
+
 }
 

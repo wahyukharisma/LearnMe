@@ -41,109 +41,166 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_usernmae"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
             <EditText
-                android:id="@+id/txt_username_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
+                android:id="@+id/et_username_change"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/proxima_nova"
                 android:hint="@string/et_username"
+                android:imeOptions="actionNext"
                 android:inputType="text"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
+                android:padding="15dp"
+                android:textColor="@color/new_account_color"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-            <EditText
-                android:id="@+id/txt_firstname_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
-                android:hint="@string/et_firstname"
-                android:inputType="text"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
             <EditText
-                android:id="@+id/txt_lastname_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
-                android:hint="@string/et_lastname"
-                android:inputType="text"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-            <EditText
-                android:id="@+id/txt_email_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
+                android:id="@+id/et_email_change"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/proxima_nova"
                 android:hint="@string/et_email"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
+                android:padding="15dp"
+                android:textColor="@color/new_account_color"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_input_one_signin"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_first_name"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/proxima_nova"
+            android:hint="@string/et_firstname"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/new_account_color"
+            android:textColorHighlight="@color/text_color_hint_light"
+            android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_below="@id/txt_input_one_signin"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
             <EditText
-                android:id="@+id/txt_address_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
-                android:hint="@string/et_address"
+                android:id="@+id/et_last_name"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/proxima_nova"
+                android:hint="@string/et_lastname"
+                android:imeOptions="actionNext"
                 android:inputType="text"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
-
-        <LinearLayout
+                android:padding="15dp"
+                android:textColor="@color/new_account_color"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_below="@id/txt_input_one_signin"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
             <EditText
-                android:id="@+id/txt_phone_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textSize="15sp"
+                android:id="@+id/et_address"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/proxima_nova"
+                android:hint="@string/et_address"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="@color/new_account_color"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_input_one_signin"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/proxima_nova"
                 android:hint="@string/et_phone"
-                android:inputType="number"
-                android:fontFamily="@font/proxima_nova"/>
-        </LinearLayout>
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="@color/new_account_color"
+                android:textColorHighlight="@color/text_color_hint_light"
+                android:textColorHint="@color/text_color_hint" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btn_edit_profile"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_gradient_style"
-            android:text="@string/btn_edit"
+            android:text="@string/btn_change"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
             android:fontFamily="@font/proxima_nova"/>
+
 
     </LinearLayout>
 

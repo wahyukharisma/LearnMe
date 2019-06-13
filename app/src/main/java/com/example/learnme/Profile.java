@@ -11,13 +11,17 @@ import android.widget.Toast;
 
 public class Profile extends AppCompatActivity {
 
-    ImageView btn_close;
-    CardView cd_lq,cd_la,cd_cpass,cd_ph, cd_ep;
+    private ImageView btn_close;
+    private CardView cd_lq,cd_la,cd_cpass,cd_ph, cd_ep;
+    private String id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        final Intent intent=getIntent();
+        id= intent.getStringExtra("id");
 
         // view ini
         btn_close = (ImageView) findViewById(R.id.btn_close_profile);
@@ -38,21 +42,27 @@ public class Profile extends AppCompatActivity {
         cd_lq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"List of Question",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(Profile.this,ListOfQuestionUser.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
             }
         });
 
         cd_ph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Point History",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(Profile.this,PointHistory.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
             }
         });
 
         cd_la.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"List of Answer",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(Profile.this,ListOfAnswerUser.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
             }
         });
 
@@ -60,6 +70,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ChangePassword.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });
@@ -68,6 +79,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),EditProfile.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

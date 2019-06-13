@@ -45,15 +45,15 @@
                 android:gravity="center">
                 <LinearLayout
                     android:id="@+id/LL_champ_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
                     android:orientation="vertical"
                     android:layout_marginEnd="25dp"
                     android:layout_marginTop="11dp">
                     <TextView
                         android:id="@+id/txt_champ_2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Winner 2"
                         android:textColor="@color/colorAccent"
                         android:fontFamily="@font/proxima_nova"
@@ -71,15 +71,15 @@
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/LL_champ_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
                     android:orientation="vertical"
                     android:layout_marginEnd="25dp"
                     android:layout_marginTop="5dp">
                     <TextView
                         android:id="@+id/txt_champ_1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Winner 1"
                         android:textColor="@color/colorAccent"
                         android:fontFamily="@font/proxima_nova"
@@ -97,14 +97,14 @@
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/LL_champ_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
                     android:orientation="vertical"
                     android:layout_marginTop="18dp">
                     <TextView
                         android:id="@+id/txt_champ_3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Winner 3"
                         android:textColor="@color/colorAccent"
                         android:fontFamily="@font/proxima_nova"

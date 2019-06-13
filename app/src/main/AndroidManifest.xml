@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EmailSuccess"></activity>
+        <activity android:name=".PointHistory"></activity>
+        <activity android:name=".ListOfAnswerUser" />
+        <activity android:name=".ListOfQuestionUser" />
+        <activity android:name=".EmailSuccess" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".EditProfile" />

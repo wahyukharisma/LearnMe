@@ -46,7 +46,7 @@ public class FragmentReward extends Fragment {
     private RecyclerView recyclerView;
     private RewardAdapter rewardAdapter;
     private ArrayList<Ranking> userArrayList = new ArrayList<>();
-    Spinner spinner_month,spinner_year;
+    private Spinner spinner_month,spinner_year;
     private ProgressDialog progressDialog;
     private String id_user;
     private TextView txt_champ_1,txt_point_1;
@@ -79,7 +79,6 @@ public class FragmentReward extends Fragment {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         // recycle view ini
-        Log.d("message",thisMonth+"-"+String.valueOf(year));
         userArrayList = new ArrayList<>();
         getRanking(thisMonth,String.valueOf(year));
         myRank(id_user,thisMonth,String.valueOf(year));

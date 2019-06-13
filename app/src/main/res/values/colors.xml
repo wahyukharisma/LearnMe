@@ -44,7 +44,7 @@
 
     <!-- View -->
     <color name="View">#34000000</color>
-    <color name="background_soft_grey">#DFDFDF</color>
+    <color name="background_soft_grey">#F3F3F3</color>
 
     <!-- Homepage -->
     <color name="Semi_Transparent">#63000000</color>

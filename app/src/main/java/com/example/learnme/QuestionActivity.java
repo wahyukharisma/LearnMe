@@ -171,7 +171,7 @@ public class QuestionActivity extends AppCompatActivity {
                 }else{
                     progressDialog.dismiss();
                     Log.d("message",response.errorBody().toString());
-                    Toast.makeText(QuestionActivity.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuestionActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
 
                 }
             }

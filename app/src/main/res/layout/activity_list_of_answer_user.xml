@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListOfAnswerUser"
+    android:background="@color/background_navigation_color">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_navigation_color">
+        <ImageView
+            android:id="@+id/btn_close_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="My Answer"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_question">
+
+        <LinearLayout
+            android:id="@+id/ll_hp_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/view_hp_1"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal"
+            android:gravity="center|top"
+            android:layout_marginTop="10dp">
+            <EditText
+                android:id="@+id/et_search_hp"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:hint="@string/search_keyword_comment"
+                android:textSize="15sp"
+                android:fontFamily="@font/proxima_nova"
+                android:maxLines="1"
+                android:singleLine="true"/>
+            <Button
+                android:id="@+id/btn_search_hp"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_gradient_style"
+                android:text="@string/search"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/proxima_nova"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_list_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_hp_search"
+            android:layout_marginTop="10dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_view_answer_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_list_answer"
+            android:background="@color/background_soft_grey"></RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_hp_search"
+            android:background="@color/background_soft_grey"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:id="@+id/img_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/nodataselected"/>
+            <TextView
+                android:layout_below="@id/img_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NO ANSWER MATCH, TRY ANOTHER ONE"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/proxima_nova"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/semi_white_bg_question"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Semi_Transparent"
+        android:visibility="gone">
+    </RelativeLayout>
+
+</RelativeLayout>

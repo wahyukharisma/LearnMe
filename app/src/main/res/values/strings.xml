@@ -42,6 +42,7 @@
     <string name="add_question">Ask Question</string>
     <string name="add_quiz">Take Quiz</string>
     <string name="search_keyword">Search Question By Keyword</string>
+    <string name="search_keyword_comment">Search Answer By Keyword</string>
     <string name="title_activity_question_expand">QuestionExpand</string>
     <string name="profile_menu">Profile</string>
     <string name="about_menu">About</string>
@@ -50,8 +51,8 @@
     <string name="close_menu">Close</string>
 
     <!-- Question -->
-    <string name="type_answear">Type an comment</string>
-    <string name="answear">Comment</string>
+    <string name="type_answear">Type an answer</string>
+    <string name="answear">Answer</string>
 
     <!-- Edit Profile -->
     <string name="btn_edit">Confirm</string>
@@ -80,4 +81,5 @@
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.
 "But I want more than that" of course, you can challenge yourself by taking a free or paid quiz. You can learn everywhere and every time, school is not the only  way if you want to know more, "I have a question about an animal, can I ask this in LearnMe?" Yes absolutely you can, In LearnMe the main topic allowed is about science.</string>
+
 </resources>
