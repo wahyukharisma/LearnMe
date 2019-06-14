@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.Response;
+import com.example.learnme.API.UpdatePoint;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -156,7 +157,7 @@ public class SignUp extends AppCompatActivity {
 
     private void registerPerson(final String username){
         APIInterface mApiService = this.getInterfaceService();
-        Call<Response> mService = mApiService.registerPerson(username,"first name","last name","address","phone");
+        Call<Response> mService = mApiService.registerPerson(username,"-","-","-","0");
         mService.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
@@ -165,6 +166,11 @@ public class SignUp extends AppCompatActivity {
                     if(response.body().getValue()==1){
                         Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Login.class);
+
+                        // adding point
+                        UpdatePoint updatePoint = new UpdatePoint();
+                        updatePoint.updatePoint(response.body().getMessage(),"4","0","New User "+username);
+
                         startActivity(intent);
                         finish();
                     }else{

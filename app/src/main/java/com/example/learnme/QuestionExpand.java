@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseAnswer;
 import com.example.learnme.API.ResponseTrendsQuestion;
+import com.example.learnme.API.UpdatePoint;
 import com.example.learnme.Adapter.AnswearListAdapter;
 import com.example.learnme.Model.Answer;
 import com.example.learnme.Model.TrendingQuestion;
@@ -45,7 +46,7 @@ public class QuestionExpand extends AppCompatActivity {
     private ImageView btn_close,thumb_up,thumb_down;
 
     //Question component
-    private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment;
+    private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment,txt_id_user_question;
     private Button btn_comment;
     private EditText et_answer;
 
@@ -136,6 +137,8 @@ public class QuestionExpand extends AppCompatActivity {
                     Toast.makeText(QuestionExpand.this,"Please write the comment first",Toast.LENGTH_SHORT).show();
                 }else{
                     addAnswer(et_answer.getText().toString(),id,id_user);
+                    UpdatePoint updatePoint = new UpdatePoint();
+                    updatePoint.updatePoint(id_user,"2","0","Give Answer, "+et_answer.getText().toString()+" into question id : "+id);
                 }
             }
         });
@@ -143,15 +146,18 @@ public class QuestionExpand extends AppCompatActivity {
         thumb_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // adding point
                 if(status.equals("like")){
-                    Log.d("message","inLike");
                     SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionLike",MODE_PRIVATE);
                     pref.edit().clear().commit();
                     updateLike(id,"dislike",id_user);
                     thumb_up.setImageDrawable(thumb_up_non_active);
                 }else{
+                    UpdatePoint updatePoint = new UpdatePoint();
+                    updatePoint.updatePoint(txt_id_user_question.getText().toString(),"7","0","Question "+txt_title.getText().toString()+" cancel dislike by user id "+id_user);
                     updateLike(id,"like",id_user);
                     thumb_up.setImageDrawable(thumb_up_active);
+
                 }
             }
         });
@@ -159,14 +165,19 @@ public class QuestionExpand extends AppCompatActivity {
         thumb_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(status.equals("dislike")){
                     Log.d("message","inDislike");
                     SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefsQuestionDislike",MODE_PRIVATE);
                     pref.edit().clear().commit();
                     updateDislike(id,"like",id_user);
+
                 }else{
                     updateDislike(id,"dislike",id_user);
                     thumb_down.setImageDrawable(thumb_down_active);
+                    UpdatePoint updatePoint = new UpdatePoint();
+                    updatePoint.updatePoint(txt_id_user_question.getText().toString(),"9","0","Question "+txt_title.getText().toString()+" cancel dislike by user id "+id_user);
+
                 }
             }
         });
@@ -181,6 +192,10 @@ public class QuestionExpand extends AppCompatActivity {
         txt_date  = (TextView) findViewById(R.id.txt_date_question_expand);
         txt_username = (TextView) findViewById(R.id.txt_user_name);
         txt_comment  = (TextView) findViewById(R.id.txt_total_answear);
+        txt_id_user_question = (TextView) findViewById(R.id.txt_id_user_question);
+
+        txt_id_user_question.setText(trendingQuestion.getUser());
+
 
         txt_title.setText(trendingQuestion.getTitle());
         String tag="";

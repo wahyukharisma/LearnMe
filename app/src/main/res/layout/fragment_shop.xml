@@ -88,53 +88,10 @@
     </ScrollView>
 
     <RelativeLayout
-        android:id="@+id/rl_popular_item"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/view_line"
-        android:layout_marginTop="5dp">
-        <TextView
-            android:id="@+id/info_pupular"
-            android:layout_marginStart="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fs_hot_item"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/proxima_nova"/>
-        <ImageView
-            android:id="@+id/img_more_popular"
-            android:layout_width="15dp"
-            android:layout_height="20dp"
-            android:src="@drawable/right_arrow_green"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"/>
-        <TextView
-            android:id="@+id/txt_swipe_more"
-            android:layout_marginStart="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fs_swipe_more"
-            android:textSize="15sp"
-            android:fontFamily="@font/proxima_nova"
-            android:layout_below="@id/info_pupular"/>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_item"
-            android:layout_margin="10dp"
-            android:layout_below="@id/txt_swipe_more"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/rl_avatar_item"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/rl_popular_item"
+        android:layout_below="@id/view_line"
         android:layout_marginTop="5dp">
         <TextView
             android:id="@+id/info_avatar"

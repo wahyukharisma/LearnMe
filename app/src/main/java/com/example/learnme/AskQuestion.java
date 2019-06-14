@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.Response;
+import com.example.learnme.API.UpdatePoint;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -123,10 +124,18 @@ public class AskQuestion extends AppCompatActivity {
                 if(response.isSuccessful()){
                     Toast.makeText(AskQuestion.this, "Question has been submit", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AskQuestion.this,QuestionExpand.class);
+                    Log.d("message",response.body().getMessage());
                     intent.putExtra("id",response.body().getMessage());
                     intent.putExtra("id_user",user);
+
+                    // adding point
+                    UpdatePoint updatePoint = new UpdatePoint();
+                    updatePoint.updatePoint(user,"1","0","Ask Question, "+title);
+
                     startActivity(intent);
+
                     finish();
+
                 }else{
                     Toast.makeText(AskQuestion.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }

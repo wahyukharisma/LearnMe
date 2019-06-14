@@ -111,7 +111,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()){
                     case R.id.question:
-                        Intent intent = new Intent(getApplicationContext(), AskQuestion.class);
+                        Intent intent = new Intent(QuestionActivity.this, AskQuestion.class);
+                        intent.putExtra("user",id);
                         startActivity(intent);
                 }
                 semi_transparent.setVisibility(View.GONE);

@@ -7,6 +7,9 @@ public class TrendingQuestion {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("user")
+    @Expose
+    private String user;
     @SerializedName("id_user")
     @Expose
     private String idUser;
@@ -68,6 +71,14 @@ public class TrendingQuestion {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getTitle() {

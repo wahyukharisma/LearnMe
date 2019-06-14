@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.design.animation.ImageMatrixProperty;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +38,7 @@ public class EditProfile extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private ImageView btn_close;
-    private Button btn_confirm;
+    private Button btn_edit;
     private EditText et_username,et_email,et_first_name,et_last_name,et_address,et_phone;
 
     private String id="";
@@ -51,20 +54,19 @@ public class EditProfile extends AppCompatActivity {
 
         // view ini
         btn_close    = (ImageView) findViewById(R.id.btn_close_edit);
-        btn_confirm  = (Button) findViewById(R.id.btn_edit_profile);
+        btn_edit  = (Button) findViewById(R.id.btn_edit_profile);
 
         //asset
         final Animation shake = AnimationUtils.loadAnimation(EditProfile.this,R.anim.shake);
+        final Drawable et_drawable_right         = getApplicationContext().getResources().getDrawable(R.drawable.ic_error_red_24dp);
         progressDialog = new ProgressDialog(EditProfile.this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
-        getUserBy(id);
+        getUserBy(String.valueOf(1));
         getPersonBy(id);
-        getUser(id);
-
 
 
         //listener
@@ -75,10 +77,52 @@ public class EditProfile extends AppCompatActivity {
             }
         });
 
-        btn_confirm.setOnClickListener(new View.OnClickListener() {
+        btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Confirm",Toast.LENGTH_SHORT).show();
+
+                et_username.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                et_email.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                et_address.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                et_first_name.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                et_last_name.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                et_phone.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+
+                if(et_username.getText().toString().equals("") || et_email.getText().toString().equals("") || et_address.getText().toString().equals("")
+                        || et_first_name.getText().toString().equals("") || et_last_name.getText().toString().equals("") || et_phone.getText().toString().equals("")
+                        || !isEmailValid(et_email.getText().toString())){
+
+                    if(et_username.getText().toString().equals("")){
+                        et_username.startAnimation(shake);
+                        et_username.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                    if(et_phone.getText().toString().equals("")){
+                        et_phone.startAnimation(shake);
+                        et_phone.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                    if(et_last_name.getText().toString().equals("")){
+                        et_last_name.startAnimation(shake);
+                        et_last_name.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                    if(et_first_name.getText().toString().equals("")){
+                        et_first_name.startAnimation(shake);
+                        et_first_name.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                    if(et_address.getText().toString().equals("")){
+                        et_address.startAnimation(shake);
+                        et_address.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                    if(et_email.getText().toString().equals("") || !isEmailValid(et_email.getText().toString())){
+                        if(!isEmailValid(et_email.getText().toString())){
+                            Toast.makeText(EditProfile.this, "Invalid email format", Toast.LENGTH_SHORT).show();
+                        }
+                        et_email.startAnimation(shake);
+                        et_email.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
+                    }
+                }else{
+                    updatePerson(id,et_username.getText().toString(),et_last_name.getText().toString(),et_first_name.getText().toString(),et_address.getText().toString(),et_phone.getText().toString(),et_email.getText().toString());
+                    finish();
+                }
             }
         });
     }
@@ -124,7 +168,8 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if(response.isSuccessful()){
-                    //initUser(response.body().getData());
+                    initUser(response.body().getData());
+                    Toast.makeText(EditProfile.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(EditProfile.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }
@@ -135,23 +180,6 @@ public class EditProfile extends AppCompatActivity {
             public void onFailure(Call<Response> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(EditProfile.this, "Connection Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void getUser(final String id){
-        progressDialog.show();
-        APIInterface mApiService = this.getInterfaceService();
-        Call<Response> mService = mApiService.getUserBy(id);
-        mService.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                initUser(response.body().getData());
-            }
-
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-
             }
         });
     }
@@ -177,5 +205,35 @@ public class EditProfile extends AppCompatActivity {
                 Toast.makeText(EditProfile.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void updatePerson(final String id,final String username,final String last_name,final String first_name,final String address,final String phone,final String email){
+        progressDialog.show();
+        APIInterface mApiService = this.getInterfaceService();
+        Call<Response> mService = mApiService.updatePerson(id,first_name,last_name,address,phone,username,email);
+        mService.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(EditProfile.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(EditProfile.this, "Refresh", Toast.LENGTH_SHORT).show();
+                }
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(EditProfile.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

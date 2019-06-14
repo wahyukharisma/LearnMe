@@ -48,6 +48,15 @@ public interface APIInterface {
                                       @Field("last_name") String last_name,
                                       @Field("address") String address,
                                       @Field("phone") String phone);
+    @FormUrlEncoded
+    @POST("updatePersonBy.php")
+    Call<Response> updatePerson(@Field("id") String id,
+                                  @Field("first_name") String first_name,
+                                  @Field("last_name") String last_name,
+                                  @Field("address") String address,
+                                  @Field("phone") String phone,
+                                  @Field("username") String username,
+                                  @Field("email") String email);
 
     @FormUrlEncoded
     @POST("getPersonBy.php")
@@ -123,6 +132,13 @@ public interface APIInterface {
     @POST("getMyRanking.php") Call<ResponseMRanking> getMyRanking(@Field("month") String month,
                                                                 @Field("year") String year,
                                                                  @Field("user") String user);
+
+    //Point
+    @FormUrlEncoded
+    @POST("updateUserPoint.php") Call<Response> updateUserPoint(@Field("id") String id,
+                                                                  @Field("status") String status,
+                                                                  @Field("point") String point,
+                                                                  @Field("description") String description);
 
 
 
