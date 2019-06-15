@@ -169,7 +169,6 @@ public class EditProfile extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if(response.isSuccessful()){
                     initUser(response.body().getData());
-                    Toast.makeText(EditProfile.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(EditProfile.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }

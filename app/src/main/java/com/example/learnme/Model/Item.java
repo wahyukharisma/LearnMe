@@ -1,32 +1,55 @@
 package com.example.learnme.Model;
 
-public class Item {
-    int id;
-    int price;
-    String name;
-    String description;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public Item(int id, int price, String name, String description) {
+public class Item {
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("point")
+    @Expose
+    private String point;
+    @SerializedName("valid")
+    @Expose
+    private String valid;
+    @SerializedName("sold")
+    @Expose
+    private String sold;
+
+    public Item(String id, String image, String name, String description, String point, String valid, String sold) {
         this.id = id;
-        this.price = price;
+        this.image = image;
         this.name = name;
         this.description = description;
+        this.point = point;
+        this.valid = valid;
+        this.sold = sold;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getPrice() {
-        return price;
+    public String getImage() {
+        return image;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -44,4 +67,29 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
+
+    public String getValid() {
+        return valid;
+    }
+
+    public void setValid(String valid) {
+        this.valid = valid;
+    }
+
+    public String getSold() {
+        return sold;
+    }
+
+    public void setSold(String sold) {
+        this.sold = sold;
+    }
+
 }

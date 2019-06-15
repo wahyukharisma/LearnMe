@@ -60,5 +60,7 @@
     <!-- Edit Text -->
     <color name="edit_text">#494949</color>
 
+    <color name="soft_red">#C90000</color>
+
 
 </resources>

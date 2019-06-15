@@ -31,10 +31,12 @@ import com.example.learnme.API.ResponseTrendsQuestion;
 import com.example.learnme.About;
 import com.example.learnme.Adapter.TrendingQuestionAdapter;
 import com.example.learnme.AskQuestion;
+import com.example.learnme.AvatarShop;
 import com.example.learnme.Login;
 import com.example.learnme.Model.Trending;
 import com.example.learnme.Profile;
 import com.example.learnme.QuestionActivity;
+import com.example.learnme.QuizList;
 import com.example.learnme.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -107,7 +109,9 @@ public class FragmentHome extends Fragment {
         img_promotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(view.getContext(), AvatarShop.class);
+                intent.putExtra("id",id_user);
+                startActivity(intent);
             }
         });
 
@@ -228,7 +232,10 @@ public class FragmentHome extends Fragment {
             public boolean onMenuItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.quiz:
-                        Toast.makeText(getContext(),"Quiz clicked !!!",Toast.LENGTH_SHORT).show();
+                        Intent intent2 = new Intent(getContext(), QuizList.class);
+                        intent2.putExtra("user",id_user);
+                        intent2.putExtra("request","1");
+                        startActivity(intent2);
                         break;
                     case R.id.question:
                         Intent intent = new Intent(getContext(), AskQuestion.class);

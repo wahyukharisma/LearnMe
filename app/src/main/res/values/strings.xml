@@ -32,7 +32,7 @@
     <string name="fs_avatar_more">Get your favorite avatar</string>
     <string name="fs_quiz">Quiz</string>
     <string name="fs_quiz_more">Get your quiz, challenge your knowledge</string>
-    <string name="fs_buy">Buy</string>
+    <string name="fs_buy">Confirm</string>
 
     <!-- Homepage -->
     <string name="hp_trending">Trendings</string>
@@ -77,6 +77,13 @@
     <string name="message_email_send_title">Email has been send !</string>
 
     <string name="tag_prompt">Choose a tag</string>
+    <string name="already_purchase">Item already purchased</string>
+
+    <!-- Quiz -->
+    <string name="attempt">Attempt allowed</string>
+    <string name="unlimited">Unlimited</string>
+    <string name="amount">Amount of Retrieval</string>
+    <string name="take_quiz">Take Quiz</string>
 
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.

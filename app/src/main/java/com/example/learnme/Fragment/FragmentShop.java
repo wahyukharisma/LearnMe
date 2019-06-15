@@ -19,6 +19,7 @@ import com.example.learnme.API.Response;
 import com.example.learnme.AvatarShop;
 import com.example.learnme.Adapter.HotItemAdapter;
 import com.example.learnme.Model.User;
+import com.example.learnme.QuizList;
 import com.example.learnme.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -96,10 +97,16 @@ public class FragmentShop extends Fragment {
     }
 
     private void Intent(int value){
-        Intent intent = new Intent(getView().getContext(), AvatarShop.class);
-        intent.putExtra("index",value);
+        Intent intent;
+        if(value==1){
+            intent = new Intent(getView().getContext(), AvatarShop.class);
+            intent.putExtra("index",value);
+        }else{
+            intent = new Intent(getView().getContext(), QuizList.class);
+            intent.putExtra("request","2");
+        }
+        intent.putExtra("id",id_user);
         startActivity(intent);
-        //getActivity().finish();
     }
 
     private APIInterface getInterfaceService() {

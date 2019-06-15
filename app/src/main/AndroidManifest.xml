@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PointHistory"></activity>
+        <activity android:name=".QuizExpand"></activity>
+        <activity android:name=".QuizList" />
+        <activity android:name=".PointHistory" />
         <activity android:name=".ListOfAnswerUser" />
         <activity android:name=".ListOfQuestionUser" />
         <activity android:name=".EmailSuccess" />
@@ -32,6 +34,7 @@
         <activity android:name=".Login" />
         <activity android:name=".SignUp" />
         <activity android:name=".OnBoardingScreen" />
+        <activity android:name=".OnBoardingQuiz" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash_screen">
             <intent-filter>

@@ -140,6 +140,23 @@ public interface APIInterface {
                                                                   @Field("point") String point,
                                                                   @Field("description") String description);
 
+    //Item
+    @GET("getItemValid.php") Call<ResponseItem> getItem();
+    @FormUrlEncoded
+    @POST("buyItem.php") Call<ResponseItem> buyItem(@Field("id") String id,
+                                                                @Field("id_item") String status,
+                                                                @Field("description") String point,
+                                                                @Field("point") String description,
+                                                                @Field("price") String price);
+    @FormUrlEncoded
+    @POST("sortingItemBy.php") Call<ResponseItem> sortingItem(@Field("sort") String sort);
+    @FormUrlEncoded
+    @POST("statusItemBuy.php") Call<ResponseItem> statusItem(@Field("id") String id,
+                                                             @Field("id_item") String id_item);
+
+    //Quiz
+    @POST("getQuizBy.php") Call<ResponseQuiz> getQuiz();
+
 
 
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizList">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_quiz_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_navigation_color">
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Quiz"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_quiz_shop"
+        android:layout_above="@id/bottomNavShop">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"></android.support.v7.widget.RecyclerView>
+
+    </ScrollView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/background_navigation_color"
+        app:itemIconTint="@color/buttom_nav_selector"
+        app:itemTextColor="@color/buttom_nav_selector"
+        app:menu="@menu/bottom_shop_menu"
+        android:theme="@style/Widget.ButtomNavigationView"
+        android:background="@color/background_navigation_color" />
+
+</RelativeLayout>

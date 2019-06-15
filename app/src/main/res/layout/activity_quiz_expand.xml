@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemExpand">
+    tools:context=".QuizExpand">
 
     <ImageView
-        android:id="@+id/img_item"
+        android:id="@+id/img_quiz"
         android:layout_width="match_parent"
         android:layout_height="330dp"
         android:background="@color/price_shop"
@@ -31,15 +31,15 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="vertical"
-        android:layout_below="@id/img_item"
+        android:layout_below="@id/img_quiz"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="15dp">
         <TextView
-            android:id="@+id/txt_title_item"
+            android:id="@+id/txt_title_quiz"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="Avatar Pikachu"
+            android:text="Quiz Title"
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/colorPrimaryDark"
@@ -56,7 +56,7 @@
                 android:src="@drawable/coin"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:id="@+id/txt_price_item"
+                android:id="@+id/txt_price_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:text="1000"
@@ -78,34 +78,11 @@
         android:background="@color/View"/>
 
     <LinearLayout
-        android:id="@+id/ll_valid_date"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/view_1"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Valid until"
-            android:fontFamily="@font/proxima_nova"
-            android:textColor="@color/colorPrimaryDark"/>
-        <TextView
-            android:id="@+id/txt_valid_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12 January 2019"
-            android:fontFamily="@font/proxima_nova"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/ll_item_sale"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical"
-        android:layout_below="@id/ll_valid_date"
+        android:layout_below="@id/view_1"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="10dp"
@@ -115,13 +92,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:text="Total Sold"
+            android:text="@string/amount"
             android:gravity="center"
             android:fontFamily="@font/proxima_nova"
             android:layout_marginTop="5dp"/>
 
         <TextView
-            android:id="@+id/total_sold"
+            android:id="@+id/txt_quiz_attempt"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="20"
@@ -153,14 +130,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Category"
+            android:text="@string/attempt"
             android:textSize="17sp"
             android:fontFamily="@font/proxima_nova"/>
         <TextView
-            android:id="@+id/txt_item_category"
+            android:id="@+id/txt_quiz_category"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Picture/Avatar Profile"
+            android:text="@string/unlimited"
             android:textSize="17sp"
             android:fontFamily="@font/proxima_nova"
             android:layout_marginStart="10dp"
@@ -178,7 +155,7 @@
         android:background="@color/View"/>
 
     <ScrollView
-        android:id="@+id/sv_description"
+        android:id="@+id/sv_description_quiz"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@id/view_3"
@@ -197,7 +174,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/txt_desc_item"
+                android:id="@+id/txt_desc_quiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem_ipsum"
@@ -211,14 +188,14 @@
         android:id="@+id/footer_buy_item"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/sv_description"
+        android:layout_below="@id/sv_description_quiz"
         android:layout_marginTop="15dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
             <TextView
-                android:id="@+id/txt_purchased"
+                android:id="@+id/txt_purchased_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/already_purchase"
@@ -229,12 +206,12 @@
                 android:visibility="gone"/>
         </RelativeLayout>
         <Button
-            android:id="@+id/btn_buy"
+            android:id="@+id/btn_take_quiz"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_gradient_style"
-            android:text="@string/fs_buy"
+            android:text="@string/take_quiz"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/proxima_nova" />
@@ -302,7 +279,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Item Price : "
+                                android:text="Quiz Price : "
                                 android:fontFamily="@font/proxima_nova"/>
                             <TextView
                                 android:id="@+id/txt_item_point"
@@ -363,4 +340,5 @@
 
         </RelativeLayout>
     </RelativeLayout>
+
 </RelativeLayout>
