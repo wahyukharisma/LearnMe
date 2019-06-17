@@ -156,6 +156,17 @@ public interface APIInterface {
 
     //Quiz
     @POST("getQuizBy.php") Call<ResponseQuiz> getQuiz();
+    @FormUrlEncoded
+    @POST("getQuizQuestionBy.php") Call<ResponseQuizQuestion> getQuizQuestion(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("getQuizAnswerBy.php") Call<ResponseQuizAnswer> getQuizAnswer(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("getQuizAnswerByQuiz.php") Call<ResponseQuizAnswer> getQuizAnswerBy(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("getQuizId.php") Call<ResponseQuiz> getQuizId(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("storeQuizHistory.php") Call<ResponseQuiz> storeQuizHistory(@Field("id") String id,
+                                                                    @Field("id_quiz") String id_quiz);
 
 
 

@@ -1,8 +1,10 @@
 package com.example.learnme;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -13,14 +15,32 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.learnme.API.APIInterface;
+import com.example.learnme.API.ResponseQuiz;
+import com.example.learnme.API.ResponseQuizQuestion;
 import com.example.learnme.Adapter.IntroViewPagerAdapter;
+import com.example.learnme.Model.QuizQuestion;
 import com.example.learnme.Model.ScreenItem;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class OnBoardingQuiz extends AppCompatActivity {
+
+    public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
+    private ProgressDialog progressDialog;
+
     private ViewPager screenPager;
     IntroViewPagerAdapter introViewPagerAdapter;
     TabLayout tabIndicator;
@@ -32,21 +52,27 @@ public class OnBoardingQuiz extends AppCompatActivity {
 
     Animation btnAnim;
 
+    private List<QuizQuestion> mList = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Intent intent= getIntent();
+        final String id_quiz = intent.getStringExtra("id_quiz");
+        final String id_user = intent.getStringExtra("id_user");
 
         // make the activity on full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // check previous state
-        if(restorePrefData()){
-            Intent mainActivity = new Intent(getApplicationContext(),Login.class);
-            startActivity(mainActivity);
-            finish();
-        }
+//        // check previous state
+//        if(restorePrefData()){
+//            Intent mainActivity = new Intent(getApplicationContext(),QuizActivity.class);
+//            startActivity(mainActivity);
+//            finish();
+//        }
 
         // set content layout
         setContentView(R.layout.activity_on_boarding_screen);
@@ -119,12 +145,7 @@ public class OnBoardingQuiz extends AppCompatActivity {
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent mainActivity = new Intent(getApplicationContext(),Login.class);
-                //startActivity(mainActivity);
-
-                //save state
-                //savePrefsData();
-                //finish();
+                getQuizId(id_quiz,id_user);
             }
         });
     }
@@ -140,7 +161,6 @@ public class OnBoardingQuiz extends AppCompatActivity {
     private void savePrefsData(){
         SharedPreferences pref          = getApplicationContext().getSharedPreferences("myPrefsQuiz",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpen",true);
         editor.commit();
     }
 
@@ -149,4 +169,47 @@ public class OnBoardingQuiz extends AppCompatActivity {
         Boolean isIntroActiviyOpened = pref.getBoolean("isIntroOpen",false);
         return isIntroActiviyOpened;
     }
+
+    private APIInterface getInterfaceService() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        final APIInterface mInterfaceService = retrofit.create(APIInterface.class);
+        return mInterfaceService;
+    }
+
+    private void getQuizId(final String id,final String id_user){
+        APIInterface mApiService = this.getInterfaceService();
+        Call<ResponseQuiz> mService = mApiService.getQuizId(id);
+        mService.enqueue(new Callback<ResponseQuiz>() {
+            @Override
+            public void onResponse(Call<ResponseQuiz> call, Response<ResponseQuiz> response) {
+                if(response.isSuccessful()){
+                    savePrefsData();
+                    Intent intent1 = new Intent(OnBoardingQuiz.this,QuizActivity.class);
+                    intent1.putExtra("id_user",id_user);
+                    intent1.putExtra("id_quiz",id);
+                    intent1.putExtra("title",response.body().getData().get(0).getTitle());
+                    intent1.putExtra("description",response.body().getData().get(0).getDescription());
+                    intent1.putExtra("point",response.body().getData().get(0).getPoint());
+                    startActivity(intent1);
+                    finish();
+                }else{
+                    Toast.makeText(OnBoardingQuiz.this, "Refresh", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseQuiz> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(OnBoardingQuiz.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

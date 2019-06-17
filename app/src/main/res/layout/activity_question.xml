@@ -51,7 +51,8 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/proxima_nova"
                 android:maxLines="1"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:drawableLeft="@drawable/ic_search_grey_24dp"/>
             <Button
                 android:id="@+id/btn_search_hp"
                 android:layout_width="100dp"

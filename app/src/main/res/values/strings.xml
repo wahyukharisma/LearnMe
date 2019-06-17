@@ -84,6 +84,11 @@
     <string name="unlimited">Unlimited</string>
     <string name="amount">Amount of Retrieval</string>
     <string name="take_quiz">Take Quiz</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="totalscore">Total Score</string>
+    <string name="home">Home</string>
+    <string name="gotpoint">You got</string>
+    <string name="point">points</string>
 
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.

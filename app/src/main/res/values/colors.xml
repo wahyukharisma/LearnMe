@@ -62,5 +62,13 @@
 
     <color name="soft_red">#C90000</color>
 
+    <!-- Quiz -->
+    <color name="Button_Next">#00AEFF</color>
+    <color name="Text_Next">#ffffff</color>
+    <color name="Frame_queastion">#00AEFF</color>
+    <color name="circle_none">#578F8F8F</color>
+    <color name="circle_done">#00FF40</color>
+    <color name="text_category">#ffffff</color>
+
 
 </resources>
