@@ -91,6 +91,13 @@
     <string name="point">points</string>
     <string name="quiz_taken">Quiz Already Taken</string>
 
+    <!-- Point Info -->
+    <string name="title_info">Point Information</string>
+    <string name="point_1">Ask question +10 point</string>
+    <string name="point_2">Give comment to selected question +5 point</string>
+    <string name="point_3">Take Quiz + up to 2 x quiz point</string>
+    <string name="point_4">Sign Up +100 point</string>
+
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.
 "But I want more than that" of course, you can challenge yourself by taking a free or paid quiz. You can learn everywhere and every time, school is not the only  way if you want to know more, "I have a question about an animal, can I ask this in LearnMe?" Yes absolutely you can, In LearnMe the main topic allowed is about science.</string>

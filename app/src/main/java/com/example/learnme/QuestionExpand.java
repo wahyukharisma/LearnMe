@@ -239,7 +239,6 @@ public class QuestionExpand extends AppCompatActivity {
             public void onResponse(Call<ResponseTrendsQuestion> call, Response<ResponseTrendsQuestion> response) {
                 if(response.isSuccessful()){
                     initViewQuestion(response.body().getData().get(0));
-                    progressDialog.dismiss();
                 }else{
                     progressDialog.dismiss();
                     Log.d("message",response.errorBody().toString());
@@ -256,7 +255,6 @@ public class QuestionExpand extends AppCompatActivity {
     }
 
     private void getAnswer(final String id){
-        progressDialog.show();
         APIInterface mApiService = this.getInterfaceService();
         Call<ResponseAnswer> mService = mApiService.getAnswerById(id);
         mService.enqueue(new Callback<ResponseAnswer>() {

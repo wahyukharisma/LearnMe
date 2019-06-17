@@ -19,6 +19,7 @@ import com.example.learnme.API.Response;
 import com.example.learnme.AvatarShop;
 import com.example.learnme.Adapter.HotItemAdapter;
 import com.example.learnme.Model.User;
+import com.example.learnme.PointInfo;
 import com.example.learnme.QuizList;
 import com.example.learnme.R;
 import com.google.gson.Gson;
@@ -36,6 +37,7 @@ public class FragmentShop extends Fragment {
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
     private String id_user="";
+    private ImageView imgInfo;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class FragmentShop extends Fragment {
         imgQuiz       = (ImageView)view.findViewById(R.id.img_banner_quiz);
         imgMoreAvatar = (ImageView)view.findViewById(R.id.img_more_avatar);
         imgMoreQuiz   = (ImageView)view.findViewById(R.id.img_more_quiz);
+        imgInfo       = (ImageView) view.findViewById(R.id.img_info_point);
 
         //assets
         progressDialog = new ProgressDialog(getContext());
@@ -88,6 +91,14 @@ public class FragmentShop extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent(1);
+            }
+        });
+
+        imgInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getContext(), PointInfo.class);
+               startActivity(intent);
             }
         });
 

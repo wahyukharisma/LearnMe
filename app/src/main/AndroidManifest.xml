@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuizResult"></activity>
+        <activity android:name=".PointInfo"></activity>
+        <activity android:name=".QuizResult" />
         <activity android:name=".QuizExpand" />
         <activity android:name=".QuizList" />
         <activity android:name=".PointHistory" />

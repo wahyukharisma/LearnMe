@@ -87,13 +87,13 @@ public class OnBoardingQuiz extends AppCompatActivity {
         btnAnim       = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
 
         // fill list screen
-        String temp1 = "TUTORIAL #1";
-        String temp2 = "TUTORIAL #2";
-        String temp3 = "TUTORIAL #3";
+        String temp1 = "This quiz is an objective quiz, you can choose one from four list answer for each question, you can skip the question and go back again";
+        String temp2 = "Every question have a different point reward, depend on level of hardship";
+        String temp3 = "Your point will not decrease before completing the quiz, enjoy the quiz";
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("TITLE #1",temp1,R.drawable.intro_1));
-        mList.add(new ScreenItem("TITLE #2",temp2,R.drawable.intro_3));
-        mList.add(new ScreenItem("TITLE #3",temp3,R.drawable.intro_2));
+        mList.add(new ScreenItem("Objective Quiz",temp1,R.drawable.objectivequiz));
+        mList.add(new ScreenItem("Different Reward",temp2,R.drawable.differentvalue));
+        mList.add(new ScreenItem("Pay After Quiz",temp3,R.drawable.spendpoint));
 
         // setup viewpager
         screenPager           = findViewById(R.id.viewPager);
