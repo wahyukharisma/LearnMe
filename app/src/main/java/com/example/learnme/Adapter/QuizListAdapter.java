@@ -13,13 +13,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnme.API.APIInterface;
+import com.example.learnme.API.ResponseQuiz;
 import com.example.learnme.Model.Quiz;
 import com.example.learnme.QuizExpand;
 import com.example.learnme.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizListViewHolder> {
+
+    public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
 
     private Context mContex;
     private List<Quiz> mData;
@@ -57,15 +69,30 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
         quizListViewHolder.item_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContex, QuizExpand.class);
-                intent.putExtra("id",mData.get(index).getId());
-                intent.putExtra("title",mData.get(index).getTitle());
-                intent.putExtra("description",mData.get(index).getDescription());
-                intent.putExtra("point",mData.get(index).getPoint());
-                intent.putExtra("attempt",mData.get(index).getAttempt());
-                intent.putExtra("id_user",id);
-                intent.putExtra("request",request);
-                mContex.startActivity(intent);
+
+                APIInterface mApiService = getInterfaceService();
+                Call<ResponseQuiz> mService = mApiService.getQuizByUser(id,mData.get(index).getId());
+                mService.enqueue(new Callback<ResponseQuiz>() {
+                    @Override
+                    public void onResponse(Call<ResponseQuiz> call, Response<ResponseQuiz> response) {
+                        Intent intent = new Intent(mContex, QuizExpand.class);
+                        intent.putExtra("id",mData.get(index).getId());
+                        intent.putExtra("title",mData.get(index).getTitle());
+                        intent.putExtra("description",mData.get(index).getDescription());
+                        intent.putExtra("point",mData.get(index).getPoint());
+                        intent.putExtra("attempt",mData.get(index).getAttempt());
+                        intent.putExtra("id_user",id);
+                        intent.putExtra("request",request);
+                        intent.putExtra("status",String.valueOf(response.body().getValue()));
+                        mContex.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseQuiz> call, Throwable t) {
+
+                    }
+                });
+
             }
         });
     }
@@ -80,14 +107,24 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
         private TextView tx_title,txt_point,txt_status_quiz;
         private LinearLayout item_quiz;
 
-
         public QuizListViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txt_status_quiz = (TextView) itemView.findViewById(R.id.txt_status_quiz);
             tx_title = (TextView) itemView.findViewById(R.id.txt_title_quiz_list);
             txt_point = (TextView) itemView.findViewById(R.id.txt_quiz_point);
             item_quiz = (LinearLayout) itemView.findViewById(R.id.item_quiz);
         }
+    }
+    private APIInterface getInterfaceService() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        final APIInterface mInterfaceService = retrofit.create(APIInterface.class);
+        return mInterfaceService;
     }
 }

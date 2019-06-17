@@ -232,13 +232,13 @@ public class FragmentHome extends Fragment {
             public boolean onMenuItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.quiz:
-                        Intent intent2 = new Intent(getContext(), QuizList.class);
-                        intent2.putExtra("user",id_user);
+                        Intent intent2 = new Intent(getView().getContext(), QuizList.class);
+                        intent2.putExtra("id",id_user);
                         intent2.putExtra("request","1");
                         startActivity(intent2);
                         break;
                     case R.id.question:
-                        Intent intent = new Intent(getContext(), AskQuestion.class);
+                        Intent intent = new Intent(getView().getContext(), AskQuestion.class);
                         intent.putExtra("user",id_user);
                         startActivity(intent);
                         break;

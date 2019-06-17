@@ -86,8 +86,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="10dp"
-        android:background="@color/sale_item_background"
-        android:elevation="3dp">
+        android:background="@color/sale_item_background">
 
         <TextView
             android:layout_width="match_parent"
@@ -198,7 +197,7 @@
                 android:id="@+id/txt_purchased_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/already_purchase"
+                android:text="@string/quiz_taken"
                 android:fontFamily="@font/proxima_nova"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -218,7 +217,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_confirmation"
+        android:id="@+id/rl_confirmation_quiz_expand"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/Semi_Transparent"
@@ -265,7 +264,7 @@
                                 android:text="Your Point : "
                                 android:fontFamily="@font/proxima_nova"/>
                             <TextView
-                                android:id="@+id/txt_my_point"
+                                android:id="@+id/txt_my_point_quiz"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="200 "
@@ -282,7 +281,7 @@
                                 android:text="Quiz Price : "
                                 android:fontFamily="@font/proxima_nova"/>
                             <TextView
-                                android:id="@+id/txt_item_point"
+                                android:id="@+id/txt_quiz_point"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="200 "
@@ -296,7 +295,7 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/txt_status_buy"
+                            android:id="@+id/txt_status_take"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="YES"
@@ -316,17 +315,17 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center">
                     <Button
-                        android:id="@+id/btn_purchase"
+                        android:id="@+id/btn_take"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
                         android:background="@drawable/btn_gradient_style"
-                        android:text="Purchase"
+                        android:text="Take"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/proxima_nova"
                         android:layout_marginRight="10dp"/>
                     <Button
-                        android:id="@+id/btn_cancel_purchase"
+                        android:id="@+id/btn_cancel_take"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
                         android:background="@drawable/btn_cancel"

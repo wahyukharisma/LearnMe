@@ -121,7 +121,6 @@ public class FragmentQuiz extends Fragment {
                 }
             }
         });
-
         return view;
     }
 
@@ -206,11 +205,5 @@ public class FragmentQuiz extends Fragment {
                 rb_D.setChecked(true);
         }
         progressDialog.dismiss();
-
-
     }
-
-
-
-
 }

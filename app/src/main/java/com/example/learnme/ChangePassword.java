@@ -83,7 +83,6 @@ public class ChangePassword extends AppCompatActivity {
                         Toast.makeText(ChangePassword.this, "Wrong password confirm", Toast.LENGTH_SHORT).show();
                     }else{
                         changePassword(id,et_old_pass.getText().toString(),et_new_pass.getText().toString());
-                        finish();
                     }
 
                 }
@@ -111,12 +110,15 @@ public class ChangePassword extends AppCompatActivity {
         mService.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                progressDialog.dismiss();
                 if(response.isSuccessful()){
+                    if(response.body().getValue()==1){
+                        finish();
+                    }
                     Toast.makeText(ChangePassword.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(ChangePassword.this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
-                progressDialog.dismiss();
             }
 
             @Override

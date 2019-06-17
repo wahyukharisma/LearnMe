@@ -80,14 +80,14 @@ public class FragmentShop extends Fragment {
         imgMoreQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent(1);
+                Intent(2);
             }
         });
 
         imgMoreAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent(2);
+                Intent(1);
             }
         });
 

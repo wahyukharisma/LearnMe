@@ -46,7 +46,7 @@
     <string name="title_activity_question_expand">QuestionExpand</string>
     <string name="profile_menu">Profile</string>
     <string name="about_menu">About</string>
-    <string name="version_menu">V1.0</string>
+    <string name="version_menu">V1.0 (BETA)</string>
     <string name="logout_menu">Log Out</string>
     <string name="close_menu">Close</string>
 
@@ -89,6 +89,7 @@
     <string name="home">Home</string>
     <string name="gotpoint">You got</string>
     <string name="point">points</string>
+    <string name="quiz_taken">Quiz Already Taken</string>
 
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.

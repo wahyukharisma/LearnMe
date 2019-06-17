@@ -30,6 +30,7 @@ import com.example.learnme.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -72,6 +73,29 @@ public class FragmentReward extends Fragment {
         ArrayList<String> array_year = new ArrayList<>();
         spinner_year  = (Spinner) view.findViewById(R.id.spin_year);
 
+        //init value
+        recyclerView  = (RecyclerView) view.findViewById(R.id.recycle_view_user);
+        txt_index_me = (TextView) view.findViewById(R.id.txt_my_rank);
+        txt_point_me = (TextView) view.findViewById(R.id.txt_my_point);
+        txt_champ_1 = view.findViewById(R.id.txt_champ_1);
+        txt_champ_2 = view.findViewById(R.id.txt_champ_2);
+        txt_champ_3 = view.findViewById(R.id.txt_champ_3);
+
+        txt_point_1 = view.findViewById(R.id.txt_point_1);
+        txt_point_2 = view.findViewById(R.id.txt_point_2);
+        txt_point_3 = view.findViewById(R.id.txt_point_3);
+
+        txt_champ_1.setText("-");
+        txt_champ_2.setText("-");
+        txt_champ_3.setText("-");
+
+        txt_point_1.setText("-");
+        txt_point_2.setText("-");
+        txt_point_3.setText("-");
+
+        txt_index_me.setText("-");
+        txt_point_me.setText("-");
+
         //assets
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setCancelable(false);
@@ -80,6 +104,7 @@ public class FragmentReward extends Fragment {
 
         // recycle view ini
         userArrayList = new ArrayList<>();
+        userArrayList.clear();
         getRanking(thisMonth,String.valueOf(year));
         myRank(id_user,thisMonth,String.valueOf(year));
 
@@ -101,6 +126,7 @@ public class FragmentReward extends Fragment {
             public void onClick(View v) {
                 String tempMonth = spinner_month.getSelectedItem().toString();
                 String tempYear = spinner_year.getSelectedItem().toString();
+                userArrayList.clear();
                 getRanking(tempMonth,tempYear);
                 myRank(id_user,tempMonth,tempYear);
             }
@@ -110,31 +136,40 @@ public class FragmentReward extends Fragment {
     }
 
     public void initView(List<Ranking> mList){
-        txt_champ_1 = getView().findViewById(R.id.txt_champ_1);
-        txt_champ_2 = getView().findViewById(R.id.txt_champ_2);
-        txt_champ_3 = getView().findViewById(R.id.txt_champ_3);
+        if(!mList.isEmpty()){
+            txt_champ_1.setText(mList.get(0).getUsername());
+            txt_champ_2.setText(mList.get(1).getUsername());
+            txt_champ_3.setText(mList.get(2).getUsername());
 
-        txt_point_1 = getView().findViewById(R.id.txt_point_1);
-        txt_point_2 = getView().findViewById(R.id.txt_point_2);
-        txt_point_3 = getView().findViewById(R.id.txt_point_3);
+            txt_point_1.setText(mList.get(0).getPoint());
+            txt_point_2.setText(mList.get(1).getPoint());
+            txt_point_3.setText(mList.get(2).getPoint());
 
-        txt_champ_1.setText(mList.get(0).getUsername());
-        txt_champ_2.setText(mList.get(1).getUsername());
-        txt_champ_3.setText(mList.get(2).getUsername());
+        }else{
+            txt_champ_1.setText("-");
+            txt_champ_2.setText("-");
+            txt_champ_3.setText("-");
 
-        txt_point_1.setText(mList.get(0).getPoint());
-        txt_point_2.setText(mList.get(1).getPoint());
-        txt_point_3.setText(mList.get(2).getPoint());
+            txt_point_1.setText("-");
+            txt_point_2.setText("-");
+            txt_point_3.setText("-");
+
+        }
     }
 
     public void initMyRank(final String point,final Integer index){
         txt_index_me = (TextView) getView().findViewById(R.id.txt_my_rank);
         txt_point_me = (TextView) getView().findViewById(R.id.txt_my_point);
+        txt_index_me.setText("-");
+        txt_point_me.setText("-");
 
-        Integer temp= index;
-        temp+=1;
-        txt_index_me.setText(temp.toString());
-        txt_point_me.setText(point);
+//        if(point.equals("") || index == null){
+//        }else{
+//            Integer temp= index;
+//            temp+=1;
+//            txt_index_me.setText(temp.toString());
+//            txt_point_me.setText(point);
+//        }
     }
 
     private APIInterface getInterfaceService() {
@@ -157,28 +192,30 @@ public class FragmentReward extends Fragment {
         mService.enqueue(new Callback<ResponseRanking>() {
             @Override
             public void onResponse(Call<ResponseRanking> call, Response<ResponseRanking> response) {
-                progressDialog.dismiss();
                 if(response.isSuccessful()){
-                    if(response.body().getData().isEmpty()){
-                        Toast.makeText(getContext(), "No Data Selected", Toast.LENGTH_SHORT).show();
-                        userArrayList.clear();
+                    userArrayList = new ArrayList<>();
+                    if(response.body().getValue()==0){
+                        //Toast.makeText(getContext(), "No Data Selected", Toast.LENGTH_SHORT).show();
                     }else{
+                        //Toast.makeText(getContext(), "Data Selected", Toast.LENGTH_SHORT).show();
                         for(int i=0;i<response.body().getData().size();i++){
                             Ranking ranking= new Ranking(response.body().getData().get(i).getIndex(),response.body().getData().get(i).getPoint(),response.body().getData().get(i).getUsername());
                             userArrayList.add(ranking);
-
                         }
-                        initView(userArrayList);
+                        if(userArrayList.size()!=0){
+                            initView(userArrayList);
+//                            recyclerView  = (RecyclerView) getView().findViewById(R.id.recycle_view_user);
+                            rewardAdapter = new RewardAdapter(userArrayList);
+
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(rewardAdapter);
+                        }
                     }
-                    recyclerView  = (RecyclerView) getView().findViewById(R.id.recycle_view_user);
-                    rewardAdapter = new RewardAdapter(userArrayList);
-
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(rewardAdapter);
-
+                    progressDialog.dismiss();
                 }else {
-                    Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    //Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -198,15 +235,20 @@ public class FragmentReward extends Fragment {
             @Override
             public void onResponse(Call<ResponseMRanking> call, Response<ResponseMRanking> response) {
                 if(response.isSuccessful()){
-                    if( response.body().getData() == null){
+
+                    if( response.body().getValue() == 0){
                         initMyRank("No Data",-1);
                     }else {
-                        initMyRank(response.body().getData().getPoint(),response.body().getData().getIndex());
+                        if(response.body().getData() != null){
+                            txt_index_me.setText(String.valueOf(response.body().getData().getIndex()+1));
+                            txt_point_me.setText(response.body().getData().getPoint());
+                            //initMyRank(response.body().getData().getPoint(),response.body().getData().getIndex());
+                        }
                     }
-
                 }else {
-                    Toast.makeText(getContext(), "Refresh", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getView().getContext(), "Refresh", Toast.LENGTH_SHORT).show();
                 }
+                progressDialog.dismiss();
 
             }
 

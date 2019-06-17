@@ -274,7 +274,7 @@
                 android:maxLines="1"
                 android:background="@drawable/shape_edit_text"
                 android:paddingStart="10dp"
-                android:maxLength="250"/>
+                android:maxLength="100"/>
             <Button
                 android:id="@+id/btn_answer"
                 android:layout_width="match_parent"

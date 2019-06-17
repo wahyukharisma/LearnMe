@@ -167,6 +167,9 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("storeQuizHistory.php") Call<ResponseQuiz> storeQuizHistory(@Field("id") String id,
                                                                     @Field("id_quiz") String id_quiz);
+    @FormUrlEncoded
+    @POST("getQuizByUser.php") Call<ResponseQuiz> getQuizByUser(@Field("id") String id,
+                                                                      @Field("id_quiz") String id_quiz);
 
 
 

@@ -109,8 +109,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="10dp"
-        android:background="@color/sale_item_background"
-        android:elevation="3dp">
+        android:background="@color/sale_item_background">
 
         <TextView
             android:layout_width="match_parent"
