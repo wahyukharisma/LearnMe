@@ -165,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/toolbar_title">
                 <ImageView
+                    android:id="@+id/img_profile_question"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:src="@drawable/man_icon_1"

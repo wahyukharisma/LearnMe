@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseAnswer;
 import com.example.learnme.API.ResponseTrendsQuestion;
@@ -43,7 +44,7 @@ public class QuestionExpand extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private List<Answer> mData = new ArrayList<>();
-    private ImageView btn_close,thumb_up,thumb_down;
+    private ImageView btn_close,thumb_up,thumb_down,img_question_expand;
 
     //Question component
     private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment,txt_id_user_question;
@@ -65,6 +66,7 @@ public class QuestionExpand extends AppCompatActivity {
         btn_comment = (Button) findViewById(R.id.btn_answer);
         thumb_up = (ImageView) findViewById(R.id.img_thumb_up);
         thumb_down = (ImageView) findViewById(R.id.img_thumb_down);
+        img_question_expand = (ImageView) findViewById(R.id.img_profile_question);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
@@ -215,6 +217,8 @@ public class QuestionExpand extends AppCompatActivity {
         txt_date.setText(trendingQuestion.getDate());
         txt_username.setText(trendingQuestion.getIdUser());
         txt_comment.setText(trendingQuestion.getComment());
+        Log.d("message",trendingQuestion.getImage());
+        Glide.with(getApplicationContext()).load(trendingQuestion.getImage()).into(img_question_expand);
     }
 
     private APIInterface getInterfaceService() {

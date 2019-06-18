@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.Response;
 import com.example.learnme.AvatarShop;
@@ -32,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentShop extends Fragment {
 
-    private ImageView imgAvatar,imgQuiz,imgMoreAvatar,imgMoreQuiz;
+    private ImageView imgAvatar,imgQuiz,imgMoreAvatar,imgMoreQuiz,imgProfile;
     private TextView txt_username,txt_point;
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
@@ -56,6 +57,7 @@ public class FragmentShop extends Fragment {
         imgMoreAvatar = (ImageView)view.findViewById(R.id.img_more_avatar);
         imgMoreQuiz   = (ImageView)view.findViewById(R.id.img_more_quiz);
         imgInfo       = (ImageView) view.findViewById(R.id.img_info_point);
+        imgProfile    = (ImageView) view.findViewById(R.id.img_profile);
 
         //assets
         progressDialog = new ProgressDialog(getContext());
@@ -163,5 +165,6 @@ public class FragmentShop extends Fragment {
 
         txt_username.setText(user.getUsername());
         txt_point.setText(user.getPoint());
+        Glide.with(getContext()).load(user.getImage()).into(imgProfile);
     }
 }

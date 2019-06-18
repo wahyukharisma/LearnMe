@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.Response;
 import com.example.learnme.API.ResponseItem;
@@ -65,6 +66,7 @@ public class ItemExpand extends AppCompatActivity {
         String date     = intent.getExtras().getString("date");
         String sold     = intent.getExtras().getString("sold");
         String status   = intent.getStringExtra("status");
+        String image    = intent.getStringExtra("image");
 
         // view ini
         img_item        = (ImageView) findViewById(R.id.img_item);
@@ -98,14 +100,16 @@ public class ItemExpand extends AppCompatActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         getUser(id_user);
-
-        img_item.setImageResource(R.drawable.noimage);
+        progressDialog.show();
+        Glide.with(getApplicationContext()).load(image).into(img_item);
+        //img_item.setImageResource(R.drawable.noimage);
         txt_title.setText(name);
         txt_description.setText(desc);
         txt_price.setText(price);
         txt_valid_date.setText(date);
         txt_sold.setText(sold);
         txt_itempoint.setText(price);
+        progressDialog.dismiss();
 
 
         // listener

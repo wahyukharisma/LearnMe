@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseItem;
 import com.example.learnme.ItemExpand;
@@ -54,7 +55,8 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarView
     public void onBindViewHolder(@NonNull AvatarViewHolder avatarViewHolder, final int i) {
         avatarViewHolder.txt_name.setText(dataList.get(i).getName());
         avatarViewHolder.txt_price.setText(dataList.get(i).getPoint());
-        avatarViewHolder.img_item.setImageResource(R.drawable.noimage);
+        Glide.with(mContext.getApplicationContext()).load(dataList.get(i).getImage()).into(avatarViewHolder.img_item);
+        //avatarViewHolder.img_item.setImageResource(R.drawable.noimage);
 
         //listener
         avatarViewHolder.avatar_item.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +69,7 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.AvatarView
                     public void onResponse(Call<ResponseItem> call, Response<ResponseItem> response) {
                         final Intent intent = new Intent(mContext, ItemExpand.class);
                         intent.putExtra("name",dataList.get(i).getName());
+                        intent.putExtra("image",dataList.get(i).getImage());
                         intent.putExtra("price",dataList.get(i).getPoint());
                         intent.putExtra("id",dataList.get(i).getId());
                         intent.putExtra("description",dataList.get(i).getDescription());

@@ -6,11 +6,13 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.Response;
 import com.example.learnme.Model.User;
@@ -49,8 +51,6 @@ public class Profile extends AppCompatActivity {
         cd_ph     = (CardView) findViewById(R.id.cd_ph);
         cd_ep     = (CardView) findViewById(R.id.cd_ep);
         img_profile = (ImageView) findViewById(R.id.img_profile);
-
-        img_profile.setImageDrawable(getResources().getDrawable(R.drawable.noimage));
 
         //assets
         progressDialog = new ProgressDialog(Profile.this);
@@ -113,6 +113,16 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Profile.this,AvatarPicker.class);
+                intent1.putExtra("id",id);
+                startActivity(intent1);
+                finish();
+            }
+        });
     }
 
     public void initView(final User user){
@@ -120,6 +130,8 @@ public class Profile extends AppCompatActivity {
         txt_reputation = (TextView) findViewById(R.id.txt_reputation);
         txt_username = (TextView) findViewById(R.id.txt_username);
 
+        Log.d("message",user.getImage());
+        Glide.with(getApplicationContext()).load(user.getImage()).into(img_profile);
         txt_username.setText(user.getUsername());
         txt_reputation.setText(user.getReputation());
         txt_point.setText(user.getPoint());
@@ -146,7 +158,10 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if(response.isSuccessful()){
-                    initView(response.body().getData().get(0));
+                    if(response.body().getValue()==1){
+                        initView(response.body().getData().get(0));
+                    }
+
                 }else{
                     Toast.makeText(Profile.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }

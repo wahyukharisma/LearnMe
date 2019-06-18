@@ -38,6 +38,10 @@ public interface APIInterface {
     @POST("getUserBy.php")
     Call<Response> getUserBy(@Field("id") String id);
 
+    @FormUrlEncoded
+    @POST("sendEmailVerification.php")
+    Call<Response> sendEmailVerif(@Field("username") String username);
+
 
 
     // Person API
@@ -171,6 +175,12 @@ public interface APIInterface {
     @POST("getQuizByUser.php") Call<ResponseQuiz> getQuizByUser(@Field("id") String id,
                                                                       @Field("id_quiz") String id_quiz);
 
+    //Image
+    @FormUrlEncoded
+    @POST("getImageBy.php") Call<ResponseImage> getImageBy(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("updateImageBy.php") Call<ResponseImage> updateImage(@Field("id") String id,
+                                                               @Field("image") String image);
 
 
 }

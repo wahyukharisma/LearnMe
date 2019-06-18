@@ -28,6 +28,9 @@ public class Answer {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("image")
+    @Expose
+    private String image;
 
     public String getId() {
         return id;
@@ -35,6 +38,14 @@ public class Answer {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getIdQuestion() {

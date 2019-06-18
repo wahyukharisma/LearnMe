@@ -138,9 +138,10 @@ public class SignUp extends AppCompatActivity {
                 if(response.isSuccessful()){
                     if(response.body().getValue()==1){
                         registerPerson(username);
+                        sendEmailVerif(username);
                     }else{
                         progressDialog.dismiss();
-                        Toast.makeText(SignUp.this,"Username must unique",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUp.this,"Username and email must unique",Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(SignUp.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -165,7 +166,7 @@ public class SignUp extends AppCompatActivity {
                 if(response.isSuccessful()){
                     if(response.body().getValue()==1){
                         Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        Intent intent = new Intent(getApplicationContext(), EmailSuccess.class);
 
                         // adding point
                         UpdatePoint updatePoint = new UpdatePoint();
@@ -186,6 +187,22 @@ public class SignUp extends AppCompatActivity {
                 progressDialog.dismiss();
                 Log.d("message",t.getMessage());
                 Toast.makeText(SignUp.this, "Connection Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void sendEmailVerif(final String username){
+        APIInterface mApiService = this.getInterfaceService();
+        Call<Response> mService = mApiService.sendEmailVerif(username);
+        mService.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                Log.d("message","verification has been send");
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+
             }
         });
     }

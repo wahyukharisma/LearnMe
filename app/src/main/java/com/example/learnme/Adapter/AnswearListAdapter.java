@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.learnme.API.APIInterface;
 import com.example.learnme.API.ResponseAnswer;
 import com.example.learnme.Model.Answer;
@@ -53,6 +54,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
         answearListViewHolder.txt_dislike.setText(mData.get(i).getDislikes());
         answearListViewHolder.txt_like.setText(mData.get(i).getLikes());
         answearListViewHolder.txt_date.setText(mData.get(i).getDate());
+        Glide.with(mContext.getApplicationContext()).load(mData.get(i).getImage()).into(answearListViewHolder.img_profile);
 
         final Integer index =i;
         final Integer[] countLike = {1};
@@ -111,7 +113,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
     public class AnswearListViewHolder extends RecyclerView.ViewHolder {
 
         TextView txt_name,txt_desc,txt_date,txt_like,txt_dislike;
-        ImageView img_like,img_dislike;
+        ImageView img_like,img_dislike,img_profile;
 
         public AnswearListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -123,6 +125,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
             txt_date    = (TextView) itemView.findViewById(R.id.txt_date_comment);
             txt_like    = (TextView) itemView.findViewById(R.id.txt_like);
             txt_dislike = (TextView) itemView.findViewById(R.id.txt_dislike);
+            img_profile = (ImageView) itemView.findViewById(R.id.img_profile_answer);
         }
     }
 

@@ -99,7 +99,7 @@ public class QuizExpand extends AppCompatActivity {
 
 
         //Initialize View
-        img_quiz.setImageResource(R.drawable.noimage);
+        img_quiz.setImageResource(R.drawable.quizbackground);
         txt_title.setText(title);
 
         if (point.equals("0")) {

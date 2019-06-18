@@ -85,6 +85,7 @@
         android:layout_below="@id/toolbar_title"
         android:gravity="right">
         <ImageView
+            android:id="@+id/img_profile_answer"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:src="@drawable/man_icon_1"
