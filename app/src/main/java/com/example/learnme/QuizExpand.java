@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -61,6 +62,8 @@ public class QuizExpand extends AppCompatActivity {
         String request = intent.getStringExtra("request");
         String status = intent.getStringExtra("status");
 
+        Log.d("message",id_user+"/"+id+"/"+title+"/"+point+"/"+description+"/"+status);
+
         //assets
         progressDialog = new ProgressDialog(QuizExpand.this);
         progressDialog.setCancelable(false);
@@ -89,9 +92,6 @@ public class QuizExpand extends AppCompatActivity {
 
         txt_quizpoint.setText(point);
 
-
-
-
         if (status.equals("0")) {
             btn_takequiz.setVisibility(View.INVISIBLE);
             txt_purchase_quiz.setVisibility(View.VISIBLE);
@@ -115,18 +115,19 @@ public class QuizExpand extends AppCompatActivity {
             txt_quiz_category.setText("Once");
         } else {
             txt_quiz_category.setText("Unlimited");
-
-
+        }
 
         //listener
         btn_takequiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 rl_confirmation.setVisibility(View.VISIBLE);
+                Log.d("message","in1");
                 if(Integer.valueOf(txt_mypoint.getText().toString())>= Integer.valueOf(txt_quizpoint.getText().toString())){
                     btn_confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Log.d("message","in2");
                             Intent intent = new Intent(QuizExpand.this, OnBoardingQuiz.class);
                             intent.putExtra("id_quiz", id);
                             intent.putExtra("id_user", id_user);
@@ -135,6 +136,7 @@ public class QuizExpand extends AppCompatActivity {
                         }
                     });
                 }else {
+                    Log.d("message","in3");
                     txt_status.setText("NO");
                     txt_status.setTextColor(getResources().getColor(R.color.soft_red));
                     btn_confirm.setVisibility(View.INVISIBLE);
@@ -155,7 +157,6 @@ public class QuizExpand extends AppCompatActivity {
             }
         });
 
-        }
     }
 
     private void initConfirm(User user){
@@ -187,6 +188,7 @@ public class QuizExpand extends AppCompatActivity {
                 if (response.isSuccessful()){
                     mList.add(response.body().getData().get(0));
                     initConfirm(mList.get(0));
+                    Log.d("message","in4");
                 }else{
                     Toast.makeText(QuizExpand.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }

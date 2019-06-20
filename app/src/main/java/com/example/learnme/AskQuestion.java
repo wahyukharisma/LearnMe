@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,8 @@ public class AskQuestion extends AppCompatActivity {
         et_description = (EditText) findViewById(R.id.et_desc);
         btn_submit = (Button) findViewById(R.id.btn_submit_question);
         spinner_tag = (Spinner) findViewById(R.id.spinner_tag);
+
+        et_description.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         ArrayList<String> array_tag = new ArrayList<>();
 

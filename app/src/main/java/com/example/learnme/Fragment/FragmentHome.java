@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -87,6 +88,8 @@ public class FragmentHome extends Fragment {
         txt_menu_logout  = (TextView) view.findViewById(R.id.txt_menu_logout);
         img_promotion    = (ImageView) view.findViewById(R.id.img_promotion);
         et_search        = (EditText) view.findViewById(R.id.et_search);
+
+        et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         //asset
         progressDialog = new ProgressDialog(getContext());

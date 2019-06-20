@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -72,6 +73,8 @@ public class QuestionActivity extends AppCompatActivity {
         et_search = (EditText) findViewById(R.id.et_search_hp);
         btn_search = (Button) findViewById(R.id.btn_search_hp);
         rl_nodata = (RelativeLayout) findViewById(R.id.rl_nodata);
+
+        et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         if(!value.equals("1") && !value.equals("2") && !value.equals("3") && !value.equals("4") ){
             showKeyword(value,id);

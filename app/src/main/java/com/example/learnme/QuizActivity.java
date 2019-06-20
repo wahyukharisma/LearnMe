@@ -100,7 +100,7 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
         txt_index.setText(index[0]+" / 5");
         tempAnswer = new ArrayList<>();
         //getQuestion("1",index[0]);
-        FragmentTrantition(title,description,index[0],tempAnswer);
+        FragmentTransition(title,description,index[0],tempAnswer,id_quiz);
 
         //Listener
         img_back.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +109,7 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
                 if(index[0]>1){
                     index[0]--;
                     txt_index.setText((index[0])+" / 5");
-                    FragmentTrantition(title,description,index[0],tempAnswer);
+                    FragmentTransition(title,description,index[0],tempAnswer,id_quiz);
                     if(index[0]==1){
                         img_back.setVisibility(View.INVISIBLE);
                     }
@@ -127,9 +127,10 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
             public void onClick(View v) {
                 if(index[0]<5){
                     index[0]++;
+
                     txt_index.setText((index[0])+" / 5");
                     img_back.setVisibility(View.VISIBLE);
-                    FragmentTrantition(title,description,index[0],tempAnswer);
+                    FragmentTransition(title,description,index[0],tempAnswer,id_quiz);
                 }if(index[0]==5){
                     rl_result.setVisibility(View.VISIBLE);
                     img_next.setVisibility(View.INVISIBLE);
@@ -168,12 +169,13 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
         fragmentTransaction.commit();
     }
 
-    private void FragmentTrantition(final String title,final String description, final Integer index, List<TempAnswer> tempAnswer){
+    private void FragmentTransition(final String title,final String description, final Integer index, List<TempAnswer> tempAnswer,final String id_quiz){
         myFragment = new FragmentQuiz();
         Bundle bundle = new Bundle();
         bundle.putString("title",title);
         bundle.putString("desc",description);
         bundle.putInt("index",index);
+        bundle.putString("id_quiz",id_quiz);
 
         if(checkAvailable(index,tempAnswer)!=404){
             bundle.putString("answer",tempAnswer.get(checkAvailable(index,tempAnswer)).getAnswer());
@@ -278,8 +280,14 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
 
                     Intent intent = new Intent(QuizActivity.this,QuizResult.class);
                     tempPoint=tempPoint*10;
+                    Integer totalPoint = 0;
 
-                    Integer totalPoint = Integer.valueOf(point)+((Integer.valueOf(point))*tempPoint/100);
+                    if(Integer.valueOf(point)==0){
+                        totalPoint =  tempPoint;
+                    }else{
+                        totalPoint = Integer.valueOf(point)+(Integer.valueOf(point)*(tempPoint/100));
+                    }
+
 
                    UpdatePoint updatePoint = new UpdatePoint();
                    updatePoint.updatePoint(id,"3",String.valueOf(totalPoint),"Success take paid quiz id:"+id);
@@ -303,7 +311,6 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
     }
 
     private void storeHistory(final String id,final String id_quiz,final String point){
-        progressDialog.show();
         APIInterface mApiService = this.getInterfaceService();
         Call<ResponseQuiz> mService = mApiService.storeQuizHistory(id,id_quiz);
         mService.enqueue(new Callback<ResponseQuiz>() {
@@ -311,7 +318,7 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
             public void onResponse(Call<ResponseQuiz> call, Response<ResponseQuiz> response) {
                 if (response.isSuccessful()){
                     UpdatePoint updatePoint = new UpdatePoint();
-                    updatePoint.updatePoint(id,"6",point,"Take paid quiz id: "+id_quiz);
+                    updatePoint.updatePoint(id,"6",point,"Take quiz id: "+id_quiz);
                 }else{
                     progressDialog.dismiss();
                     Toast.makeText(QuizActivity.this, "Refresh", Toast.LENGTH_SHORT).show();

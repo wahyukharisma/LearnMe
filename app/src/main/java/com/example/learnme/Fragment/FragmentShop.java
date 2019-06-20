@@ -21,6 +21,7 @@ import com.example.learnme.AvatarShop;
 import com.example.learnme.Adapter.HotItemAdapter;
 import com.example.learnme.Model.User;
 import com.example.learnme.PointInfo;
+import com.example.learnme.Profile;
 import com.example.learnme.QuizList;
 import com.example.learnme.R;
 import com.google.gson.Gson;
@@ -101,6 +102,15 @@ public class FragmentShop extends Fragment {
             public void onClick(View v) {
                Intent intent = new Intent(getContext(), PointInfo.class);
                startActivity(intent);
+            }
+        });
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), Profile.class);
+                intent.putExtra("id",id_user);
+                startActivity(intent);
             }
         });
 

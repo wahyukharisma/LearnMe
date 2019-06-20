@@ -41,30 +41,14 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/txt_usernmae"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/et_username_change"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center">
-
-            <EditText
-                android:id="@+id/et_username_change"
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/proxima_nova"
-                android:hint="@string/et_username"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:padding="15dp"
-                android:textColor="@color/new_account_color"
-                android:textColorHighlight="@color/text_color_hint_light"
-                android:textColorHint="@color/text_color_hint"
-                android:maxLength="25"/>
-        </android.support.design.widget.TextInputLayout>
+            android:text="username"
+            android:fontFamily="@font/proxima_nova"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/txt_email"
@@ -190,7 +174,8 @@
                 android:textColor="@color/new_account_color"
                 android:textColorHighlight="@color/text_color_hint_light"
                 android:textColorHint="@color/text_color_hint"
-                android:maxLength="12"/>
+                android:maxLength="12"
+                android:privateImeOptions="actionDone"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button

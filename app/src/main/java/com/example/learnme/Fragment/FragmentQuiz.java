@@ -91,6 +91,7 @@ public class FragmentQuiz extends Fragment {
         String desc  = getArguments().getString("desc");
         index =getArguments().getInt("index");
         answer= getArguments().getString("answer","");
+        String id_quiz = getArguments().getString("id_quiz");
 
         txt_title.setText(title);
         txt_desc.setText(desc);
@@ -101,7 +102,7 @@ public class FragmentQuiz extends Fragment {
         progressDialog.setMessage("Loading..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        getQuestion("1",index);
+        getQuestion(id_quiz,index);
         rg_answer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

@@ -33,6 +33,7 @@
     <string name="fs_quiz">Quiz</string>
     <string name="fs_quiz_more">Get your quiz, challenge your knowledge</string>
     <string name="fs_buy">Confirm</string>
+    <string name="fs_success">Back</string>
 
     <!-- Homepage -->
     <string name="hp_trending">Trendings</string>

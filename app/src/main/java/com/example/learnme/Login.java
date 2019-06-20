@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -74,6 +75,8 @@ public class Login extends AppCompatActivity {
         txtSignUp = findViewById(R.id.txt_sign_up);
         btnSignIn = findViewById(R.id.btn_sign_in);
         txtForgotPass = findViewById(R.id.txt_forgot_password);
+
+        password.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
 
         // listener

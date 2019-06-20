@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -39,7 +41,8 @@ public class EditProfile extends AppCompatActivity {
 
     private ImageView btn_close;
     private Button btn_edit;
-    private EditText et_username,et_email,et_first_name,et_last_name,et_address,et_phone;
+    private EditText et_email,et_first_name,et_last_name,et_address,et_phone;
+    private TextView et_username;
 
     private String id="";
 
@@ -50,6 +53,7 @@ public class EditProfile extends AppCompatActivity {
 
         Intent intent= getIntent();
         id = intent.getStringExtra("id");
+        Log.d("message",id);
 
 
         // view ini
@@ -65,7 +69,7 @@ public class EditProfile extends AppCompatActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
-        getUserBy(String.valueOf(1));
+        getUserBy(id);
         getPersonBy(id);
 
 
@@ -80,22 +84,16 @@ public class EditProfile extends AppCompatActivity {
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                et_username.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
                 et_email.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
                 et_address.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
                 et_first_name.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
                 et_last_name.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
                 et_phone.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
 
-                if(et_username.getText().toString().equals("") || et_email.getText().toString().equals("") || et_address.getText().toString().equals("")
+                if( et_email.getText().toString().equals("") || et_address.getText().toString().equals("")
                         || et_first_name.getText().toString().equals("") || et_last_name.getText().toString().equals("") || et_phone.getText().toString().equals("")
                         || !isEmailValid(et_email.getText().toString())){
 
-                    if(et_username.getText().toString().equals("")){
-                        et_username.startAnimation(shake);
-                        et_username.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
-                    }
                     if(et_phone.getText().toString().equals("")){
                         et_phone.startAnimation(shake);
                         et_phone.setCompoundDrawablesWithIntrinsicBounds(null,null,et_drawable_right,null);
@@ -128,7 +126,7 @@ public class EditProfile extends AppCompatActivity {
     }
 
     public void initUser(List<User> mUser){
-        et_username  = (EditText) findViewById(R.id.et_username_change);
+        et_username  = (TextView) findViewById(R.id.et_username_change);
         et_email     = (EditText) findViewById(R.id.et_email_change);
 
         et_username.setText(mUser.get(0).getUsername());
@@ -145,6 +143,9 @@ public class EditProfile extends AppCompatActivity {
         et_first_name.setText(mPerson.get(0).getFirstName());
         et_last_name.setText(mPerson.get(0).getLastName());
         et_phone.setText(mPerson.get(0).getPhone());
+
+        et_phone.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
     }
 
     private APIInterface getInterfaceService() {

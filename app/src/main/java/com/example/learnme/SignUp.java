@@ -13,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -56,6 +57,8 @@ public class SignUp extends AppCompatActivity {
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         et_email    = findViewById(R.id.et_email);
+
+        et_email.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         //assets
         progressDialog = new ProgressDialog(SignUp.this);

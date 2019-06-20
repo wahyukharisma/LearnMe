@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,6 +48,8 @@ public class ChangePassword extends AppCompatActivity {
         et_old_pass = (EditText) findViewById(R.id.et_password_old);
         et_new_pass = (EditText) findViewById(R.id.et_new_pass);
         et_confirm_pass = (EditText) findViewById(R.id.et_confirm_pass);
+
+        et_confirm_pass.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
 
 
