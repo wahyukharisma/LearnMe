@@ -58,7 +58,7 @@
                 android:fontFamily="@font/proxima_nova"
                 android:background="@drawable/shape_edit_text"
                 android:paddingStart="10dp"
-                android:maxLength="50"
+                android:maxLength="100"
                 android:maxLines="1"/>
             <EditText
                 android:id="@+id/et_desc"

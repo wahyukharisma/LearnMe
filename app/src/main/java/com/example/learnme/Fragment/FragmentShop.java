@@ -57,8 +57,10 @@ public class FragmentShop extends Fragment {
         imgQuiz       = (ImageView)view.findViewById(R.id.img_banner_quiz);
         imgMoreAvatar = (ImageView)view.findViewById(R.id.img_more_avatar);
         imgMoreQuiz   = (ImageView)view.findViewById(R.id.img_more_quiz);
-        imgInfo       = (ImageView) view.findViewById(R.id.img_info_point);
-        imgProfile    = (ImageView) view.findViewById(R.id.img_profile);
+        imgInfo       = (ImageView)view.findViewById(R.id.img_info_point);
+        imgProfile    = (ImageView)view.findViewById(R.id.img_profile);
+        txt_point     = (TextView) view.findViewById(R.id.txt_user_point);
+        txt_username  = (TextView) view.findViewById(R.id.txt_user_name);
 
         //assets
         progressDialog = new ProgressDialog(getContext());
@@ -170,11 +172,10 @@ public class FragmentShop extends Fragment {
     }
 
     private void initData(User user){
-        txt_point     = (TextView) getView().findViewById(R.id.txt_user_point);
-        txt_username  = (TextView) getView().findViewById(R.id.txt_user_name);
-
         txt_username.setText(user.getUsername());
         txt_point.setText(user.getPoint());
-        Glide.with(getContext()).load(user.getImage()).into(imgProfile);
+        if(isAdded()){
+            Glide.with(getContext()).load(user.getImage()).into(imgProfile);
+        }
     }
 }

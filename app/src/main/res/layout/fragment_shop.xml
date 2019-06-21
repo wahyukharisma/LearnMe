@@ -49,7 +49,7 @@
                 android:id="@+id/txt_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Made Wahyu Kharisma Candra Kirana"
+                android:text="Username"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:fontFamily="@font/proxima_nova"/>
@@ -68,7 +68,7 @@
                     android:id="@+id/txt_user_point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:text="0"
                     android:textSize="16sp"
                     android:fontFamily="@font/proxima_nova"
                     android:layout_gravity="center"

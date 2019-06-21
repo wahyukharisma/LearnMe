@@ -30,7 +30,7 @@
                     android:id="@+id/txt_like"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:text="100"
+                    android:text="0"
                     android:gravity="center"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/proxima_nova"/>
@@ -50,7 +50,7 @@
                     android:id="@+id/txt_dislike"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:text="100"
+                    android:text="0"
                     android:gravity="center"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/proxima_nova"/>
@@ -67,7 +67,7 @@
             android:id="@+id/txt_desc_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum"
+            android:text="Answer"
             android:background="@color/colorPrimary"/>
 
     </LinearLayout>
@@ -122,7 +122,7 @@
                     android:id="@+id/txt_date_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 May 2019"
+                    android:text="Date"
                     android:textSize="12sp"
                     android:fontFamily="@font/proxima_nova" />
             </LinearLayout>

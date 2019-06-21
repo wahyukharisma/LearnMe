@@ -43,7 +43,7 @@
                 android:id="@+id/txt_title_question_expand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="[Title] What the meaning of Ovovivivar"
+                android:text="Question Title"
                 android:textSize="23sp"
                 android:textColor="@color/Title_Question"
                 android:fontFamily="@font/proxima_nova"
@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="Senior High School"
+                    android:text="tag"
                     android:fontFamily="@font/proxima_nova"/>
             </LinearLayout>
 
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="@string/lorem_ipsum"
+                android:text="Description"
                 android:fontFamily="@font/proxima_nova"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"/>
@@ -106,7 +106,7 @@
                     android:id="@+id/txt_like_trend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20"
+                    android:text="0"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
                     android:fontFamily="@font/proxima_nova"
@@ -121,7 +121,7 @@
                     android:id="@+id/txt_dislike_trend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20"
+                    android:text="0"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
                     android:fontFamily="@font/proxima_nova"
@@ -145,7 +145,7 @@
                         android:id="@+id/txt_date_question_expand"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="1 May 2019"
+                        android:text="Date"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="15sp"
                         android:fontFamily="@font/proxima_nova"
@@ -182,7 +182,7 @@
                         android:id="@+id/txt_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Made Wahyu Kharisma Candra Kirana"
+                        android:text="Username"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         android:fontFamily="@font/proxima_nova"
@@ -215,7 +215,7 @@
                     android:id="@+id/txt_total_answear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text="0"
                     android:textSize="17sp"
                     android:fontFamily="@font/proxima_nova"/>
 

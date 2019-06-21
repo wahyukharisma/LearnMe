@@ -72,7 +72,7 @@
                 android:textColor="@color/new_account_color"
                 android:textColorHighlight="@color/text_color_hint_light"
                 android:textColorHint="@color/text_color_hint"
-                android:maxLength="25"/>
+                android:maxLength="50"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -98,7 +98,7 @@
             android:textColor="@color/new_account_color"
             android:textColorHighlight="@color/text_color_hint_light"
             android:textColorHint="@color/text_color_hint"
-            android:maxLength="30"/>
+            android:maxLength="50"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -124,7 +124,7 @@
                 android:textColor="@color/new_account_color"
                 android:textColorHighlight="@color/text_color_hint_light"
                 android:textColorHint="@color/text_color_hint"
-                android:maxLength="30"/>
+                android:maxLength="50"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/txt_address"

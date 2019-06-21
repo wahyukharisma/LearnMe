@@ -287,13 +287,17 @@ public class FragmentHome extends Fragment {
                                 Integer.valueOf(response.body().getData().get(i).getLikes()),
                                 Integer.valueOf(response.body().getData().get(i).getDislikes()),
                                 Integer.valueOf(response.body().getData().get(i).getComment())));
+
+                        // recycle view trending listener
+                        if(isAdded()){
+                            RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycle_view_trending_question);
+                            TrendingQuestionAdapter myAdapter   = new TrendingQuestionAdapter(getContext(),listTrending,id_user);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(myAdapter);
+                        }
+
                     }
-                    // recycle view trending listener
-                    RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycle_view_trending_question);
-                    TrendingQuestionAdapter myAdapter   = new TrendingQuestionAdapter(getContext(),listTrending,id_user);
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(myAdapter);
                     progressDialog.dismiss();
                 }else{
                     progressDialog.dismiss();

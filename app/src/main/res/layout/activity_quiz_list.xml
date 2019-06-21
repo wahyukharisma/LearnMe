@@ -30,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar_quiz_shop"
-        android:layout_above="@id/bottomNavShop">
+        android:layout_above="@id/bottomNavShop"
+        android:background="@color/circle_none">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle_view_quiz"
