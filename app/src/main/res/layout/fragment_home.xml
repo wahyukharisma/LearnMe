@@ -167,6 +167,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginStart="10dp">
                         <ImageView
+                            android:id="@+id/img_es"
                             android:layout_width="170dp"
                             android:layout_height="match_parent"
                             android:src="@drawable/es_logo_2" />
@@ -180,6 +181,7 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardCornerRadius="10dp">
                         <ImageView
+                            android:id="@+id/img_jhs"
                             android:layout_width="170dp"
                             android:layout_height="match_parent"
                             android:src="@drawable/jhs_logo_2" />
@@ -202,6 +204,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_marginStart="10dp">
                         <ImageView
+                            android:id="@+id/img_shs"
                             android:layout_width="170dp"
                             android:layout_height="match_parent"
                             android:src="@drawable/shs_logo_2" />
@@ -215,6 +218,7 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardCornerRadius="10dp">
                         <ImageView
+                            android:id="@+id/img_g"
                             android:layout_width="170dp"
                             android:layout_height="match_parent"
                             android:src="@drawable/g_logo_2" />

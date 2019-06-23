@@ -256,6 +256,7 @@ public class QuizExpand extends AppCompatActivity {
             btn_confirm.setText("Konfirmasi");
             txt_language.setText("Bahasa");
             txt_language_select.setText("Inggris");
+            img_quiz.setImageResource(R.drawable.quiz_expand_indo);
         }
     }
 

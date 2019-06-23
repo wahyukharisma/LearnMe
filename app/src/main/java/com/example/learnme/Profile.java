@@ -31,6 +31,7 @@ public class Profile extends AppCompatActivity {
     private CardView cd_lq,cd_la,cd_cpass,cd_ph, cd_ep;
     private String id="";
     private TextView txt_username,txt_point,txt_reputation,txt_title;
+    private ImageView img_edit_profile,img_change_pass,img_list_question,img_list_answer,img_point_history;
 
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
@@ -57,6 +58,11 @@ public class Profile extends AppCompatActivity {
         cd_ep     = (CardView) findViewById(R.id.cd_ep);
         img_profile = (ImageView) findViewById(R.id.img_profile);
         txt_title   = (TextView) findViewById(R.id.txt_profile_title);
+        img_edit_profile = (ImageView) findViewById(R.id.img_edit_profile);
+        img_change_pass = (ImageView) findViewById(R.id.img_change_pass);
+        img_list_answer = (ImageView) findViewById(R.id.img_list_answer);
+        img_list_question = (ImageView) findViewById(R.id.img_list_question);
+        img_point_history = (ImageView) findViewById(R.id.img_point_history);
 
         initViewLanguage(getPref);
 
@@ -188,6 +194,11 @@ public class Profile extends AppCompatActivity {
     private void initViewLanguage(String language){
         if(language.equals("Indonesia")){
             txt_title.setText("Profil");
+            img_edit_profile.setImageResource(R.drawable.edit_profile_indo);
+            img_point_history.setImageResource(R.drawable.point_history_indo);
+            img_list_question.setImageResource(R.drawable.list_question_indo);
+            img_change_pass.setImageResource(R.drawable.change_password_indo);
+            img_list_answer.setImageResource(R.drawable.list_answer_indo);
         }
     }
 }

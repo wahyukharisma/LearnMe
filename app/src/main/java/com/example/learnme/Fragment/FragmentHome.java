@@ -64,7 +64,7 @@ public class FragmentHome extends Fragment {
     private CardView cd_es,cd_jhs,cd_shs,cd_g;
     private Button btn_search;
     private RelativeLayout semi_transparent,item_menu;
-    private ImageView img_menu,img_promotion;
+    private ImageView img_menu,img_promotion,img_es,img_jhs,img_shs,img_g;
     private TextView txt_menu_close,txt_menu_profile,txt_menu_about,txt_menu_logout,txt_language,txt_trendings,txt_category,txt_promotion;
     private ProgressDialog progressDialog;
     private String id_user="";
@@ -97,6 +97,10 @@ public class FragmentHome extends Fragment {
         txt_trendings    = (TextView) view.findViewById(R.id.txt_trendings);
         txt_category     = (TextView) view.findViewById(R.id.txt_category);
         txt_promotion    = (TextView) view.findViewById(R.id.txt_promotion);
+        img_es           = (ImageView) view.findViewById(R.id.img_es);
+        img_jhs          = (ImageView) view.findViewById(R.id.img_jhs);
+        img_shs          = (ImageView) view.findViewById(R.id.img_shs);
+        img_g            = (ImageView) view.findViewById(R.id.img_g);
 
         et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
@@ -345,6 +349,10 @@ public class FragmentHome extends Fragment {
             txt_menu_profile.setText("Profil");
             txt_language.setText("Bahasa");
             txt_menu_close.setText("Tutup");
+            img_g.setImageResource(R.drawable.kategori_umum_indo);
+            img_es.setImageResource(R.drawable.kategori_sd_indo);
+            img_jhs.setImageResource(R.drawable.kategori_smp_indo);
+            img_shs.setImageResource(R.drawable.kategori_sma_indo);
         }
     }
 }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,7 @@ public class FragmentReward extends Fragment {
     private TextView txt_champ_3,txt_point_3;
     private TextView txt_point_me,txt_index_me,txt_date_title,txt_point_title,txt_my_rank,txt_celebration;
     private Button btnSearch;
+    private ImageView img_title_reward;
 
     @Nullable
     @Override
@@ -91,6 +93,7 @@ public class FragmentReward extends Fragment {
         txt_my_rank = view.findViewById(R.id.txt_my_rank_title);
         txt_point_title = view.findViewById(R.id.txt_point_title);
         txt_celebration = view.findViewById(R.id.txt_celebration);
+        img_title_reward = view.findViewById(R.id.img_title_reward);
 
         txt_point_1 = view.findViewById(R.id.txt_point_1);
         txt_point_2 = view.findViewById(R.id.txt_point_2);
@@ -311,6 +314,7 @@ public class FragmentReward extends Fragment {
             btnSearch.setText("Cari");
             txt_date_title.setText("Tanngal");
             txt_celebration.setText("Selamat Kepada Pemenang");
+            img_title_reward.setImageResource(R.drawable.reward_logo_indo);
         }
     }
 

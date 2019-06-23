@@ -130,6 +130,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginStart="10dp">
                     <ImageView
+                        android:id="@+id/img_edit_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/editprofile" />
@@ -144,6 +145,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginStart="10dp">
                     <ImageView
+                        android:id="@+id/img_change_pass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/changepassword" />
@@ -165,6 +167,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginStart="10dp">
                     <ImageView
+                        android:id="@+id/img_list_question"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/listofquestion" />
@@ -178,6 +181,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginStart="10dp">
                     <ImageView
+                        android:id="@+id/img_list_answer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/listofanswer" />
@@ -199,6 +203,7 @@
                     app:cardCornerRadius="10dp"
                     android:layout_marginStart="10dp">
                     <ImageView
+                        android:id="@+id/img_point_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/pointhistory" />

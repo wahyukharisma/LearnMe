@@ -42,7 +42,7 @@ public class FragmentShop extends Fragment {
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
     private String id_user="";
-    private ImageView imgInfo;
+    private ImageView imgInfo,img_shop_title;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class FragmentShop extends Fragment {
         txt_desc_avatar = (TextView) view.findViewById(R.id.txt_desc_avatar);
         txt_desc_quiz   = (TextView) view.findViewById(R.id.txt_desc_quiz);
         txt_quiz_title  = (TextView) view.findViewById(R.id.info_quiz);
+        img_shop_title  = (ImageView) view.findViewById(R.id.img_shop_title);
 
         changeViewLanguage(getPref);
 
@@ -197,6 +198,8 @@ public class FragmentShop extends Fragment {
             txt_quiz_title.setText("Kuis");
             txt_desc_quiz.setText("Ambil kuis, uji kemampuanmu");
             txt_desc_avatar.setText("Beli avatar favoritmu");
+            imgQuiz.setImageResource(R.drawable.banner_quiz_indo);
+            img_shop_title.setImageResource(R.drawable.shop_logo_indo);
 
         }
     }
