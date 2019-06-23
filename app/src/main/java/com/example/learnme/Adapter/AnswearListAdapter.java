@@ -1,6 +1,7 @@
 package com.example.learnme.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,6 +27,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.AnswearListViewHolder> {
 
     Context mContext;
@@ -48,6 +51,13 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final AnswearListViewHolder answearListViewHolder, int i) {
+        //get preference language
+        final SharedPreferences pref       = mContext.getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
+        if(getPref.equals("Indonesia")){
+            answearListViewHolder.txt_comment_answer.setText("Komentar, ");
+        }
 
         answearListViewHolder.txt_desc.setText(mData.get(i).getAnswer());
         answearListViewHolder.txt_name.setText(mData.get(i).getIdUser());
@@ -112,7 +122,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
 
     public class AnswearListViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt_name,txt_desc,txt_date,txt_like,txt_dislike;
+        TextView txt_name,txt_desc,txt_date,txt_like,txt_dislike,txt_comment_answer;
         ImageView img_like,img_dislike,img_profile;
 
         public AnswearListViewHolder(@NonNull View itemView) {
@@ -126,6 +136,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
             txt_like    = (TextView) itemView.findViewById(R.id.txt_like);
             txt_dislike = (TextView) itemView.findViewById(R.id.txt_dislike);
             img_profile = (ImageView) itemView.findViewById(R.id.img_profile_answer);
+            txt_comment_answer = (TextView) itemView.findViewById(R.id.txt_comment_answer);
         }
     }
 

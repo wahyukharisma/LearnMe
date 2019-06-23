@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -38,14 +40,20 @@ public class QuizList extends AppCompatActivity {
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
     private String id_user="";
+    private TextView txt_title_quiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_list);
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //View ini
         btn_close = (ImageView) findViewById(R.id.btn_close);
+        txt_title_quiz = (TextView) findViewById(R.id.txt_title_quiz);
 
         Intent intent =  getIntent();
         id_user = intent.getStringExtra("id");
@@ -54,6 +62,9 @@ public class QuizList extends AppCompatActivity {
         // avatar shop ini
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavShop);
         btn_close = (ImageView) findViewById(R.id.btn_close);
+
+        //Initialize view language
+        initViewLanguage(getPref);
 
         // initialize recycle view item
         listQuiz = new ArrayList<>();
@@ -157,5 +168,11 @@ public class QuizList extends AppCompatActivity {
                 Toast.makeText(QuizList.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title_quiz.setText("Kuis");
+        }
     }
 }

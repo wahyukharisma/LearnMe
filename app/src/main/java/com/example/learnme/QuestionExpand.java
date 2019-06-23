@@ -47,7 +47,7 @@ public class QuestionExpand extends AppCompatActivity {
     private ImageView btn_close,thumb_up,thumb_down,img_question_expand;
 
     //Question component
-    private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment,txt_id_user_question;
+    private TextView txt_title,txt_tag,txt_desc,txt_like,txt_dislike,txt_date,txt_username,txt_comment,txt_id_user_question,txt_tag_info,txt_ask,txt_comment_info,txt_question_title;
     private Button btn_comment;
     private EditText et_answer;
 
@@ -55,10 +55,16 @@ public class QuestionExpand extends AppCompatActivity {
     private String id_user = "";
     private String id="";
 
+    private String getPref="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_expand);
+
+        //get preference language
+        final SharedPreferences pref2       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        getPref = pref2.getString("language","English");
 
         //view ini
         btn_close = (ImageView) findViewById(R.id.btn_close_question);
@@ -67,10 +73,17 @@ public class QuestionExpand extends AppCompatActivity {
         thumb_up = (ImageView) findViewById(R.id.img_thumb_up);
         thumb_down = (ImageView) findViewById(R.id.img_thumb_down);
         img_question_expand = (ImageView) findViewById(R.id.img_profile_question);
+        txt_tag_info     = (TextView) findViewById(R.id.txt_tag_info);
+        txt_ask          = (TextView) findViewById(R.id.txt_ask);
+        txt_comment_info = (TextView) findViewById(R.id.txt_comment_info);
+        txt_question_title = (TextView) findViewById(R.id.txt_questiontitle);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         id_user = intent.getStringExtra("id_user");
+
+        //init View Language
+        initViewLanguage(getPref);
 
         //asset
         progressDialog = new ProgressDialog(this);
@@ -202,13 +215,33 @@ public class QuestionExpand extends AppCompatActivity {
         txt_title.setText(trendingQuestion.getTitle());
         String tag="";
         if(trendingQuestion.getIdTag().equals("1")){
-            tag = "General";
+            if(getPref.equals("Indonesia")){
+                tag = "Umum";
+            }else{
+                tag = "General";
+            }
+
         }else if((trendingQuestion.getIdTag().equals("2"))){
-            tag = "Elementary School";
+            if(getPref.equals("Indonesia")){
+                tag = "SD";
+            }else{
+                tag = "Elementary School";
+            }
+
         }else if((trendingQuestion.getIdTag().equals("3"))){
-            tag = "Junior High School";
+            if(getPref.equals("Indonesia")){
+                tag = "SMP";
+            }else{
+                tag = "Junior High School";
+            }
+
         }else{
-            tag = "Senior High School";
+            if(getPref.equals("Indonesia")){
+                tag = "SMA";
+            }else{
+                tag = "Senior High School";
+            }
+
         }
         txt_tag.setText(tag);
         txt_desc.setText(trendingQuestion.getDescription());
@@ -415,5 +448,17 @@ public class QuestionExpand extends AppCompatActivity {
     private void refreshActivity(){
         finish();
         startActivity(getIntent());
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_comment_info.setText("Komentar");
+            txt_tag_info.setText("Kategori : ");
+            txt_ask.setText("Bertanya");
+            et_answer.setHint("Masukkan jawaban");
+            btn_comment.setText("Jawab");
+            txt_question_title.setText("Pertanyaan");
+
+        }
     }
 }

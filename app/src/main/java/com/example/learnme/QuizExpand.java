@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,14 +43,18 @@ public class QuizExpand extends AppCompatActivity {
 
     private RelativeLayout rl_confirmation;
     private Button btn_confirm,btn_back;
-    private TextView txt_mypoint,txt_quizpoint;
-    private TextView txt_status;
+    private TextView txt_mypoint,txt_quizpoint,txt_confirmation,txt_my_point,txt_quizprice,txt_language,txt_language_select;
+    private TextView txt_status,txt_amount,txt_attempt,txt_desc_quiz;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_expand);
+
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        final String getPref = pref.getString("language","English");
 
         //Get Intent
         Intent intent = getIntent();
@@ -82,6 +87,11 @@ public class QuizExpand extends AppCompatActivity {
         img_quiz = (ImageView) findViewById(R.id.img_quiz);
         txt_quiz_category = (TextView) findViewById(R.id.txt_quiz_category);
         txt_purchase_quiz = (TextView) findViewById(R.id.txt_purchased_quiz);
+        txt_amount = (TextView) findViewById(R.id.txt_amount);
+        txt_attempt = (TextView) findViewById(R.id.txt_attempt);
+        txt_desc_quiz = (TextView) findViewById(R.id.txt_description_quiz);
+        txt_language = (TextView) findViewById(R.id.txt_language);
+        txt_language_select = (TextView) findViewById(R.id.txt_language_select);
 
         // Init confirmation
         rl_confirmation = (RelativeLayout) findViewById(R.id.rl_confirmation_quiz_expand);
@@ -89,6 +99,10 @@ public class QuizExpand extends AppCompatActivity {
         btn_confirm     = (Button) findViewById(R.id.btn_take);
         btn_back        = (Button) findViewById(R.id.btn_cancel_take);
         txt_status      = (TextView) findViewById(R.id.txt_status_take);
+        txt_confirmation = (TextView) findViewById(R.id.txt_confirmation);
+        txt_my_point    = (TextView) findViewById(R.id.txt_mypoint);
+        txt_quizprice   = (TextView) findViewById(R.id.txt_quizprice);
+
 
         txt_quizpoint.setText(point);
 
@@ -102,8 +116,17 @@ public class QuizExpand extends AppCompatActivity {
         img_quiz.setImageResource(R.drawable.quizbackground);
         txt_title.setText(title);
 
+
+        //Init view language
+        initViewLanguage(getPref);
+
         if (point.equals("0")) {
-            txt_price.setText("FREE");
+            if(getPref.equals("Indonesia")){
+                txt_price.setText("GRATIS");
+            }else{
+                txt_price.setText("FREE");
+            }
+
         }else{
             txt_price.setText(point);
         }
@@ -112,9 +135,19 @@ public class QuizExpand extends AppCompatActivity {
         txt_sold.setText(sold);
         
         if (request.equals("1")) {
-            txt_quiz_category.setText("Once");
+            if(getPref.equals("Indonesia")){
+                txt_quiz_category.setText("Sekali");
+            }else{
+                txt_quiz_category.setText("Once");
+            }
+
         } else {
-            txt_quiz_category.setText("Unlimited");
+            if(getPref.equals("Indonesia")){
+                txt_quiz_category.setText("Tanpa Maksimum");
+            }else{
+                txt_quiz_category.setText("Unlimited");
+            }
+
         }
 
         //listener
@@ -122,12 +155,16 @@ public class QuizExpand extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rl_confirmation.setVisibility(View.VISIBLE);
-                Log.d("message","in1");
+
                 if(Integer.valueOf(txt_mypoint.getText().toString())>= Integer.valueOf(txt_quizpoint.getText().toString())){
                     btn_confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Log.d("message","in2");
+                            if(getPref.equals("Indonesia")){
+                                txt_status.setText("YA");
+                            }else{
+                                txt_status.setText("YES");
+                            }
                             Intent intent = new Intent(QuizExpand.this, OnBoardingQuiz.class);
                             intent.putExtra("id_quiz", id);
                             intent.putExtra("id_user", id_user);
@@ -136,8 +173,12 @@ public class QuizExpand extends AppCompatActivity {
                         }
                     });
                 }else {
-                    Log.d("message","in3");
-                    txt_status.setText("NO");
+                    if(getPref.equals("Indonesia")){
+                        txt_status.setText("TIDAK");
+                    }else{
+                        txt_status.setText("NO");
+                    }
+
                     txt_status.setTextColor(getResources().getColor(R.color.soft_red));
                     btn_confirm.setVisibility(View.INVISIBLE);
                 }
@@ -188,7 +229,7 @@ public class QuizExpand extends AppCompatActivity {
                 if (response.isSuccessful()){
                     mList.add(response.body().getData().get(0));
                     initConfirm(mList.get(0));
-                    Log.d("message","in4");
+
                 }else{
                     Toast.makeText(QuizExpand.this, "Refresh", Toast.LENGTH_SHORT).show();
                 }
@@ -200,6 +241,22 @@ public class QuizExpand extends AppCompatActivity {
                 Toast.makeText(QuizExpand.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_amount.setText("Jumlah Kuis Terambil");
+            txt_attempt.setText("Pengambilan");
+            txt_desc_quiz.setText("Deskripsi");
+            btn_takequiz.setText("Ambil Kuis");
+            txt_confirmation.setText("Konfirmasi Pengambilan");
+            txt_my_point.setText("Poin Saya : ");
+            txt_quizprice.setText("Harga Kuis : ");
+            btn_back.setText("Kembali");
+            btn_confirm.setText("Konfirmasi");
+            txt_language.setText("Bahasa");
+            txt_language_select.setText("Inggris");
+        }
     }
 
 }

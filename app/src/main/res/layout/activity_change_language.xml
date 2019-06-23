@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangeLanguage">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_navigation_color">
+        <ImageView
+            android:id="@+id/btn_close_language"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+        <TextView
+            android:id="@+id/txt_language_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Language"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/proxima_nova"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/toolbar_language"
+        android:gravity="center">
+
+        <RadioGroup
+            android:id="@+id/radio_group_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/radio_button_INA"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Indonesia"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/background_navigation_color"/>
+            <RadioButton
+                android:id="@+id/radio_button_ENG"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="English"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/background_navigation_color"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_change_language"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_gradient_style"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+</RelativeLayout>

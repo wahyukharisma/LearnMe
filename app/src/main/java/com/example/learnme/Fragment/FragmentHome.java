@@ -33,6 +33,7 @@ import com.example.learnme.About;
 import com.example.learnme.Adapter.TrendingQuestionAdapter;
 import com.example.learnme.AskQuestion;
 import com.example.learnme.AvatarShop;
+import com.example.learnme.ChangeLanguage;
 import com.example.learnme.Login;
 import com.example.learnme.Model.Trending;
 import com.example.learnme.Profile;
@@ -64,7 +65,7 @@ public class FragmentHome extends Fragment {
     private Button btn_search;
     private RelativeLayout semi_transparent,item_menu;
     private ImageView img_menu,img_promotion;
-    private TextView txt_menu_close,txt_menu_profile,txt_menu_about,txt_menu_logout;
+    private TextView txt_menu_close,txt_menu_profile,txt_menu_about,txt_menu_logout,txt_language,txt_trendings,txt_category,txt_promotion;
     private ProgressDialog progressDialog;
     private String id_user="";
     private EditText et_search;
@@ -75,6 +76,10 @@ public class FragmentHome extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_home,container,false);
 
         id_user=getArguments().getString("user");
+
+        //get preference language
+        final SharedPreferences pref       = getContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
 
         // View ini
         btn_search       = (Button) view.findViewById(R.id.btn_search_hp);
@@ -88,6 +93,10 @@ public class FragmentHome extends Fragment {
         txt_menu_logout  = (TextView) view.findViewById(R.id.txt_menu_logout);
         img_promotion    = (ImageView) view.findViewById(R.id.img_promotion);
         et_search        = (EditText) view.findViewById(R.id.et_search);
+        txt_language     = (TextView) view.findViewById(R.id.txt_menu_language);
+        txt_trendings    = (TextView) view.findViewById(R.id.txt_trendings);
+        txt_category     = (TextView) view.findViewById(R.id.txt_category);
+        txt_promotion    = (TextView) view.findViewById(R.id.txt_promotion);
 
         et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
@@ -97,6 +106,8 @@ public class FragmentHome extends Fragment {
         progressDialog.setMessage("Loading..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+        //Set View by Languange
+        changeViewLanguange(getPref);
 
         // initialize recycle view item trending
         trendingQuestion(id_user);
@@ -146,6 +157,14 @@ public class FragmentHome extends Fragment {
                 Intent intent = new Intent(getContext(),Login.class);
                 startActivity(intent);
                 getActivity().finish();
+            }
+        });
+
+        txt_language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ChangeLanguage.class);
+                startActivity(intent);
             }
         });
 
@@ -312,5 +331,20 @@ public class FragmentHome extends Fragment {
                 Toast.makeText(getContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void changeViewLanguange(String language){
+        if(language.equals("Indonesia")){
+            txt_trendings.setText("Populer");
+            et_search.setHint("Cari Pertanyaan");
+            btn_search.setText("Cari");
+            txt_category.setText("Kategori");
+            txt_promotion.setText("Promosi");
+            txt_menu_about.setText("Tentang");
+            txt_menu_logout.setText("Keluar");
+            txt_menu_profile.setText("Profil");
+            txt_language.setText("Bahasa");
+            txt_menu_close.setText("Tutup");
+        }
     }
 }

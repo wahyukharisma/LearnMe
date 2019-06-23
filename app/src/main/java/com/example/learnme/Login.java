@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
 
     private EditText username,password;
-    private TextView txtSignUp,txtForgotPass;
+    private TextView txtSignUp,txtForgotPass,txt_login_title;
     private Button btnSignIn;
     private ProgressDialog progressDialog;
 
@@ -55,6 +55,11 @@ public class Login extends AppCompatActivity {
             startActivity(mainActivity);
             finish();
         }
+
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
+
 
         //asset
         final Drawable et_drawable_right         = getApplicationContext().getResources().getDrawable(R.drawable.ic_error_red_24dp);
@@ -75,8 +80,11 @@ public class Login extends AppCompatActivity {
         txtSignUp = findViewById(R.id.txt_sign_up);
         btnSignIn = findViewById(R.id.btn_sign_in);
         txtForgotPass = findViewById(R.id.txt_forgot_password);
+        txt_login_title = findViewById(R.id.txt_login);
 
         password.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        initViewLanguage(getPref);
 
 
         // listener
@@ -181,6 +189,15 @@ public class Login extends AppCompatActivity {
         SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
         Boolean isIntroActiviyOpened = pref.getBoolean("isLogin",false);
         return isIntroActiviyOpened;
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_login_title.setText("Masuk");
+            txtForgotPass.setText("Lupa Password ?");
+            txtSignUp.setText("Pertama kali? Daftar disini");
+            btnSignIn.setText("Masuk");
+        }
     }
 
 }

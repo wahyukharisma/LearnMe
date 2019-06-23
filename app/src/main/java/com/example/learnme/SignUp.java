@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -38,7 +39,7 @@ public class SignUp extends AppCompatActivity {
     private Toolbar toolbar;
     private static final int GALLERY_INTENT = 1;
     ImageView imageView;
-    TextView signIn;
+    TextView signIn,txt_new_account;
     Button signUp;
     EditText et_username,et_password,et_email;
 
@@ -49,6 +50,9 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         // ini view
         toolbar = findViewById(R.id.toolbar_sign_up);
         setSupportActionBar(toolbar);
@@ -57,8 +61,11 @@ public class SignUp extends AppCompatActivity {
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         et_email    = findViewById(R.id.et_email);
+        txt_new_account = findViewById(R.id.txt_new_account);
 
         et_email.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        setViewLanguage(getPref);
 
         //assets
         progressDialog = new ProgressDialog(SignUp.this);
@@ -215,5 +222,13 @@ public class SignUp extends AppCompatActivity {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public void setViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_new_account.setText("Daftar");
+            signUp.setText("Daftar");
+            signIn.setText("Sudah punya akun? Masuk disini");
+        }
     }
 }

@@ -49,7 +49,9 @@
     <string name="about_menu">About</string>
     <string name="version_menu">V1.0 (BETA)</string>
     <string name="logout_menu">Log Out</string>
+    <string name="language_menu">Language</string>
     <string name="close_menu">Close</string>
+    <string name="apply">Apply</string>
 
     <!-- Question -->
     <string name="type_answear">Type an answer</string>
@@ -102,5 +104,8 @@
     <!-- About -->
     <string name="about">I am an education mobile apps basically like forums, you can start a conversation by asking a question or give comment on an active question, simple like that? Yes, I am giving you a simple way of sharing and learning.
 "But I want more than that" of course, you can challenge yourself by taking a free or paid quiz. You can learn everywhere and every time, school is not the only  way if you want to know more, "I have a question about an animal, can I ask this in LearnMe?" Yes absolutely you can, In LearnMe the main topic allowed is about science.</string>
+    <string name="about_indo">
+Saya adalah aplikasi mobile pendidikan yang pada dasarnya seperti forum, Anda dapat memulai percakapan dengan mengajukan pertanyaan atau memberikan komentar pada pertanyaan aktif, sederhana seperti itu? Ya, saya memberi Anda cara sederhana untuk berbagi dan belajar.
+"Tapi saya ingin lebih dari itu" tentu saja, Anda bisa menantang diri sendiri dengan mengikuti kuis gratis atau berbayar. Anda dapat belajar di mana-mana dan setiap saat, sekolah bukan satu-satunya cara jika Anda ingin tahu lebih banyak, "Saya punya pertanyaan tentang binatang, dapatkah saya menanyakan hal ini di LearnMe?" Ya tentu saja Anda bisa, Di LearnMe topik utama yang diizinkan adalah tentang sains.</string>
 
 </resources>

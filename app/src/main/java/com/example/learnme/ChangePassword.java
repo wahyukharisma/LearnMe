@@ -2,6 +2,8 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -33,6 +36,9 @@ public class ChangePassword extends AppCompatActivity {
     private EditText et_old_pass,et_new_pass,et_confirm_pass;
     private String id="";
 
+    private TextInputLayout txt_oldpass,txt_newpass,txt_confirmpass;
+    private TextView txt_change_pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,10 @@ public class ChangePassword extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
 
         //view ini
         btn_close   = (ImageView) findViewById(R.id.btn_close_edit_pass);
@@ -48,8 +58,14 @@ public class ChangePassword extends AppCompatActivity {
         et_old_pass = (EditText) findViewById(R.id.et_password_old);
         et_new_pass = (EditText) findViewById(R.id.et_new_pass);
         et_confirm_pass = (EditText) findViewById(R.id.et_confirm_pass);
+        txt_oldpass = (TextInputLayout) findViewById(R.id.txt_old_pass);
+        txt_newpass = (TextInputLayout) findViewById(R.id.txt_new_pas);
+        txt_confirmpass = (TextInputLayout) findViewById(R.id.txt_confirm_pass);
+        txt_change_pass = (TextView) findViewById(R.id.txt_change_pass);
 
         et_confirm_pass.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        setViewLanguage(getPref);
 
 
 
@@ -130,5 +146,16 @@ public class ChangePassword extends AppCompatActivity {
                 Toast.makeText(ChangePassword.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_oldpass.setHint("Password Lama");
+            txt_newpass.setHint("Password Baru");
+            txt_confirmpass.setHint("Konfirmasi Password");
+            btn_change.setText("Perbarui");
+            txt_change_pass.setText("Perbarui Password");
+
+        }
     }
 }

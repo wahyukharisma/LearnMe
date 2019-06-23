@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -38,11 +40,16 @@ public class AskQuestion extends AppCompatActivity {
     private Button btn_submit;
     private Spinner spinner_tag;
     private ProgressDialog progressDialog;
+    private TextView txt_title_ask,txt_tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_question);
+
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
 
         Intent intent = getIntent();
         final String idUser = intent.getStringExtra("user");
@@ -53,14 +60,25 @@ public class AskQuestion extends AppCompatActivity {
         et_description = (EditText) findViewById(R.id.et_desc);
         btn_submit = (Button) findViewById(R.id.btn_submit_question);
         spinner_tag = (Spinner) findViewById(R.id.spinner_tag);
+        txt_title_ask = (TextView) findViewById(R.id.txt_title_ask);
+        txt_tag       = (TextView) findViewById(R.id.txt_tag);
 
         et_description.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         ArrayList<String> array_tag = new ArrayList<>();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tag_arrays,R.layout.support_simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner_tag.setAdapter(adapter);
+        if(getPref.equals("Indonesia")){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tag_arrays_indo,R.layout.support_simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+            spinner_tag.setAdapter(adapter);
+        }else{
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tag_arrays,R.layout.support_simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+            spinner_tag.setAdapter(adapter);
+        }
+
+        //init View Language
+        initViewLanguage(getPref);
 
         //Asset
         final Animation shake = AnimationUtils.loadAnimation(AskQuestion.this,R.anim.shake);
@@ -152,5 +170,15 @@ public class AskQuestion extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title_ask.setText("Bertanya");
+            btn_submit.setText("Tanya");
+            et_title.setHint("Judul");
+            et_description.setHint("Deskripsi");
+            txt_tag.setText("Pilih kategori");
+        }
     }
 }

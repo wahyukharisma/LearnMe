@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class Profile extends AppCompatActivity {
     private ImageView btn_close,img_profile;
     private CardView cd_lq,cd_la,cd_cpass,cd_ph, cd_ep;
     private String id="";
-    private TextView txt_username,txt_point,txt_reputation;
+    private TextView txt_username,txt_point,txt_reputation,txt_title;
 
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
@@ -43,6 +44,10 @@ public class Profile extends AppCompatActivity {
         final Intent intent=getIntent();
         id= intent.getStringExtra("id");
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         // view ini
         btn_close = (ImageView) findViewById(R.id.btn_close_profile);
         cd_lq     = (CardView)findViewById(R.id.cd_lq);
@@ -51,6 +56,9 @@ public class Profile extends AppCompatActivity {
         cd_ph     = (CardView) findViewById(R.id.cd_ph);
         cd_ep     = (CardView) findViewById(R.id.cd_ep);
         img_profile = (ImageView) findViewById(R.id.img_profile);
+        txt_title   = (TextView) findViewById(R.id.txt_profile_title);
+
+        initViewLanguage(getPref);
 
         //assets
         progressDialog = new ProgressDialog(Profile.this);
@@ -175,5 +183,11 @@ public class Profile extends AppCompatActivity {
                 Toast.makeText(Profile.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title.setText("Profil");
+        }
     }
 }

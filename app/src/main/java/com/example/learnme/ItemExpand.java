@@ -2,11 +2,13 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -43,13 +45,14 @@ public class ItemExpand extends AppCompatActivity {
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
 
     private ImageView img_item,btn_close,img_item_buy;
-    private TextView txt_title, txt_price, txt_valid_date, txt_sold, txt_description,txt_purchased,txt_item_buy;
+    private TextView txt_title, txt_price, txt_valid_date, txt_sold, txt_description,txt_purchased,txt_item_buy,txt_valid_date_title,txt_total_sold,txt_category,txt_item_category,txt_description_item,txt_confirmation;
+    private TextView txt_mypoint_title,txt_itempoint_title;
     private Button btn_buy;
     private RelativeLayout rl_confirmation,rl_success_buy;
 
     //Confirmation layout
     private Button btn_purchase,btn_cancel_purchase,btn_success;
-    private TextView txt_mypoint,txt_itempoint,txt_status;
+    private TextView txt_mypoint,txt_itempoint,txt_status,txt_success_buy;
     private List<User> mList= new ArrayList<>();
     Fragment myFragment;
 
@@ -59,6 +62,10 @@ public class ItemExpand extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_expand);
+
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        final String getPref = pref.getString("language","English");
 
         // get data intent
         Intent intent   = getIntent();
@@ -92,6 +99,16 @@ public class ItemExpand extends AppCompatActivity {
         rl_success_buy  = (RelativeLayout) findViewById(R.id.rl_success_buy);
         btn_success     = (Button) findViewById(R.id.btn_finish);
         imgAnimation       = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.button_animation);
+        txt_success_buy = (TextView) findViewById(R.id.txt_success_buy);
+        txt_confirmation = (TextView) findViewById(R.id.txt_confirmation);
+        txt_mypoint_title = (TextView) findViewById(R.id.txt_my_point_title);
+        txt_itempoint_title = (TextView) findViewById(R.id.txt_item_point_title);
+
+        txt_valid_date_title = (TextView) findViewById(R.id.txt_valid_title);
+        txt_total_sold  = (TextView) findViewById(R.id.txt_total_sold);
+        txt_category    = (TextView) findViewById(R.id.txt_category);
+        txt_item_category = (TextView) findViewById(R.id.txt_item_category);
+        txt_description_item = (TextView) findViewById(R.id.txt_description_item);
 
         if(status.equals("1")){
             txt_purchased.setVisibility(View.VISIBLE);
@@ -101,6 +118,8 @@ public class ItemExpand extends AppCompatActivity {
             btn_buy.setVisibility(View.VISIBLE);
         }
 
+        //change view language
+        initViewLanguage(getPref);
 
         //assets
         progressDialog = new ProgressDialog(ItemExpand.this);
@@ -135,10 +154,18 @@ public class ItemExpand extends AppCompatActivity {
             public void onClick(View v) {
                 rl_confirmation.setVisibility(View.VISIBLE);
                 if(Integer.valueOf(txt_mypoint.getText().toString())>=Integer.valueOf(txt_price.getText().toString())){
-                    txt_status.setText("YES");
+                    if(getPref.equals("Indonesia")){
+                        txt_status.setText("YA");
+                    }else{
+                        txt_status.setText("YES");
+                    }
                 }else{
+                    if(getPref.equals("Indonesia")){
+                        txt_status.setText("TIDAK");
+                    }else {
+                        txt_status.setText("NO");
+                    }
                     btn_purchase.setVisibility(View.GONE);
-                    txt_status.setText("NO");
                     txt_status.setTextColor(getResources().getColor(R.color.soft_red));
                 }
             }
@@ -245,6 +272,28 @@ public class ItemExpand extends AppCompatActivity {
                 Toast.makeText(ItemExpand.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_valid_date_title.setText("Berlaku sampai");
+            txt_total_sold.setText("Jumlah Terjual");
+            txt_category.setText("Kategori");
+            txt_item_category.setText("Gambar/Profil Avatar");
+            txt_description_item.setText("Deskripsi");
+            btn_buy.setText("Beli");
+            btn_success.setText("Kembali");
+            txt_success_buy.setText("Selamat Anda Memiliki Avatar Baru");
+            txt_confirmation.setText("Konfirmasi Pembelian");
+            txt_mypoint_title.setText("Poin Saya");
+            txt_itempoint_title.setText("Poin Barang");
+            btn_purchase.setText("Beli");
+            btn_cancel_purchase.setText("Batal");
+            txt_purchased.setText("Avatar Sudah Dibeli");
+
+
+
+        }
     }
 
 }

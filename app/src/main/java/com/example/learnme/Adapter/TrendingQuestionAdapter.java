@@ -2,6 +2,7 @@ package com.example.learnme.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,8 @@ import com.example.learnme.QuestionExpand;
 import com.example.learnme.R;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuestionAdapter.TrendingQuestionViewHolder> {
 
@@ -41,11 +44,20 @@ public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuesti
 
     @Override
     public void onBindViewHolder(@NonNull final TrendingQuestionViewHolder trendingQuestionViewHolder, final int i) {
+
+        //get preference language
+        final SharedPreferences pref       = mContext.getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         trendingQuestionViewHolder.txt_title.setText(dataList.get(i).getTitle());
         trendingQuestionViewHolder.txt_desc.setText(dataList.get(i).getDescription());
         trendingQuestionViewHolder.txt_comment.setText(Integer.toString(dataList.get(i).getComment()));
         trendingQuestionViewHolder.txt_like.setText(Integer.toString(dataList.get(i).getLike()));
         trendingQuestionViewHolder.txt_dislike.setText(Integer.toString(dataList.get(i).getDislike()));
+
+        if (getPref.equals("Indonesia")){
+            trendingQuestionViewHolder.txt_comment_trending.setText("Komentar");
+        }
 
         trendingQuestionViewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +78,7 @@ public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuesti
 
     public class TrendingQuestionViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt_title, txt_desc, txt_comment, txt_like, txt_dislike;
+        TextView txt_title, txt_desc, txt_comment, txt_like, txt_dislike,txt_comment_trending;
         CardView item;
 
         public TrendingQuestionViewHolder(@NonNull View itemView) {
@@ -78,6 +90,7 @@ public class TrendingQuestionAdapter extends RecyclerView.Adapter<TrendingQuesti
             txt_like    = (TextView) itemView.findViewById(R.id.txt_like_trend);
             txt_dislike = (TextView) itemView.findViewById(R.id.txt_dislike_trend);
             item        = (CardView) itemView.findViewById(R.id.cv_trending);
+            txt_comment_trending = (TextView) itemView.findViewById(R.id.txt_comment_trending);
         }
     }
 }

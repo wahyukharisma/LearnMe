@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -44,6 +46,7 @@ public class ListOfAnswerUser extends AppCompatActivity {
     private EditText et_keyword;
     private Button btn_search;
     private ImageView img_back;
+    private TextView txt_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,18 @@ public class ListOfAnswerUser extends AppCompatActivity {
         Intent intent = getIntent();
         id_user = intent.getStringExtra("id");
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //View ini
         et_keyword = (EditText) findViewById(R.id.et_search_hp);
         btn_search = (Button) findViewById(R.id.btn_search_hp);
         img_back   = (ImageView) findViewById(R.id.btn_close_answer);
-        rl_nodata   = (RelativeLayout) findViewById(R.id.rl_nodata);
+        rl_nodata  = (RelativeLayout) findViewById(R.id.rl_nodata);
+        txt_title  = (TextView) findViewById(R.id.txt_title_answer);
+
+        initViewLanguage(getPref);
 
         //asset
         progressDialog = new ProgressDialog(this);
@@ -177,5 +187,13 @@ public class ListOfAnswerUser extends AppCompatActivity {
                 Toast.makeText(ListOfAnswerUser.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title.setText("Jawaban Saya");
+            btn_search.setText("Cari");
+            et_keyword.setHint("Masukkan Kata Kunci");
+        }
     }
 }

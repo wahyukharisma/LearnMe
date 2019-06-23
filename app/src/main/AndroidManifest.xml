@@ -14,59 +14,87 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AvatarPicker"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PointInfo"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuizResult"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuizExpand"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuizList"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PointHistory"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ListOfAnswerUser"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ListOfQuestionUser"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EmailSuccess"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ForgotPassword"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ChangePassword"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EditProfile"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Profile"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".About"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AskQuestion"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuestionExpand"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuestionActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ItemExpand"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AvatarShop"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HomePage"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Login"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SignUp"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OnBoardingScreen"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OnBoardingQuiz"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuizActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Splash_screen"
+        <activity android:name=".ChangeLanguage"></activity>
+        <activity
+            android:name=".AvatarPicker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PointInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizExpand"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PointHistory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListOfAnswerUser"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListOfQuestionUser"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EmailSuccess"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgotPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangePassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AskQuestion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuestionExpand"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ItemExpand"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AvatarShop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OnBoardingScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OnBoardingQuiz"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

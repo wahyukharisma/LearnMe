@@ -2,8 +2,10 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.design.animation.ImageMatrixProperty;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +44,8 @@ public class EditProfile extends AppCompatActivity {
     private ImageView btn_close;
     private Button btn_edit;
     private EditText et_email,et_first_name,et_last_name,et_address,et_phone;
-    private TextView et_username;
+    private TextView et_username,txt_edit_profile;
+    private TextInputLayout txt_phone,txt_first_name,txt_last_name,txt_address;
 
     private String id="";
 
@@ -55,10 +58,26 @@ public class EditProfile extends AppCompatActivity {
         id = intent.getStringExtra("id");
         Log.d("message",id);
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
 
-        // view ini
+        //View ini
+        txt_edit_profile = (TextView) findViewById(R.id.txt_edit_profile_title);
+        et_first_name  = (EditText) findViewById(R.id.et_first_name);
+        et_last_name   = (EditText) findViewById(R.id.et_last_name);
+        et_address     = (EditText) findViewById(R.id.et_address);
+        et_phone       = (EditText) findViewById(R.id.et_phone);
+        et_username  = (TextView) findViewById(R.id.et_username_change);
+        et_email     = (EditText) findViewById(R.id.et_email_change);
         btn_close    = (ImageView) findViewById(R.id.btn_close_edit);
-        btn_edit  = (Button) findViewById(R.id.btn_edit_profile);
+        btn_edit     = (Button) findViewById(R.id.btn_edit_profile);
+        txt_phone    = (TextInputLayout) findViewById(R.id.txt_phone);
+        txt_address  = (TextInputLayout) findViewById(R.id.txt_address);
+        txt_first_name    = (TextInputLayout) findViewById(R.id.txt_first_name);
+        txt_last_name     = (TextInputLayout) findViewById(R.id.txt_last_name);
+
+        setViewLanguage(getPref);
 
         //asset
         final Animation shake = AnimationUtils.loadAnimation(EditProfile.this,R.anim.shake);
@@ -126,19 +145,11 @@ public class EditProfile extends AppCompatActivity {
     }
 
     public void initUser(List<User> mUser){
-        et_username  = (TextView) findViewById(R.id.et_username_change);
-        et_email     = (EditText) findViewById(R.id.et_email_change);
-
         et_username.setText(mUser.get(0).getUsername());
         et_email.setText(mUser.get(0).getEmail());
     }
 
     public void initPerson(List<Person> mPerson){
-        et_first_name  = (EditText) findViewById(R.id.et_first_name);
-        et_last_name   = (EditText) findViewById(R.id.et_last_name);
-        et_address     = (EditText) findViewById(R.id.et_address);
-        et_phone       = (EditText) findViewById(R.id.et_phone);
-
         et_address.setText(mPerson.get(0).getAddress());
         et_first_name.setText(mPerson.get(0).getFirstName());
         et_last_name.setText(mPerson.get(0).getLastName());
@@ -235,5 +246,17 @@ public class EditProfile extends AppCompatActivity {
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    private void setViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_edit_profile.setText("Pengaturan Profil");
+            btn_edit.setText("Perbarui");
+            txt_phone.setHint("Telepon");
+            txt_address.setHint("Alamat");
+            txt_first_name.setHint("Nama Depan");
+            txt_last_name.setHint("Nama Belakang");
+        }
+
     }
 }

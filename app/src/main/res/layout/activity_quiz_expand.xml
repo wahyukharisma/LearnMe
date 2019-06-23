@@ -89,6 +89,7 @@
         android:background="@color/sale_item_background">
 
         <TextView
+            android:id="@+id/txt_amount"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="@string/amount"
@@ -127,6 +128,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="10dp">
         <TextView
+            android:id="@+id/txt_attempt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/attempt"
@@ -144,8 +146,45 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/view_3"
+        android:id="@+id/view_4"
         android:layout_below="@id/ll_description"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/View"/>
+
+    <LinearLayout
+        android:id="@+id/ll_description_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/view_4"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/txt_language"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Language"
+            android:textSize="17sp"
+            android:fontFamily="@font/proxima_nova"/>
+        <TextView
+            android:id="@+id/txt_language_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="English"
+            android:textSize="17sp"
+            android:fontFamily="@font/proxima_nova"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/category"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_below="@id/ll_description_2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginStart="15dp"
@@ -165,6 +204,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/txt_description_quiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
@@ -259,6 +299,7 @@
                             android:layout_height="30dp"
                             android:orientation="horizontal">
                             <TextView
+                                android:id="@+id/txt_mypoint"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Your Point : "
@@ -276,6 +317,7 @@
                             android:layout_height="50dp"
                             android:orientation="horizontal">
                             <TextView
+                                android:id="@+id/txt_quizprice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Quiz Price : "
@@ -301,7 +343,7 @@
                             android:text="YES"
                             android:fontFamily="@font/proxima_nova"
                             android:gravity="center"
-                            android:textSize="30sp"
+                            android:textSize="25sp"
                             android:textStyle="bold"
                             android:textColor="@color/category"/>
                     </LinearLayout>

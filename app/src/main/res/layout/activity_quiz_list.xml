@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
         <TextView
+            android:id="@+id/txt_title_quiz"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Quiz"

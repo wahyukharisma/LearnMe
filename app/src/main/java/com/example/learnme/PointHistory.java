@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -42,6 +44,7 @@ public class PointHistory extends AppCompatActivity {
     private Button btn_search;
     private RelativeLayout rl_no_data;
     private ImageView img_close;
+    private TextView txt_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,10 @@ public class PointHistory extends AppCompatActivity {
         Intent intent = getIntent();
         id_user = intent.getStringExtra("id");
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //View ini
         btn_search = (findViewById(R.id.btn_search_point));
         int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -58,10 +65,13 @@ public class PointHistory extends AppCompatActivity {
         String thisMonth = convertMonth(month);
         rl_no_data = (RelativeLayout) findViewById(R.id.rl_no_data);
         img_close = (ImageView) findViewById(R.id.btn_close_point);
+        txt_title = (TextView) findViewById(R.id.txt_title_point);
 
         spinner_month = (Spinner) findViewById(R.id.spin_month);
         ArrayList<String> array_year = new ArrayList<>();
         spinner_year  = (Spinner) findViewById(R.id.spin_year);
+
+        initViewLanguage(getPref);
 
         //spinner ini
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.month,R.layout.support_simple_spinner_dropdown_item);
@@ -183,5 +193,12 @@ public class PointHistory extends AppCompatActivity {
                 Toast.makeText(PointHistory.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title.setText("Jejak Poin");
+            btn_search.setText("Cari");
+        }
     }
 }

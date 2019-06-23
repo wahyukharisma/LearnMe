@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -35,6 +37,7 @@ public class ListOfQuestionUser extends AppCompatActivity {
     private ImageView img_back;
     private Button btn_search;
     private EditText et_search;
+    private TextView txt_title;
 
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
 
@@ -52,11 +55,18 @@ public class ListOfQuestionUser extends AppCompatActivity {
         Intent intent =  getIntent();
         id_user       = intent.getStringExtra("id");
 
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //View ini
         img_back   = (ImageView) findViewById(R.id.btn_close_question);
         btn_search = (Button) findViewById(R.id.btn_search_hp);
         et_search  = (EditText) findViewById(R.id.et_search_hp);
         rl_nodata   = (RelativeLayout) findViewById(R.id.rl_nodata);
+        txt_title   = (TextView) findViewById(R.id.txt_myquestion);
+
+        initViewLanguage(getPref);
 
         //asset
         progressDialog = new ProgressDialog(this);
@@ -170,5 +180,13 @@ public class ListOfQuestionUser extends AppCompatActivity {
                 Toast.makeText(ListOfQuestionUser.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title.setText("Pertanyaan Saya");
+            btn_search.setText("Cari");
+            et_search.setHint("Masukkan Kata Kunci");
+        }
     }
 }

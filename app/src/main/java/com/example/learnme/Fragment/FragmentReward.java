@@ -2,6 +2,7 @@ package com.example.learnme.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,6 +42,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class FragmentReward extends Fragment {
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
 
@@ -53,7 +56,7 @@ public class FragmentReward extends Fragment {
     private TextView txt_champ_1,txt_point_1;
     private TextView txt_champ_2,txt_point_2;
     private TextView txt_champ_3,txt_point_3;
-    private TextView txt_point_me,txt_index_me;
+    private TextView txt_point_me,txt_index_me,txt_date_title,txt_point_title,txt_my_rank,txt_celebration;
     private Button btnSearch;
 
     @Nullable
@@ -63,10 +66,14 @@ public class FragmentReward extends Fragment {
 
         id_user=getArguments().getString("user");
 
+        //get preference language
+        final SharedPreferences pref       = getContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //View ini
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH);
-        String thisMonth = convertMonth(month);
+        String thisMonth = convertMonth(month,getPref);
         btnSearch = (Button) view.findViewById(R.id.btn_search_rank);
 
         spinner_month = (Spinner) view.findViewById(R.id.spin_month);
@@ -80,6 +87,10 @@ public class FragmentReward extends Fragment {
         txt_champ_1 = view.findViewById(R.id.txt_champ_1);
         txt_champ_2 = view.findViewById(R.id.txt_champ_2);
         txt_champ_3 = view.findViewById(R.id.txt_champ_3);
+        txt_date_title = view.findViewById(R.id.txt_date_title);
+        txt_my_rank = view.findViewById(R.id.txt_my_rank_title);
+        txt_point_title = view.findViewById(R.id.txt_point_title);
+        txt_celebration = view.findViewById(R.id.txt_celebration);
 
         txt_point_1 = view.findViewById(R.id.txt_point_1);
         txt_point_2 = view.findViewById(R.id.txt_point_2);
@@ -95,6 +106,9 @@ public class FragmentReward extends Fragment {
 
         txt_index_me.setText("-");
         txt_point_me.setText("-");
+
+        //Init View language
+        initViewLanguage(getPref);
 
         //assets
         progressDialog = new ProgressDialog(getContext());
@@ -205,7 +219,7 @@ public class FragmentReward extends Fragment {
                         if(userArrayList.size()!=0){
                             initView(userArrayList);
 //                            recyclerView  = (RecyclerView) getView().findViewById(R.id.recycle_view_user);
-                            rewardAdapter = new RewardAdapter(userArrayList);
+                            rewardAdapter = new RewardAdapter(userArrayList,getContext());
 
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                             recyclerView.setLayoutManager(layoutManager);
@@ -260,35 +274,44 @@ public class FragmentReward extends Fragment {
         });
     }
 
-    private String convertMonth(Integer input){
+    private String convertMonth(Integer input,String language){
         String temp="";
-        if(input==0){
-            temp="January";
-        }else if(input==1){
-            temp="February";
-        }else if(input==2){
-            temp="March";
-        }else if(input==3){
-            temp="April";
-        }else if(input==4){
-            temp="May";
-        }else if(input==5){
-            temp="June";
-        }else if(input==6){
-            temp="July";
-        }else if(input==7){
-            temp="August";
-        }else if(input==8){
-            temp="September";
-        }else if(input==9){
-            temp="October";
-        }else if(input==10){
-            temp="November";
-        }else{
-            temp="December";
-        }
-
+            if(input==0){
+                temp="January";
+            }else if(input==1){
+                temp="February";
+            }else if(input==2){
+                temp="March";
+            }else if(input==3){
+                temp="April";
+            }else if(input==4){
+                temp="May";
+            }else if(input==5){
+                temp="June";
+            }else if(input==6){
+                temp="July";
+            }else if(input==7){
+                temp="August";
+            }else if(input==8){
+                temp="September";
+            }else if(input==9){
+                temp="October";
+            }else if(input==10){
+                temp="November";
+            }else{
+                temp="December";
+            }
         return temp;
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_point_title.setText("Poin");
+            txt_my_rank.setText("Peringkat Saya");
+            btnSearch.setText("Cari");
+            txt_date_title.setText("Tanngal");
+            txt_celebration.setText("Selamat Kepada Pemenang");
+        }
     }
 
 }

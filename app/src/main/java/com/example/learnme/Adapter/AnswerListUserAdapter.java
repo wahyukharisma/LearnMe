@@ -1,6 +1,7 @@
 package com.example.learnme.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import com.example.learnme.Model.Answer;
 import com.example.learnme.R;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class AnswerListUserAdapter extends RecyclerView.Adapter<AnswerListUserAdapter.AnswerListUserViewHolder> {
 
@@ -35,12 +38,21 @@ public class AnswerListUserAdapter extends RecyclerView.Adapter<AnswerListUserAd
 
     @Override
     public void onBindViewHolder(@NonNull AnswerListUserAdapter.AnswerListUserViewHolder answerListUserViewHolder, int i) {
+
+        //get preference language
+        final SharedPreferences pref       = mContext.getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         answerListUserViewHolder.txt_desc.setText(mData.get(i).getAnswer());
         answerListUserViewHolder.txt_name.setText(mData.get(i).getIdUser());
         answerListUserViewHolder.txt_dislike.setText(mData.get(i).getDislikes());
         answerListUserViewHolder.txt_like.setText(mData.get(i).getLikes());
         answerListUserViewHolder.txt_date.setText(mData.get(i).getDate());
         answerListUserViewHolder.txt_id_question.setText(mData.get(i).getIdQuestion());
+
+        if(getPref.equals("Indonesia")){
+            answerListUserViewHolder.txt_comment_title.setText("Komentar");
+        }
     }
 
     @Override
@@ -49,7 +61,7 @@ public class AnswerListUserAdapter extends RecyclerView.Adapter<AnswerListUserAd
     }
 
     public class AnswerListUserViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_name,txt_desc,txt_date,txt_like,txt_dislike,txt_id_question;
+        TextView txt_name,txt_desc,txt_date,txt_like,txt_dislike,txt_id_question,txt_comment_title;
         ImageView img_like,img_dislike;
 
         public AnswerListUserViewHolder(@NonNull View itemView) {
@@ -63,6 +75,7 @@ public class AnswerListUserAdapter extends RecyclerView.Adapter<AnswerListUserAd
             txt_date    = (TextView) itemView.findViewById(R.id.txt_date_comment);
             txt_like    = (TextView) itemView.findViewById(R.id.txt_like);
             txt_dislike = (TextView) itemView.findViewById(R.id.txt_dislike);
+            txt_comment_title = (TextView) itemView.findViewById(R.id.txt_comment_title);
         }
     }
 }

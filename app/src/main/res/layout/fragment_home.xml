@@ -225,6 +225,7 @@
 
             <!-- For Promotions -->
             <TextView
+                android:id="@+id/txt_promotion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hp_promotion"
@@ -279,7 +280,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:background="@color/background_navigation_color"/>
 
         <LinearLayout
@@ -342,6 +343,15 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
                 android:layout_marginBottom="17dp"/>
+            <TextView
+                android:id="@+id/txt_menu_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/language_menu"
+                android:textColor="@color/popuptext_menu"
+                android:textSize="20sp"
+                android:fontFamily="@font/proxima_nova"
+                android:layout_marginBottom="20dp"/>
             <TextView
                 android:id="@+id/txt_menu_logout"
                 android:layout_width="wrap_content"

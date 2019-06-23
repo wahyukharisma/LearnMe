@@ -4,10 +4,8 @@
         android:id="@+id/question"
         android:title="@string/add_question"
         android:icon="@drawable/question"/>
-
     <item
         android:id="@+id/quiz"
         android:title="@string/add_quiz"
         android:icon="@drawable/answer"/>
-
 </menu>

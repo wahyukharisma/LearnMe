@@ -2,6 +2,7 @@ package com.example.learnme.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,10 +33,12 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class FragmentShop extends Fragment {
 
     private ImageView imgAvatar,imgQuiz,imgMoreAvatar,imgMoreQuiz,imgProfile;
-    private TextView txt_username,txt_point;
+    private TextView txt_username,txt_point,txt_point_title,txt_desc_avatar,txt_desc_quiz,txt_quiz_title;
     private ProgressDialog progressDialog;
     public static final String BASE_URL = com.example.learnme.API.BASE_URL.URL;
     private String id_user="";
@@ -46,6 +49,10 @@ public class FragmentShop extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_shop,container,false);
 
         id_user=getArguments().getString("user");
+
+        //get preference language
+        final SharedPreferences pref       = getContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
 
         //view pager ini
 //        ViewPager viewPager           = view.findViewById(R.id.vp_item);
@@ -61,6 +68,12 @@ public class FragmentShop extends Fragment {
         imgProfile    = (ImageView)view.findViewById(R.id.img_profile);
         txt_point     = (TextView) view.findViewById(R.id.txt_user_point);
         txt_username  = (TextView) view.findViewById(R.id.txt_user_name);
+        txt_point_title = (TextView) view.findViewById(R.id.txt_point_title_shop);
+        txt_desc_avatar = (TextView) view.findViewById(R.id.txt_desc_avatar);
+        txt_desc_quiz   = (TextView) view.findViewById(R.id.txt_desc_quiz);
+        txt_quiz_title  = (TextView) view.findViewById(R.id.info_quiz);
+
+        changeViewLanguage(getPref);
 
         //assets
         progressDialog = new ProgressDialog(getContext());
@@ -176,6 +189,15 @@ public class FragmentShop extends Fragment {
         txt_point.setText(user.getPoint());
         if(isAdded()){
             Glide.with(getContext()).load(user.getImage()).into(imgProfile);
+        }
+    }
+
+    private void changeViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_quiz_title.setText("Kuis");
+            txt_desc_quiz.setText("Ambil kuis, uji kemampuanmu");
+            txt_desc_avatar.setText("Beli avatar favoritmu");
+
         }
     }
 }

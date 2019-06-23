@@ -2,6 +2,7 @@ package com.example.learnme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -34,17 +36,24 @@ public class ForgotPassword extends AppCompatActivity {
     private EditText et_username,et_email;
     private ImageView img_back;
     private ProgressDialog progressDialog;
+    private TextView txt_info_forgot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
         //view ini
         btnSubmit = findViewById(R.id.btn_submit_forgot);
         et_username = findViewById(R.id.et_username_input);
         et_email = findViewById(R.id.et_email_input);
         img_back = findViewById(R.id.img_back);
+        txt_info_forgot = findViewById(R.id.txt_info_forgot);
+
+        initViewLanguage(getPref);
 
         //asset
         final Drawable et_drawable_right         = getApplicationContext().getResources().getDrawable(R.drawable.ic_error_red_24dp);
@@ -144,5 +153,12 @@ public class ForgotPassword extends AppCompatActivity {
                 Toast.makeText(ForgotPassword.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_info_forgot.setText("Masukkan identitas pengguna");
+            btnSubmit.setText("Kirim");
+        }
     }
 }

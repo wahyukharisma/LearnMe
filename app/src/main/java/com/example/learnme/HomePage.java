@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.learnme.Fragment.FragmentHome;
@@ -21,16 +23,18 @@ import java.io.Serializable;
 public class HomePage extends AppCompatActivity {
 
     private String id_user="";
-
     private Fragment myFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+
         //testing bundle
         SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
         id_user = pref.getString("id","");
+
 
         // homepage ini
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
@@ -77,6 +81,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+
 
     private void FragmentTransaction(Fragment myFragment){
         FragmentTransaction fragmentTransaction   = getSupportFragmentManager().beginTransaction();

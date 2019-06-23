@@ -2,6 +2,7 @@ package com.example.learnme.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizListViewHolder> {
 
@@ -56,6 +59,16 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
 
     @Override
     public void onBindViewHolder(@NonNull QuizListAdapter.QuizListViewHolder quizListViewHolder, int i) {
+
+        //get preference language
+        final SharedPreferences pref       = mContex.getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
+
+        if (getPref.equals("Indonesia")) {
+            quizListViewHolder.txt_price_title.setText("Harga");
+            quizListViewHolder.txt_type.setText("Tipe : ");
+        }
+
         quizListViewHolder.txt_point.setText(mData.get(i).getPoint());
         quizListViewHolder.tx_title.setText(mData.get(i).getTitle());
 
@@ -104,7 +117,7 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
 
     public class QuizListViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tx_title,txt_point,txt_status_quiz;
+        private TextView tx_title,txt_point,txt_status_quiz,txt_type,txt_price_title;
         private LinearLayout item_quiz;
 
         public QuizListViewHolder(@NonNull View itemView) {
@@ -113,6 +126,8 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.QuizLi
             tx_title = (TextView) itemView.findViewById(R.id.txt_title_quiz_list);
             txt_point = (TextView) itemView.findViewById(R.id.txt_quiz_point);
             item_quiz = (LinearLayout) itemView.findViewById(R.id.item_quiz);
+            txt_price_title = (TextView) itemView.findViewById(R.id.txt_type_quiz);
+            txt_type = (TextView) itemView.findViewById(R.id.txt_type);
         }
     }
     private APIInterface getInterfaceService() {

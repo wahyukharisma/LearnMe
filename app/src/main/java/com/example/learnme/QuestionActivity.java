@@ -3,6 +3,7 @@ package com.example.learnme;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.internal.NavigationMenu;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnme.API.APIInterface;
@@ -50,11 +52,16 @@ public class QuestionActivity extends AppCompatActivity {
     private String id="";
     private EditText et_search;
     private Button btn_search;
+    private TextView txt_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        //get preference language
+        final SharedPreferences pref       = getApplicationContext().getSharedPreferences("myPrefsLanguage",MODE_PRIVATE);
+        String getPref = pref.getString("language","English");
 
         Intent intent = getIntent();
         value = intent.getStringExtra("Value");
@@ -73,8 +80,12 @@ public class QuestionActivity extends AppCompatActivity {
         et_search = (EditText) findViewById(R.id.et_search_hp);
         btn_search = (Button) findViewById(R.id.btn_search_hp);
         rl_nodata = (RelativeLayout) findViewById(R.id.rl_nodata);
+        txt_title = (TextView) findViewById(R.id.txt_question_title);
 
         et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        //init View Language
+        initViewLanguage(getPref);
 
         if(!value.equals("1") && !value.equals("2") && !value.equals("3") && !value.equals("4") ){
             showKeyword(value,id);
@@ -265,6 +276,14 @@ public class QuestionActivity extends AppCompatActivity {
                 Toast.makeText(QuestionActivity.this, "Connection Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initViewLanguage(String language){
+        if(language.equals("Indonesia")){
+            txt_title.setText("Pertanyaan");
+            btn_search.setText("Cari");
+            et_search.setHint("Masukkan Kata Kunci");
+        }
     }
 
 }
