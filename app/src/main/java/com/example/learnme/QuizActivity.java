@@ -278,19 +278,23 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
                     // Update History
                     storeHistory(id_user,id,point);
 
+                    //Update Point
+                    UpdatePoint updatePoint = new UpdatePoint();
+
                     Intent intent = new Intent(QuizActivity.this,QuizResult.class);
                     tempPoint=tempPoint*10;
-                    Integer totalPoint = 0;
+                    int totalPoint = 0;
 
                     if(Integer.valueOf(point)==0){
                         totalPoint =  tempPoint;
+                        Log.d("point",String.valueOf(totalPoint)+"-"+"FREE");
                     }else{
-                        totalPoint = Integer.valueOf(point)+(Integer.valueOf(point)*(tempPoint/100));
+                        double temp = ((double)tempPoint/(double)100)*tempPoint;
+                        totalPoint = Integer.valueOf(point)+ (int)temp;
+                        Log.d("point",String.valueOf(totalPoint)+"-"+"PAID");
                     }
 
-
-                   UpdatePoint updatePoint = new UpdatePoint();
-                   updatePoint.updatePoint(id,"3",String.valueOf(totalPoint),"Success take paid quiz id:"+id);
+                   updatePoint.updatePoint(id_user,"3",String.valueOf(totalPoint),"Success take quiz id:"+id);
 
                    intent.putExtra("score",String.valueOf(tempPoint));
                    intent.putExtra("totalpoint",String.valueOf(totalPoint));
@@ -317,8 +321,11 @@ public class QuizActivity extends AppCompatActivity implements FragmentQuiz.even
             @Override
             public void onResponse(Call<ResponseQuiz> call, Response<ResponseQuiz> response) {
                 if (response.isSuccessful()){
-                    UpdatePoint updatePoint = new UpdatePoint();
-                    updatePoint.updatePoint(id,"6",point,"Take quiz id: "+id_quiz);
+                    if(Integer.valueOf(point)>0){
+                        UpdatePoint updatePoint = new UpdatePoint();
+                        updatePoint.updatePoint(id,"6",point,"Take quiz id: "+id_quiz);
+                    }
+
                 }else{
                     progressDialog.dismiss();
                     Toast.makeText(QuizActivity.this, "Refresh", Toast.LENGTH_SHORT).show();

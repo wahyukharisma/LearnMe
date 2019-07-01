@@ -57,7 +57,7 @@ public class FragmentReward extends Fragment {
     private TextView txt_champ_1,txt_point_1;
     private TextView txt_champ_2,txt_point_2;
     private TextView txt_champ_3,txt_point_3;
-    private TextView txt_point_me,txt_index_me,txt_date_title,txt_point_title,txt_my_rank,txt_celebration;
+    private TextView txt_point_me,txt_index_me,txt_date_title,txt_point_title,txt_my_rank,txt_celebration,txt_info_reward;
     private Button btnSearch;
     private ImageView img_title_reward;
 
@@ -94,6 +94,7 @@ public class FragmentReward extends Fragment {
         txt_point_title = view.findViewById(R.id.txt_point_title);
         txt_celebration = view.findViewById(R.id.txt_celebration);
         img_title_reward = view.findViewById(R.id.img_title_reward);
+        txt_info_reward  = view.findViewById(R.id.txt_info_reward);
 
         txt_point_1 = view.findViewById(R.id.txt_point_1);
         txt_point_2 = view.findViewById(R.id.txt_point_2);
@@ -129,10 +130,12 @@ public class FragmentReward extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),R.array.month,R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_month.setAdapter(adapter);
+        spinner_month.setSelection(month);
 
         for(int i=2019;i<=year;i++){
             array_year.add(Integer.toString(i));
         }
+
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this.getActivity(),R.layout.support_simple_spinner_dropdown_item,array_year);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner_year.setAdapter(adapter1);
@@ -153,25 +156,43 @@ public class FragmentReward extends Fragment {
     }
 
     public void initView(List<Ranking> mList){
-        if(!mList.isEmpty()){
-            txt_champ_1.setText(mList.get(0).getUsername());
-            txt_champ_2.setText(mList.get(1).getUsername());
-            txt_champ_3.setText(mList.get(2).getUsername());
+        if(!mList.isEmpty()) {
+            if (mList.size() > 2) {
+                txt_champ_1.setText(mList.get(0).getUsername());
+                txt_champ_2.setText(mList.get(1).getUsername());
+                txt_champ_3.setText(mList.get(2).getUsername());
 
-            txt_point_1.setText(mList.get(0).getPoint());
-            txt_point_2.setText(mList.get(1).getPoint());
-            txt_point_3.setText(mList.get(2).getPoint());
+                txt_point_1.setText(mList.get(0).getPoint());
+                txt_point_2.setText(mList.get(1).getPoint());
+                txt_point_3.setText(mList.get(2).getPoint());
+            } else if (mList.size() > 1) {
+                txt_champ_1.setText(mList.get(0).getUsername());
+                txt_champ_2.setText(mList.get(1).getUsername());
+                txt_champ_3.setText("-");
 
-        }else{
-            txt_champ_1.setText("-");
-            txt_champ_2.setText("-");
-            txt_champ_3.setText("-");
+                txt_point_1.setText(mList.get(0).getPoint());
+                txt_point_2.setText(mList.get(1).getPoint());
+                txt_point_3.setText("-");
+            } else if (mList.size() > 0) {
+                txt_champ_1.setText(mList.get(0).getUsername());
+                txt_champ_2.setText("-");
+                txt_champ_3.setText("-");
 
-            txt_point_1.setText("-");
-            txt_point_2.setText("-");
-            txt_point_3.setText("-");
+                txt_point_1.setText(mList.get(0).getPoint());
+                txt_point_2.setText("-");
+                txt_point_3.setText("-");
+            } else {
+                txt_champ_1.setText("-");
+                txt_champ_2.setText("-");
+                txt_champ_3.setText("-");
 
+                txt_point_1.setText("-");
+                txt_point_2.setText("-");
+                txt_point_3.setText("-");
+
+            }
         }
+
     }
 
     public void initMyRank(final String point,final Integer index){
@@ -212,9 +233,12 @@ public class FragmentReward extends Fragment {
                 if(response.isSuccessful()){
                     userArrayList = new ArrayList<>();
                     if(response.body().getValue()==0){
-                        //Toast.makeText(getContext(), "No Data Selected", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "No Data Selected", Toast.LENGTH_SHORT).show();
+                        userArrayList.clear();
+                        txt_info_reward.setVisibility(View.VISIBLE);
                     }else{
-                        //Toast.makeText(getContext(), "Data Selected", Toast.LENGTH_SHORT).show();
+                        txt_info_reward.setVisibility(View.GONE);
+//                        Toast.makeText(getContext(), "Data Selected", Toast.LENGTH_SHORT).show();
                         for(int i=0;i<response.body().getData().size();i++){
                             Ranking ranking= new Ranking(response.body().getData().get(i).getIndex(),response.body().getData().get(i).getPoint(),response.body().getData().get(i).getUsername());
                             userArrayList.add(ranking);
@@ -229,6 +253,13 @@ public class FragmentReward extends Fragment {
                             recyclerView.setAdapter(rewardAdapter);
                         }
                     }
+
+                    initView(userArrayList);
+                    rewardAdapter = new RewardAdapter(userArrayList,getContext());
+
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(rewardAdapter);
                     progressDialog.dismiss();
                 }else {
                     progressDialog.dismiss();
@@ -265,7 +296,6 @@ public class FragmentReward extends Fragment {
                 }else {
                     Toast.makeText(getView().getContext(), "Refresh", Toast.LENGTH_SHORT).show();
                 }
-                progressDialog.dismiss();
 
             }
 
@@ -315,6 +345,7 @@ public class FragmentReward extends Fragment {
             txt_date_title.setText("Tanngal");
             txt_celebration.setText("Selamat Kepada Pemenang");
             img_title_reward.setImageResource(R.drawable.reward_logo_indo);
+            txt_info_reward.setText("Tidak ada data");
         }
     }
 

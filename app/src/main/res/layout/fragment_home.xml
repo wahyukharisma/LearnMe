@@ -329,15 +329,30 @@
             android:gravity="center"
             android:layout_below="@id/view_menu"
             android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/txt_menu_profile"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:id="@+id/ll_menu_profile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_menu"
-                android:textColor="@color/popuptext_menu"
-                android:textSize="20sp"
-                android:fontFamily="@font/proxima_nova"
-                android:layout_marginBottom="17dp"/>
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/txt_menu_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_menu"
+                    android:textColor="@color/popuptext_menu"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/proxima_nova"
+                    android:layout_marginBottom="17dp"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_menu_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
             <TextView
                 android:id="@+id/txt_menu_about"
                 android:layout_width="wrap_content"
@@ -347,6 +362,14 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
                 android:layout_marginBottom="17dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_menu_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
             <TextView
                 android:id="@+id/txt_menu_language"
                 android:layout_width="wrap_content"
@@ -356,6 +379,14 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova"
                 android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_menu_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
             <TextView
                 android:id="@+id/txt_menu_logout"
                 android:layout_width="wrap_content"
@@ -365,5 +396,8 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/proxima_nova" />
         </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
+    
+
 </RelativeLayout>

@@ -73,14 +73,14 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
             @Override
             public void onClick(View v) {
                 if(countLike[0] ==1){
-                    updateLike(mData.get(index).getId(),countLike[0].toString());
+                    updateLike(mData.get(index).getId(),"like");
                     answearListViewHolder.img_like.setImageResource(R.drawable.ic_thumb_up_dark_blue_24dp);
                     Integer increment = Integer.parseInt(mData.get(index).getLikes())+1;
                     answearListViewHolder.txt_like.setText(String.valueOf(increment));
                     answearListViewHolder.img_dislike.setEnabled(false);
                     countLike[0] =0;
                 }else{
-                    updateLike(mData.get(index).getId(),countLike[0].toString());
+                    updateLike(mData.get(index).getId(),"unlike");
                     answearListViewHolder.img_like.setImageResource(R.drawable.ic_thumb_up_not_active_24dp);
                     Integer increment = Integer.parseInt(answearListViewHolder.txt_like.getText().toString())-1;
                     answearListViewHolder.txt_like.setText(String.valueOf(increment));
@@ -95,14 +95,14 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
             @Override
             public void onClick(View v) {
                 if(countDislike[0] == 1){
-                    updateDislike(mData.get(index).getId(),countDislike[0].toString());
+                    updateDislike(mData.get(index).getId(),"dislike");
                     answearListViewHolder.img_dislike.setImageResource(R.drawable.ic_thumb_down_red_24dp);
                     Integer increment = Integer.parseInt(mData.get(index).getDislikes())+1;
                     answearListViewHolder.txt_dislike.setText(String.valueOf(increment));
                     answearListViewHolder.img_like.setEnabled(false);
                     countDislike[0] = 0;
                 }else{
-                    updateDislike(mData.get(index).getId(),countDislike[0].toString());
+                    updateDislike(mData.get(index).getId(),"undislike");
                     answearListViewHolder.img_dislike.setImageResource(R.drawable.ic_thumb_down_not_active_24dp);
                     Integer increment = Integer.parseInt(answearListViewHolder.txt_dislike.getText().toString())-1;
                     answearListViewHolder.txt_dislike.setText(String.valueOf(increment));
@@ -169,7 +169,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
 
             @Override
             public void onFailure(Call<ResponseAnswer> call, Throwable t) {
-                Log.d("message",t.getMessage().toString());
+                Log.d("message",t.getMessage());
             }
         });
     }
@@ -190,7 +190,7 @@ public class AnswearListAdapter extends RecyclerView.Adapter<AnswearListAdapter.
 
             @Override
             public void onFailure(Call<ResponseAnswer> call, Throwable t) {
-                Log.d("message",t.getMessage().toString());
+                Log.d("message",t.getMessage());
             }
         });
     }

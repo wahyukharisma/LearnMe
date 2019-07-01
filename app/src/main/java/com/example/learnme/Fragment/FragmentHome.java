@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +68,7 @@ public class FragmentHome extends Fragment {
     private RelativeLayout semi_transparent,item_menu;
     private ImageView img_menu,img_promotion,img_es,img_jhs,img_shs,img_g;
     private TextView txt_menu_close,txt_menu_profile,txt_menu_about,txt_menu_logout,txt_language,txt_trendings,txt_category,txt_promotion;
+    private LinearLayout ll_profile,ll_about,ll_language,ll_logout;
     private ProgressDialog progressDialog;
     private String id_user="";
     private EditText et_search;
@@ -101,6 +104,10 @@ public class FragmentHome extends Fragment {
         img_jhs          = (ImageView) view.findViewById(R.id.img_jhs);
         img_shs          = (ImageView) view.findViewById(R.id.img_shs);
         img_g            = (ImageView) view.findViewById(R.id.img_g);
+        ll_profile       = view.findViewById(R.id.ll_menu_profile);
+        ll_about         = view.findViewById(R.id.ll_menu_about);
+        ll_logout        = view.findViewById(R.id.ll_menu_logout);
+        ll_language      = view.findViewById(R.id.ll_menu_language);
 
         et_search.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
@@ -133,7 +140,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        txt_menu_profile.setOnClickListener(new View.OnClickListener() {
+        ll_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), Profile.class);
@@ -143,7 +150,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        txt_menu_about.setOnClickListener(new View.OnClickListener() {
+        ll_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), About.class);
@@ -153,7 +160,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        txt_menu_logout.setOnClickListener(new View.OnClickListener() {
+        ll_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("myPrefs2",MODE_PRIVATE);
@@ -164,7 +171,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        txt_language.setOnClickListener(new View.OnClickListener() {
+        ll_language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ChangeLanguage.class);
@@ -279,7 +286,6 @@ public class FragmentHome extends Fragment {
             }
         });
 
-
         return view;
     }
 
@@ -325,7 +331,7 @@ public class FragmentHome extends Fragment {
                 }else{
                     progressDialog.dismiss();
                     Log.d("message",response.errorBody().toString());
-                    Toast.makeText(getContext(), response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -333,6 +339,7 @@ public class FragmentHome extends Fragment {
             public void onFailure(Call<ResponseTrendsQuestion> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(getContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
+                //rl_rto.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -355,4 +362,6 @@ public class FragmentHome extends Fragment {
             img_shs.setImageResource(R.drawable.kategori_sma_indo);
         }
     }
+
+
 }

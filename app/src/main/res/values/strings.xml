@@ -34,6 +34,7 @@
     <string name="fs_quiz_more">Get your quiz, challenge your knowledge</string>
     <string name="fs_buy">Confirm</string>
     <string name="fs_success">Back</string>
+    <string name="fs_profile">Check Item</string>
 
     <!-- Homepage -->
     <string name="hp_trending">Trendings</string>

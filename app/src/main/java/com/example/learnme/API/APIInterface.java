@@ -113,7 +113,7 @@ public interface APIInterface {
                                                                         @Field("request") String request);
     @FormUrlEncoded
     @POST("updateAnswerDislike.php") Call<ResponseAnswer> updateAnswerDislike(@Field("id") String id,
-                                                                              @Field("keyword") String keyword);
+                                                                              @Field("request") String keyword);
     @FormUrlEncoded
     @POST("getAnswerKeywordUser.php") Call<ResponseAnswer> getAnswerKeywordUser(@Field("id") String id,
                                                                               @Field("keyword") String keyword);

@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChangeLanguage"></activity>
+        <activity android:name=".RTO"></activity>
+        <activity android:name=".ChangeLanguage" />
         <activity
             android:name=".AvatarPicker"
             android:screenOrientation="portrait" />

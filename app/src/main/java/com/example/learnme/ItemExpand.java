@@ -47,7 +47,7 @@ public class ItemExpand extends AppCompatActivity {
     private ImageView img_item,btn_close,img_item_buy;
     private TextView txt_title, txt_price, txt_valid_date, txt_sold, txt_description,txt_purchased,txt_item_buy,txt_valid_date_title,txt_total_sold,txt_category,txt_item_category,txt_description_item,txt_confirmation;
     private TextView txt_mypoint_title,txt_itempoint_title;
-    private Button btn_buy;
+    private Button btn_buy,btn_profile;
     private RelativeLayout rl_confirmation,rl_success_buy;
 
     //Confirmation layout
@@ -103,6 +103,7 @@ public class ItemExpand extends AppCompatActivity {
         txt_confirmation = (TextView) findViewById(R.id.txt_confirmation);
         txt_mypoint_title = (TextView) findViewById(R.id.txt_my_point_title);
         txt_itempoint_title = (TextView) findViewById(R.id.txt_item_point_title);
+        btn_profile     = (Button) findViewById(R.id.btn_profile);
 
         txt_valid_date_title = (TextView) findViewById(R.id.txt_valid_title);
         txt_total_sold  = (TextView) findViewById(R.id.txt_total_sold);
@@ -196,6 +197,16 @@ public class ItemExpand extends AppCompatActivity {
         btn_success.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ItemExpand.this,AvatarPicker.class);
+                intent1.putExtra("id",id_user);
+                startActivity(intent1);
                 finish();
             }
         });

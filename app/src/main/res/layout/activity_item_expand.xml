@@ -346,6 +346,15 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center">
                     <Button
+                        android:id="@+id/btn_cancel_purchase"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/btn_cancel"
+                        android:text="Cancel"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/proxima_nova" />
+                    <Button
                         android:id="@+id/btn_purchase"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
@@ -354,16 +363,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/proxima_nova"
-                        android:layout_marginRight="10dp"/>
-                    <Button
-                        android:id="@+id/btn_cancel_purchase"
-                        android:layout_width="100dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/btn_cancel"
-                        android:text="Cancel"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/proxima_nova"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -379,20 +379,21 @@
         android:gravity="center"
         android:visibility="gone">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
             <TextView
                 android:id="@+id/txt_success_buy"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="YEAH YOU HAVE NEW ITEM"
                 android:textSize="25sp"
                 android:fontFamily="@font/proxima_nova"
                 android:textStyle="bold"
                 android:textColor="@color/title_account_color"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:gravity="center"/>
             <ImageView
                 android:id="@+id/id_img_buy"
                 android:layout_width="200dp"
@@ -404,25 +405,41 @@
                 android:id="@+id/txt_name_buy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AVATAR BATMAN"
+                android:text="ITEM ANME"
                 android:textSize="25sp"
                 android:fontFamily="@font/proxima_nova"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"/>
-            <Button
-                android:id="@+id/btn_finish"
-                android:layout_width="200dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/btn_gradient_style"
-                android:text="@string/fs_success"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/proxima_nova" />
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btn_finish"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/btn_cancel"
+                    android:text="@string/fs_success"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/proxima_nova" />
+                <Button
+                    android:id="@+id/btn_profile"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/btn_gradient_style"
+                    android:text="@string/fs_profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/proxima_nova"
+                    android:layout_marginStart="15dp"/>
+            </LinearLayout>
         </LinearLayout>
-
     </RelativeLayout>
 
 </RelativeLayout>

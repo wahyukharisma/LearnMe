@@ -187,10 +187,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/reward_search">
+
+        <TextView
+            android:id="@+id/txt_info_reward"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No Data Record"
+            android:visibility="gone"/>
         <ScrollView
             android:id="@+id/scroll_user"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="240dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycle_view_user"

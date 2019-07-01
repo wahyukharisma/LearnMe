@@ -1,5 +1,6 @@
 package com.example.learnme.Fragment;
 
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -201,6 +202,17 @@ public class FragmentShop extends Fragment {
             imgQuiz.setImageResource(R.drawable.banner_quiz_indo);
             img_shop_title.setImageResource(R.drawable.shop_logo_indo);
 
+        }
+    }
+
+    private void refreshFragment(){
+        Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_place_holder);
+        if (currentFragment instanceof FragmentShop)
+        {
+            android.support.v4.app.FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.detach(currentFragment);
+            fragmentTransaction.attach(currentFragment);
+            fragmentTransaction.commit();
         }
     }
 }
