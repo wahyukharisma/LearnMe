@@ -301,6 +301,7 @@ public class ItemExpand extends AppCompatActivity {
             btn_purchase.setText("Beli");
             btn_cancel_purchase.setText("Batal");
             txt_purchased.setText("Avatar Sudah Dibeli");
+            btn_profile.setText("Lihat Item");
 
 
 
